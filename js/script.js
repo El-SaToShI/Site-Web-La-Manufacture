@@ -203,8 +203,15 @@ document.addEventListener('keydown', function(event) {
 
 // Gestion du mode sombre/clair - Desktop uniquement
 function initThemeToggle() {
-    // Vérifier si on est sur desktop (largeur > 768px)
-    if (window.innerWidth <= 768) return;
+    console.log('initThemeToggle appelé, largeur écran:', window.innerWidth); // Debug
+    
+    // Temporairement: montrer le bouton sur mobile ET desktop pour debug
+    // if (window.innerWidth <= 768) {
+    //     console.log('Mobile détecté, pas de bouton thème'); // Debug
+    //     return;
+    // }
+    
+    console.log('Création du bouton thème pour tous les écrans (debug)'); // Debug
     
     // Créer le bouton de bascule
     const themeToggle = document.createElement('button');
@@ -214,17 +221,22 @@ function initThemeToggle() {
     
     // Récupérer le thème sauvegardé ou utiliser le thème clair par défaut
     const savedTheme = localStorage.getItem('theme') || 'light';
+    console.log('Thème sauvegardé:', savedTheme); // Debug
+    
     setTheme(savedTheme);
     updateToggleIcon(themeToggle, savedTheme);
     
     // Ajouter le bouton à la page
     document.body.appendChild(themeToggle);
+    console.log('Bouton thème ajouté au DOM'); // Debug
     
     // Événement de clic
     themeToggle.addEventListener('click', function() {
+        console.log('Bouton thème cliqué'); // Debug
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
+        console.log('Changement de thème:', currentTheme, '→', newTheme); // Debug
         setTheme(newTheme);
         updateToggleIcon(themeToggle, newTheme);
         localStorage.setItem('theme', newTheme);
@@ -232,9 +244,12 @@ function initThemeToggle() {
     
     // Gérer le redimensionnement - supprimer le bouton sur mobile
     window.addEventListener('resize', function() {
+        console.log('Redimensionnement détecté, largeur:', window.innerWidth); // Debug
         if (window.innerWidth <= 768 && themeToggle.parentNode) {
+            console.log('Suppression du bouton sur mobile'); // Debug
             themeToggle.remove();
         } else if (window.innerWidth > 768 && !themeToggle.parentNode) {
+            console.log('Ajout du bouton sur desktop'); // Debug
             document.body.appendChild(themeToggle);
         }
     });

@@ -26,7 +26,7 @@ html {
     --light-grey: #2d2d2d; /* Gris sombre pour les cartes */
 }
 
-/* Bouton de bascule dark mode */
+/* Bouton de bascule dark mode - DEBUG: visible sur tous les écrans */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -42,6 +42,7 @@ html {
     transition: all 0.3s ease;
     z-index: 1001;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: block !important; /* Force l'affichage pour debug */
 }
 
 .theme-toggle:hover {
