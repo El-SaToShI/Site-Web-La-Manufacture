@@ -308,32 +308,49 @@
         line-height: 1.5 !important;
     }
 
-    /* Section pédagogues mobile - LAYOUT CENTRÉ HAMBURGERISÉ */
+    /* Section pédagogues mobile - DEBUG et VISIBILITÉ FORCÉE */
+    #pedagogues {
+        background: white !important;
+        padding: 2rem 0 !important;
+        min-height: 100vh !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
     #pedagogues .section-title {
         text-align: center !important;
         margin-bottom: 2rem !important;
+        background: yellow !important;
+        padding: 1rem !important;
     }
 
     #pedagogues .section-title h3 {
         font-size: 2rem !important;
-        color: var(--accent-color) !important;
+        color: black !important;
         text-align: center !important;
         margin: 0 !important;
+        background: red !important;
+        padding: 0.5rem !important;
     }
 
     .pedagogues-intro {
         text-align: center !important;
-        padding: 0 1rem !important;
+        padding: 1rem !important;
         margin-bottom: 2rem !important;
         max-width: 100% !important;
+        background: lightblue !important;
+        border: 3px solid blue !important;
     }
 
     .pedagogues-intro h4 {
         font-size: 1.8rem !important;
-        color: var(--vintage-brown) !important;
+        color: black !important;
         margin: 0 0 1.5rem 0 !important;
         text-align: center !important;
         font-weight: 600 !important;
+        background: orange !important;
+        padding: 0.5rem !important;
     }
 
     .pedagogues-intro p {
@@ -342,7 +359,9 @@
         margin: 0.75rem auto !important;
         max-width: 90% !important;
         text-align: center !important;
-        color: var(--secondary-color) !important;
+        color: black !important;
+        background: lightgreen !important;
+        padding: 0.5rem !important;
     }
 
     .pedagogues-intro em {
