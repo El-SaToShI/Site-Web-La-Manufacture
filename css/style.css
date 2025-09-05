@@ -1088,7 +1088,7 @@ footer::before {
     }
 }
 
-/* MENU HAMBURGER MODERNE - Inspiré ERACM */
+/* MENU HAMBURGER MODERNE - Inspiré ERACM - Version Corrigée */
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -1099,6 +1099,8 @@ footer::before {
     padding: 0.5rem;
     border-radius: 4px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001;
 }
 
 .mobile-menu-toggle:hover {
@@ -1116,19 +1118,30 @@ footer::before {
     background: rgba(60, 60, 60, 0.95);
     z-index: 9999;
     backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
 }
 
 .mobile-nav-menu {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.9);
     background: var(--main-bg-color);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
     min-width: 280px;
     text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-overlay.active .mobile-nav-menu {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .mobile-nav-menu ul {
@@ -1175,6 +1188,7 @@ footer::before {
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 10000;
 }
 
 .mobile-nav-close:hover {
@@ -1182,39 +1196,10 @@ footer::before {
     transform: scale(1.1);
 }
 
-/* Animations pour le menu mobile */
-.mobile-nav-overlay {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.mobile-nav-menu {
-    transform: translate(-50%, -50%) scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-/* Amélioration responsive pour tablettes - Inspiré ERACM */
-@media (max-width: 1024px) {
-    .pedagogues-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    
-    header {
-        padding: 1rem 2rem;
-    }
-    
-    header h1 {
-        font-size: 1.5rem;
-    }
-    
-    nav ul {
-        gap: 1rem;
-    }
-    
-    nav ul li a {
-        font-size: 0.9rem;
-        padding: 0.8rem 1rem;
+/* Masquer le menu hamburger par défaut */
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none !important;
     }
 }
 
@@ -1228,7 +1213,7 @@ footer::before {
         max-width: 100vw;
     }
     
-    /* Header moderne avec hamburger */
+    /* Header moderne avec hamburger - Version corrigée */
     header {
         flex-direction: row;
         justify-content: space-between;
@@ -1237,6 +1222,7 @@ footer::before {
         width: 100vw;
         max-width: 100vw;
         overflow: hidden;
+        position: relative;
     }
     
     header h1 {
@@ -1247,16 +1233,17 @@ footer::before {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        max-width: calc(100% - 60px); /* Espace pour le bouton hamburger */
     }
     
-    /* Cacher la navigation normale sur mobile */
+    /* Cacher la navigation normale sur mobile et afficher hamburger */
     header nav {
         display: none;
     }
     
-    /* Afficher le bouton hamburger */
     .mobile-menu-toggle {
-        display: block;
+        display: block !important;
+        flex-shrink: 0;
     }
     
     /* Navigation mobile ultra optimisée - Version ERACM inspirée */

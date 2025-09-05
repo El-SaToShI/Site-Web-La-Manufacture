@@ -101,49 +101,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// MENU HAMBURGER MODERNE - Inspiré ERACM
+// MENU HAMBURGER MODERNE - Version Simplifiée et Sécurisée
 document.addEventListener('DOMContentLoaded', function() {
-    // Créer le bouton hamburger et le menu mobile
-    createMobileMenu();
-    
-    // Gestion des événements
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
-    const mobileClose = document.querySelector('.mobile-nav-close');
-    
-    if (mobileToggle && mobileOverlay && mobileClose) {
-        mobileToggle.addEventListener('click', openMobileMenu);
-        mobileClose.addEventListener('click', closeMobileMenu);
-        mobileOverlay.addEventListener('click', function(e) {
-            if (e.target === mobileOverlay) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Fermeture avec Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileOverlay.style.display === 'block') {
-                closeMobileMenu();
-            }
-        });
+    // Vérifier si on est sur mobile et si le bouton existe
+    if (window.innerWidth <= 480) {
+        initMobileMenu();
     }
+    
+    // Gérer le redimensionnement
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 480) {
+            initMobileMenu();
+        }
+    });
 });
 
-function createMobileMenu() {
-    const header = document.querySelector('header');
+function initMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (!mobileToggle) return;
+    
+    // Vérifier si le menu overlay existe déjà
+    let overlay = document.querySelector('.mobile-nav-overlay');
+    
+    if (!overlay) {
+        // Créer le menu overlay seulement s'il n'existe pas
+        overlay = createMobileMenuOverlay();
+    }
+    
+    // Ajouter les événements seulement une fois
+    if (!mobileToggle.dataset.initialized) {
+        mobileToggle.addEventListener('click', openMobileMenu);
+        mobileToggle.dataset.initialized = 'true';
+    }
+}
+
+function createMobileMenuOverlay() {
     const nav = document.querySelector('header nav');
-    
-    if (!header || !nav) return;
-    
-    // Créer le bouton hamburger
-    const mobileToggle = document.createElement('button');
-    mobileToggle.className = 'mobile-menu-toggle';
-    mobileToggle.innerHTML = '☰';
-    mobileToggle.setAttribute('aria-label', 'Ouvrir le menu');
-    
-    // Ajouter le bouton après le h1
-    const h1 = header.querySelector('h1');
-    h1.insertAdjacentElement('afterend', mobileToggle);
+    if (!nav) return null;
     
     // Créer le menu overlay
     const overlay = document.createElement('div');
@@ -155,8 +150,9 @@ function createMobileMenu() {
     // Bouton fermer
     const closeBtn = document.createElement('button');
     closeBtn.className = 'mobile-nav-close';
-    closeBtn.innerHTML = '×';
+    closeBtn.innerHTML = '&times;';
     closeBtn.setAttribute('aria-label', 'Fermer le menu');
+    closeBtn.setAttribute('type', 'button');
     
     // Copier la navigation
     const navClone = nav.cloneNode(true);
@@ -166,24 +162,39 @@ function createMobileMenu() {
     mobileMenu.appendChild(navClone);
     overlay.appendChild(mobileMenu);
     document.body.appendChild(overlay);
+    
+    // Ajouter les événements
+    closeBtn.addEventListener('click', closeMobileMenu);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Fermeture avec Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    return overlay;
 }
 
 function openMobileMenu() {
     const overlay = document.querySelector('.mobile-nav-overlay');
-    const mobileMenu = document.querySelector('.mobile-nav-menu');
     
-    if (overlay && mobileMenu) {
+    if (overlay) {
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
         
         // Animation d'entrée
-        setTimeout(() => {
-            overlay.style.opacity = '1';
-            mobileMenu.style.transform = 'translate(-50%, -50%) scale(1)';
-        }, 10);
+        requestAnimationFrame(() => {
+            overlay.classList.add('active');
+        });
         
         // Focus sur le premier lien
-        const firstLink = mobileMenu.querySelector('a');
+        const firstLink = overlay.querySelector('a');
         if (firstLink) {
             setTimeout(() => firstLink.focus(), 300);
         }
@@ -192,12 +203,9 @@ function openMobileMenu() {
 
 function closeMobileMenu() {
     const overlay = document.querySelector('.mobile-nav-overlay');
-    const mobileMenu = document.querySelector('.mobile-nav-menu');
     
-    if (overlay && mobileMenu) {
-        // Animation de sortie
-        overlay.style.opacity = '0';
-        mobileMenu.style.transform = 'translate(-50%, -50%) scale(0.9)';
+    if (overlay) {
+        overlay.classList.remove('active');
         
         setTimeout(() => {
             overlay.style.display = 'none';
