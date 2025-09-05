@@ -23,12 +23,12 @@
         font-size: 16px !important;
     }
 
-    /* Header mobile avec hamburger */
+    /* Header mobile avec hamburger - TITRE COMPLET */
     header {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 1rem 1.5rem !important;
+        padding: 0.8rem 1rem !important;
         flex-direction: row !important;
         width: 100% !important;
         box-sizing: border-box !important;
@@ -37,16 +37,18 @@
         z-index: 1000 !important;
         background: var(--main-bg-color) !important;
         border-bottom: 2px solid var(--light-grey) !important;
+        gap: 0.5rem !important;
     }
     
     header h1 {
-        font-size: 1.4rem !important;
+        font-size: 1.2rem !important;
         margin: 0 !important;
         text-align: left !important;
         flex: 1 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: calc(100% - 60px) !important;
     }
     
     header h1 a {
@@ -59,21 +61,21 @@
         display: none !important;
     }
 
-    /* Afficher le bouton hamburger */
+    /* Afficher le bouton hamburger - COMPACT */
     .mobile-menu-toggle {
         display: flex !important;
         background: none !important;
         border: none !important;
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
         color: var(--accent-color) !important;
         cursor: pointer !important;
-        padding: 0.5rem !important;
+        padding: 0.4rem !important;
         border-radius: 4px !important;
         transition: all 0.3s ease !important;
         align-items: center !important;
         justify-content: center !important;
-        width: 44px !important;
-        height: 44px !important;
+        width: 40px !important;
+        height: 40px !important;
         flex-shrink: 0 !important;
     }
 
