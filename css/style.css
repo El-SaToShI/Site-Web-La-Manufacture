@@ -343,34 +343,7 @@ footer p {
     opacity: 0.7;
 }
 
-/* Animations - inchangées */
-#preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fleur-anim {
-    width: 100px; /* ou la taille que vous préférez */
-    animation: fleur-passe 2s forwards;
-}
-
-@keyframes fleur-passe {
-    from {
-        transform: translateX(-100vw);
-    }
-    to {
-        transform: translateX(100vw);
-    }
-}
-
+/* Animations fade-in pour les sections */
 .fade-in-section {
     opacity: 0;
     transform: translateY(20px);

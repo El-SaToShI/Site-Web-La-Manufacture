@@ -1,13 +1,4 @@
-// Gestion du preloader - Version sécurisée
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(function() {
-            preloader.style.display = 'none';
-        }, 2000); // Attend la fin de l'animation de la fleur
-    }
-    // Si le preloader n'existe pas, on continue sans erreur
-});
+// Note: Code preloader supprimé car non utilisé dans ce site
 
 // Gestion des animations fade-in - Version sécurisée
 document.addEventListener('DOMContentLoaded', function() {
