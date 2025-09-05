@@ -39,7 +39,7 @@
         return daysSinceChoice < 7; // Choix valide pendant 7 jours
     }
     
-    // Fonction principale de redirection
+    // Fonction principale de redirection AMÉLIORÉE
     function autoRedirect() {
         const currentPage = window.location.pathname;
         const isIndexPage = currentPage.endsWith('index.html') || currentPage.endsWith('/') || currentPage === '';
@@ -49,30 +49,42 @@
         // Ne pas rediriger si on est déjà sur la page de choix
         if (isChoicePage) return;
         
+        // NOUVEAU: Détecter si c'est un lien partagé (première visite ou pas de choix récent)
+        const isFirstVisit = !localStorage.getItem('la-manufacture-ever-visited');
+        const hasRecentChoice = hasUserChoice() && isChoiceValid();
+        
+        // Marquer la visite pour les futures fois
+        if (isFirstVisit) {
+            localStorage.setItem('la-manufacture-ever-visited', 'true');
+        }
+        
         // Vérifier si l'utilisateur a déjà fait un choix valide
-        if (hasUserChoice() && isChoiceValid()) {
+        if (hasRecentChoice) {
             const userChoice = localStorage.getItem('la-manufacture-version-choice');
             
             if (userChoice === 'mobile' && !isMobilePage) {
                 // Rediriger vers la version mobile
+                console.log('Redirection selon préférence: vers mobile');
                 redirectToMobileVersion();
             } else if (userChoice === 'desktop' && isMobilePage) {
                 // Rediriger vers la version desktop
+                console.log('Redirection selon préférence: vers desktop');
                 redirectToDesktopVersion();
             }
             return;
         }
         
-        // Auto-détection pour nouveaux utilisateurs
+        // AMÉLIORATION: Pour les liens partagés ou première visite, toujours rediriger selon l'appareil
         const isMobile = isMobileDevice();
         
-        if (isMobile && !isMobilePage && isIndexPage) {
-            // Utilisateur mobile sur page desktop index -> rediriger vers mobile
-            console.log('Mobile détecté - Redirection vers version mobile');
-            window.location.href = 'index-mobile.html';
+        // Redirection pour TOUTES les pages, pas seulement index
+        if (isMobile && !isMobilePage) {
+            // Utilisateur mobile sur page desktop -> rediriger vers mobile
+            console.log('Lien partagé/Première visite - Mobile détecté - Redirection vers version mobile');
+            redirectToMobileVersion();
         } else if (!isMobile && isMobilePage) {
             // Utilisateur desktop sur page mobile -> rediriger vers desktop
-            console.log('Desktop détecté - Redirection vers version desktop');
+            console.log('Lien partagé/Première visite - Desktop détecté - Redirection vers version desktop');
             redirectToDesktopVersion();
         }
     }

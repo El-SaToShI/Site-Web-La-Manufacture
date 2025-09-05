@@ -82,34 +82,35 @@
         transform: scale(1.05) !important;
     }
 
-    /* Menu overlay moderne - CORRECTION */
+    /* Menu overlay moderne - VERSION SIMPLIFIÉE ET ROBUSTE + DEBUG */
     .mobile-nav-overlay {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
+        width: 100vw !important;
+        height: 100vh !important;
         background: rgba(60, 60, 60, 0.95) !important;
         z-index: 999999 !important;
         backdrop-filter: blur(5px) !important;
         opacity: 0 !important;
         visibility: hidden !important;
-        transition: all 0.3s ease !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 2rem !important;
-        box-sizing: border-box !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        display: none !important;
+        /* DEBUG - Bordure rouge pour voir si l'overlay existe */
+        border: 5px solid red !important;
     }
 
     .mobile-nav-overlay.active {
         opacity: 1 !important;
         visibility: visible !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        /* DEBUG - Fond vert pour confirmer l'activation */
+        background: rgba(0, 255, 0, 0.3) !important;
     }
 
-    /* Menu container moderne - CORRECTION */
+    /* Menu container moderne - VERSION SIMPLIFIÉE + DEBUG */
     .mobile-nav-menu {
         background: var(--main-bg-color) !important;
         border-radius: 12px !important;
@@ -119,17 +120,26 @@
         max-width: 320px !important;
         min-width: 280px !important;
         text-align: center !important;
-        transform: scale(0.9) translateY(-50px) !important;
-        transition: transform 0.3s ease !important;
         position: relative !important;
         margin: auto !important;
+        transform: none !important;
+        animation: menuAppear 0.3s ease !important;
+        /* DEBUG - Bordure bleue pour voir le menu */
+        border: 3px solid blue !important;
     }
 
-    .mobile-nav-overlay.active .mobile-nav-menu {
-        transform: scale(1) translateY(0) !important;
+    @keyframes menuAppear {
+        from {
+            transform: scale(0.9) translateY(-30px);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
     }
 
-    /* Liste de navigation mobile */
+    /* Liste de navigation mobile - SIMPLIFIÉE */
     .mobile-nav-menu ul {
         list-style: none !important;
         padding: 0 !important;
@@ -137,10 +147,12 @@
         display: flex !important;
         flex-direction: column !important;
         gap: 1rem !important;
+        width: 100% !important;
     }
 
     .mobile-nav-menu li {
         margin: 0 !important;
+        width: 100% !important;
     }
 
     .mobile-nav-menu li a {
@@ -156,6 +168,8 @@
         border: 2px solid transparent !important;
         transition: all 0.3s ease !important;
         font-size: 1rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .mobile-nav-menu li a:hover,
@@ -166,7 +180,7 @@
         transform: translateY(-2px) !important;
     }
 
-    /* Bouton de fermeture */
+    /* Bouton de fermeture - SIMPLIFIÉ */
     .mobile-nav-close {
         position: absolute !important;
         top: 1rem !important;
@@ -183,7 +197,7 @@
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        z-index: 10000 !important;
+        z-index: 1000000 !important;
     }
 
     .mobile-nav-close:hover {
