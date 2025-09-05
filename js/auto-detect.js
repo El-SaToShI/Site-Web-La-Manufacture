@@ -64,11 +64,9 @@
             
             if (userChoice === 'mobile' && !isMobilePage) {
                 // Rediriger vers la version mobile
-                console.log('Redirection selon préférence: vers mobile');
                 redirectToMobileVersion();
             } else if (userChoice === 'desktop' && isMobilePage) {
                 // Rediriger vers la version desktop
-                console.log('Redirection selon préférence: vers desktop');
                 redirectToDesktopVersion();
             }
             return;
@@ -80,11 +78,9 @@
         // Redirection pour TOUTES les pages, pas seulement index
         if (isMobile && !isMobilePage) {
             // Utilisateur mobile sur page desktop -> rediriger vers mobile
-            console.log('Lien partagé/Première visite - Mobile détecté - Redirection vers version mobile');
             redirectToMobileVersion();
         } else if (!isMobile && isMobilePage) {
             // Utilisateur desktop sur page mobile -> rediriger vers desktop
-            console.log('Lien partagé/Première visite - Desktop détecté - Redirection vers version desktop');
             redirectToDesktopVersion();
         }
     }
