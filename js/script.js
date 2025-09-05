@@ -19,7 +19,60 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(section);
         });
     }
+
+    // Gestion du menu hamburger mobile - Version sécurisée
+    initMobileMenu();
 });
+
+// Fonction pour initialiser le menu mobile
+function initMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    const mobileClose = document.querySelector('.mobile-nav-close');
+    
+    // Vérifier que les éléments existent
+    if (!mobileToggle || !mobileOverlay) return;
+    
+    // Ouvrir le menu
+    mobileToggle.addEventListener('click', function() {
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Empêcher le scroll en arrière-plan
+    });
+    
+    // Fermer le menu avec le bouton X
+    if (mobileClose) {
+        mobileClose.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Fermer le menu en cliquant sur l'overlay
+    mobileOverlay.addEventListener('click', function(e) {
+        if (e.target === mobileOverlay) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Fermer le menu avec la touche Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Fermer le menu quand on clique sur un lien
+    const mobileLinks = document.querySelectorAll('.mobile-nav-menu a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+}
+
+// Fonction pour fermer le menu mobile
+function closeMobileMenu() {
+    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    if (mobileOverlay) {
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Rétablir le scroll
+    }
+}
 
 // Fonction améliorée pour gérer l'expansion/contraction des profils de pédagogues - Version sécurisée
 function togglePedagogue(pedagogueId) {
