@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gestion du menu hamburger mobile - Version sécurisée
     initMobileMenu();
     
-    // Initialiser le mode sombre/clair pour desktop
-    initThemeToggle();
+    // ======= SUPPRESSION INITTHEMETOGGLE() =======
 });
 
 // Fonction pour initialiser le menu mobile - VERSION RENFORCÉE
@@ -201,55 +200,4 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// Gestion du mode sombre/clair - Pour tous les écrans
-function initThemeToggle() {
-    // Créer le bouton de bascule
-    const themeToggle = document.createElement('button');
-    themeToggle.className = 'theme-toggle';
-    themeToggle.setAttribute('aria-label', 'Basculer entre mode clair et sombre');
-    themeToggle.setAttribute('title', 'Changer le thème');
-    
-    // Récupérer le thème sauvegardé ou utiliser le thème clair par défaut
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    
-    setTheme(savedTheme);
-    updateToggleIcon(themeToggle, savedTheme);
-    
-    // Ajouter le bouton à la page
-    document.body.appendChild(themeToggle);
-    
-    // Événement de clic
-    themeToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        setTheme(newTheme);
-        updateToggleIcon(themeToggle, newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-    
-    // Plus de logique de redimensionnement qui supprime le bouton
-    // Le bouton reste permanent sur toutes les tailles d'écran
-}
-
-function setTheme(theme) {
-    if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-    }
-}
-
-function updateToggleIcon(button, theme) {
-    if (theme === 'dark') {
-        button.innerHTML = '☀️'; // Icône soleil pour passer au mode clair
-        button.setAttribute('aria-label', 'Passer au mode clair');
-        button.setAttribute('title', 'Passer au mode clair');
-    } else {
-        button.innerHTML = '🌙'; // Icône lune pour passer au mode sombre
-        button.setAttribute('aria-label', 'Passer au mode sombre');
-        button.setAttribute('title', 'Passer au mode sombre');
-    }
-}
+// ======= TOUTES LES FONCTIONS THEME SUPPRIMÉES =======
