@@ -737,9 +737,9 @@ footer::before {
 }
 
 .add-pedagogue .btn-secondary {
-    background-color: transparent;
-    color: #fefefe; /* Blanc fixe pour le texte */
-    border: 2px solid #fefefe; /* Bordure blanche fixe */
+    background-color: transparent !important;
+    color: #fefefe !important; /* Blanc fixe pour le texte */
+    border: 2px solid #fefefe !important; /* Bordure blanche fixe */
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 8px;
@@ -750,12 +750,12 @@ footer::before {
 }
 
 .add-pedagogue .btn-secondary:hover {
-    background-color: #fefefe; /* Fond blanc fixe */
-    color: #cc5500; /* Texte orange fixe */
+    background-color: #fefefe !important; /* Fond blanc fixe */
+    color: #cc5500 !important; /* Texte orange fixe */
     transform: scale(1.05);
     /* Ajout d'une ombre pour la visibilité */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 2px solid #cc5500; /* Bordure ORANGE pour contraste */
+    border: 2px solid #cc5500 !important; /* Bordure ORANGE pour contraste */
 }
 
 /* Responsive amélioré avec gestion des conflits */
