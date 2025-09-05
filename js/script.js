@@ -41,30 +41,24 @@ function initMobileMenu() {
         document.body.style.overflow = 'hidden';
     });
     
-    // Attacher l'événement de fermeture directement à la croix
-    const closeButton = document.querySelector('.mobile-nav-close');
-    if (closeButton) {
-        closeButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            closeMobileMenu();
-        });
-    }
-    
-    // CORRECTION CROIX - Event listener amélioré pour la fermeture du menu
+    // EVENT LISTENER GLOBAL - Délégation d'événements pour la fermeture du menu
+    // Cela fonctionne sur TOUTES les pages mobiles
     document.addEventListener('click', function(e) {
-        // Si on clique sur le bouton de fermeture (croix) ou sur son contenu
+        // Fermeture par la croix - Multiple vérifications pour fiabilité maximale
         if (e.target.classList.contains('mobile-nav-close') || 
+            e.target.closest('.mobile-nav-close') ||
             e.target.textContent === '×' ||
-            e.target.closest('.mobile-nav-close')) {
+            e.target.getAttribute('aria-label') === 'Fermer le menu') {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Fermeture du menu par la croix');
             closeMobileMenu();
             return;
         }
         
         // Fermer en cliquant sur l'overlay (en dehors du menu)
         if (e.target.classList.contains('mobile-nav-overlay')) {
+            console.log('Fermeture du menu par overlay');
             closeMobileMenu();
         }
     });
@@ -83,12 +77,15 @@ function initMobileMenu() {
     });
 }
 
-// Fonction pour fermer le menu mobile
+// Fonction pour fermer le menu mobile - AMÉLIORÉE TOUTES PAGES
 function closeMobileMenu() {
     const mobileOverlay = document.querySelector('.mobile-nav-overlay');
     if (mobileOverlay) {
         mobileOverlay.classList.remove('active');
         document.body.style.overflow = ''; // Rétablir le scroll
+        console.log('Menu mobile fermé avec succès');
+    } else {
+        console.log('Overlay non trouvé - menu peut-être déjà fermé');
     }
 }
 
@@ -209,6 +206,17 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (window.innerWidth <= 480) {
             initMobileMenu();
+        }
+    });
+    
+    // Fermer le menu avec la touche Escape (accessibilité)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            if (mobileOverlay && mobileOverlay.classList.contains('active')) {
+                console.log('Fermeture du menu par Escape');
+                closeMobileMenu();
+            }
         }
     });
 });
