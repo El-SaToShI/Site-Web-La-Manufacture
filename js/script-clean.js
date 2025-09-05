@@ -125,13 +125,10 @@ function togglePedagogue(pedagogueId) {
 
 // Fonction pour gérer l'expansion des pédagogues sur mobile - Version adaptée mobile
 function togglePedagogueMobile(pedagogueId) {
-    console.log('togglePedagogueMobile appelé avec:', pedagogueId); // Debug
-    
     // Vérifications de sécurité
-    if (!pedagogueId) {
-        console.log('pedagogueId manquant');
-        return;
-    }
+    if (!pedagogueId) return;
+    
+    console.log('togglePedagogueMobile appelé avec:', pedagogueId); // Debug
     
     const detailsElement = document.querySelector(`#${pedagogueId}-details-mobile`);
     if (!detailsElement) {
@@ -140,13 +137,10 @@ function togglePedagogueMobile(pedagogueId) {
     }
     
     const expandable = detailsElement.parentElement;
-    if (!expandable) {
-        console.log('Parent expandable non trouvé');
-        return;
-    }
+    if (!expandable) return;
     
     const isCurrentlyExpanded = detailsElement.style.display === 'block';
-    console.log('Actuellement expanded:', isCurrentlyExpanded);
+    console.log('Actuellement expanded:', isCurrentlyExpanded); // Debug
     
     // Fermer tous les profils ouverts
     const allDetailsMobile = document.querySelectorAll('.pedagogue-details-mobile');
@@ -157,7 +151,7 @@ function togglePedagogueMobile(pedagogueId) {
     // Si le profil n'était pas ouvert, l'ouvrir
     if (!isCurrentlyExpanded) {
         detailsElement.style.display = 'block';
-        console.log('Profil ouvert pour:', pedagogueId);
+        console.log('Profil ouvert'); // Debug
         
         // Scroll vers le profil ouvert après un petit délai
         setTimeout(() => {
@@ -167,8 +161,6 @@ function togglePedagogueMobile(pedagogueId) {
                 inline: 'nearest'
             });
         }, 100);
-    } else {
-        console.log('Profil fermé pour:', pedagogueId);
     }
 }
 
