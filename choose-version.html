@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <script src="js/auto-detect.js"></script>
     <style>
         :root {
             --main-bg-color: #f7f5f3;
@@ -180,7 +181,7 @@
                     <li>Parfait pour votre Samsung S20+</li>
                     <li>Zoom et navigation libres</li>
                 </ul>
-                <a href="index.html" class="btn">Version Desktop Scalée</a>
+                <a href="index.html" class="btn" onclick="LaManufactureAutoDetect.redirectToDesktop()">Version Desktop Scalée</a>
             </div>
 
             <div class="version-card">
@@ -193,7 +194,7 @@
                     <li>Textes et boutons plus grands</li>
                     <li>Ergonomie mobile native</li>
                 </ul>
-                <a href="index-mobile.html" class="btn btn-secondary">Version Mobile Moderne</a>
+                <a href="index-mobile.html" class="btn btn-secondary" onclick="LaManufactureAutoDetect.redirectToMobile()">Version Mobile Moderne</a>
             </div>
         </div>
 
