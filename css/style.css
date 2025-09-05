@@ -358,53 +358,65 @@ footer::before {
     background: var(--accent-color);
 }
 
-/* Styles pour les pédagogues - Grille avec déroulement indépendant */
+/* Styles pour les pédagogues - Grille style sélection de personnage */
 .pedagogues-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
     margin-top: 2rem;
-    align-items: start; /* Important pour éviter l'étirement */
+    align-items: start;
+    justify-content: center;
 }
 
 .pedagogue-expandable {
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(60,60,60,0.1);
+    box-shadow: 0 6px 20px rgba(60,60,60,0.15);
     transition: all 0.4s ease;
-    width: 100%; /* Force la largeur */
-    position: relative; /* Positionnement pour éviter les conflits */
+    width: 100%;
+    position: relative;
+    background: var(--light-grey);
+    border: 2px solid transparent;
+}
+
+.pedagogue-expandable:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(139, 105, 20, 0.2);
+    border-color: var(--accent-color);
 }
 
 .pedagogue-expandable.expanded {
-    box-shadow: 0 12px 32px rgba(139, 105, 20, 0.25);
-    transform: scale(1.02);
-    z-index: 10; /* S'assure que l'élément ouvert est au-dessus */
+    box-shadow: 0 16px 40px rgba(139, 105, 20, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    z-index: 10;
+    border-color: var(--vintage-brown);
 }
 
 .pedagogue-card {
-    background: var(--light-grey);
-    padding: 2rem;
+    background: var(--main-bg-color);
+    padding: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     cursor: pointer;
-    border: 3px solid transparent;
-    width: 100%; /* Force la largeur de la carte */
-    box-sizing: border-box; /* Inclut les bordures dans la largeur */
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .pedagogue-card:hover {
-    background: var(--main-bg-color);
-    border-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--light-grey) 0%, var(--main-bg-color) 100%);
 }
 
 .pedagogue-expandable.expanded .pedagogue-card {
-    background: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--vintage-brown) 100%);
     color: white;
-    border-color: var(--vintage-brown);
 }
 
 .pedagogue-expandable.expanded .pedagogue-card .pedagogue-title,
@@ -414,23 +426,32 @@ footer::before {
 
 .pedagogue-expandable.expanded .pedagogue-card h5 {
     color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .pedagogue-photo {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     margin: 0 auto 1rem;
     display: block;
-    border: 4px solid var(--accent-color);
+    border: 3px solid var(--accent-color);
     filter: sepia(15%) contrast(1.05);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.pedagogue-card:hover .pedagogue-photo {
+    transform: scale(1.1);
+    border-color: var(--vintage-brown);
+    box-shadow: 0 6px 16px rgba(139, 105, 20, 0.3);
 }
 
 .pedagogue-expandable.expanded .pedagogue-photo {
     border-color: white;
-    transform: scale(1.1);
+    filter: sepia(0%) contrast(1.2) brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 .pedagogue-card h5 {
@@ -463,34 +484,39 @@ footer::before {
     top: 1rem;
     right: 1rem;
     z-index: 10;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.pedagogue-card:hover .expand-icon {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 .expand-icon span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border: 2px solid var(--accent-color);
+    width: 30px;
+    height: 30px;
+    background: var(--accent-color);
+    color: white;
     border-radius: 50%;
-    font-size: 1.4rem;
     font-weight: bold;
-    color: var(--accent-color);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.pedagogue-expandable.expanded .expand-icon span {
     background: white;
-    transition: all 0.4s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: var(--accent-color);
+    transform: rotate(45deg);
 }
 
 .expand-icon span:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);
-}
-
-.pedagogue-expandable.expanded .expand-icon span {
-    transform: rotate(45deg);
-    background-color: white;
-    border-color: white;
-    color: var(--accent-color);
 }
 
 .pedagogue-details {
