@@ -755,7 +755,7 @@ footer::before {
     transform: scale(1.05);
     /* Ajout d'une ombre pour la visibilité */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 2px solid #fefefe; /* Garder la bordure blanche */
+    border: 2px solid #cc5500; /* Bordure ORANGE pour contraste */
 }
 
 /* Responsive amélioré avec gestion des conflits */
