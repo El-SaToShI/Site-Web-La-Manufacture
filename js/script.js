@@ -38,19 +38,22 @@ function initMobileMenu() {
     mobileToggle.addEventListener('click', function(e) {
         e.preventDefault();
         mobileOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Empêcher le scroll en arrière-plan
+        document.body.style.overflow = 'hidden';
     });
     
-    // Délégation d'événements pour le bouton de fermeture
-    mobileOverlay.addEventListener('click', function(e) {
-        // Si on clique sur le bouton de fermeture
-        if (e.target.classList.contains('mobile-nav-close')) {
+    // CORRECTION CROIX - Event listener direct sur le document
+    document.addEventListener('click', function(e) {
+        // Si on clique sur le bouton de fermeture (croix)
+        if (e.target.classList.contains('mobile-nav-close') || 
+            e.target.closest('.mobile-nav-close')) {
             e.preventDefault();
             e.stopPropagation();
             closeMobileMenu();
+            return;
         }
+        
         // Si on clique sur l'overlay (en dehors du menu)
-        else if (e.target === mobileOverlay) {
+        if (e.target === mobileOverlay) {
             closeMobileMenu();
         }
     });

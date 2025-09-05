@@ -300,17 +300,40 @@
         line-height: 1.5 !important;
     }
 
-    /* Grille des pédagogues mobile - OPTIMISÉ HAMBURGER */
+    /* Section pédagogues mobile - LAYOUT CENTRÉ */
+    #pedagogues .section-content {
+        text-align: center !important;
+        padding: 1rem !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+    }
+
+    #pedagogues .section-content h4 {
+        font-size: 1.8rem !important;
+        color: var(--accent-color) !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+    }
+
+    #pedagogues .section-content p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin: 0.5rem auto 1.5rem auto !important;
+        max-width: 90% !important;
+        text-align: center !important;
+    }
+
+    /* Grille des pédagogues mobile - LAYOUT HORIZONTAL */
     .pedagogues-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 1rem !important;
+        gap: 1.5rem !important;
         width: 100% !important;
         margin-top: 2rem !important;
-        padding: 0 !important;
+        padding: 0 1rem !important;
     }
     
-    /* Carte pédagogue mobile moderne */
+    /* Carte pédagogue mobile - LAYOUT HORIZONTAL */
     .pedagogue-expandable {
         width: 100% !important;
         margin: 0 !important;
@@ -324,12 +347,16 @@
         padding: 1.5rem !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        text-align: center !important;
         background: var(--light-grey) !important;
         cursor: pointer !important;
         transition: all 0.3s ease !important;
         position: relative !important;
         border: none !important;
+        /* NOUVEAU - Layout horizontal */
+        display: flex !important;
+        align-items: center !important;
+        text-align: left !important;
+        gap: 1rem !important;
     }
     
     .pedagogue-card:hover {
@@ -338,35 +365,57 @@
     }
     
     .pedagogue-photo {
-        width: 80px !important;
-        height: 80px !important;
-        margin: 0 auto 1rem !important;
+        width: 60px !important;
+        height: 60px !important;
+        margin: 0 !important;
         border-radius: 50% !important;
         object-fit: cover !important;
         border: 3px solid var(--accent-color) !important;
+        flex-shrink: 0 !important;
+    }
+
+    .pedagogue-info {
+        flex: 1 !important;
+        min-width: 0 !important;
     }
     
     .pedagogue-card h5 {
-        font-size: 1.2rem !important;
-        margin: 0.5rem 0 !important;
+        font-size: 1.1rem !important;
+        margin: 0 0 0.25rem 0 !important;
         color: var(--vintage-brown) !important;
-        text-align: center !important;
+        font-weight: 600 !important;
     }
-    
+
     .pedagogue-title {
         font-size: 0.9rem !important;
         color: var(--accent-color) !important;
-        font-weight: 600 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        margin-bottom: 0.5rem !important;
-        text-align: center !important;
+        margin: 0 0 0.5rem 0 !important;
+        font-weight: 500 !important;
     }
-    
+
     .pedagogue-excerpt {
-        font-size: 0.9rem !important;
-        color: var(--secondary-color) !important;
+        font-size: 0.85rem !important;
+        color: #666 !important;
+        margin: 0 !important;
         line-height: 1.4 !important;
+    }
+
+    .expand-icon {
+        position: absolute !important;
+        right: 1rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 30px !important;
+        height: 30px !important;
+        background: var(--accent-color) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: white !important;
+        font-size: 1.2rem !important;
+        font-weight: bold !important;
+    }
         margin-bottom: 0 !important;
         text-align: center !important;
     }
