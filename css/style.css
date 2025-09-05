@@ -1,8 +1,5 @@
 /* CSS ROOT - Optimisation mobile globale */
 html {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
     -webkit-text-size-adjust: 100%; /* Évite le resize automatique du texte sur iOS */
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -26,10 +23,6 @@ body {
     padding: 0;
     background: var(--main-bg-color);
     color: var(--text-color);
-    /* Prévention du défilement horizontal */
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
     box-sizing: border-box;
 }
 
@@ -54,11 +47,6 @@ header {
     background: var(--main-bg-color);
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(60,60,60,0.1);
-    /* Mobile optimization */
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
-    overflow: hidden;
 }
 
 header h1 {
@@ -111,10 +99,6 @@ nav a:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    /* Mobile optimization */
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
 }
 
 /* Ajout d'une texture industrielle subtile */
@@ -1059,7 +1043,7 @@ footer::before {
     .timeline-item::before {
         left: 0.5rem;
     }
-}
+
 
 /* MENU HAMBURGER MODERNE - Inspiré ERACM - Version Corrigée */
 .mobile-menu-toggle {
