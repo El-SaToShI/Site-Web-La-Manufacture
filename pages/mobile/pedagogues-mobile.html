@@ -38,46 +38,73 @@
         </nav>
     </div>
 
-    <main>
-        <section id="pedagogues" class="fade-in-section single-page">
-            <div class="section-title">
-                <h3>Pédagogues</h3>
-            </div>
-            <div class="section-content">
-                <div class="pedagogues-intro">
-                    <h4>L'Équipe Pédagogique</h4>
-                    <p>La Manufacture de Laurence s'appuie sur une équipe pluridisciplinaire d'artistes et de professionnel.le.s passionné.e.s.</p>
-                    <p><em>Cliquez sur une carte pour découvrir le parcours détaillé de chaque pédagogue.</em></p>
+    <section id="pedagogues" class="hero-section">
+        <h2>Notre Équipe Pédagogique</h2>
+        <p>Découvrez les artistes et professionnel.le.s passionné.e.s qui vous accompagneront dans votre parcours artistique à La Manufacture.</p>
+        
+        <div style="text-align: left; max-width: 95%; margin: 2rem auto;">
+            <!-- Laurence Voreux -->
+            <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="../../images/laurence.jpg" alt="Laurence Voreux" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                    <h3 style="color: var(--accent-color); margin: 0.5rem 0;">Laurence Voreux</h3>
+                    <p style="color: var(--vintage-brown); font-weight: 500; margin: 0;">Fondatrice et Directrice Pédagogique</p>
                 </div>
-                
-                <div class="pedagogues-grid">
-                    <!-- Laurence Voreux -->
-                    <div class="pedagogue-expandable">
-                        <div class="pedagogue-card clickable" onclick="togglePedagogue('laurence')">
-                            <img src="../../images/laurence.jpg" alt="Laurence Voreux" class="pedagogue-photo">
-                            <div class="pedagogue-info">
-                                <h5>Laurence Voreux</h5>
-                                <p class="pedagogue-title">Fondatrice et Directrice Pédagogique</p>
-                                <p class="pedagogue-excerpt">30 ans d'expérience dans l'enseignement théâtral et l'accompagnement artistique.</p>
-                            </div>
-                            <div class="expand-icon">
-                                <span>+</span>
-                            </div>
-                        </div>
-                        
-                        <div class="pedagogue-details" id="laurence-details">
-                            <div class="details-content">
-                                <button class="close-details" onclick="togglePedagogue('laurence')" title="Fermer">×</button>
-                                
-                                <div class="parcours-section">
-                                    <h6>Parcours</h6>
-                                    <div class="timeline-compact">
-                                        <div class="timeline-item">
-                                            <strong>2020 - Aujourd'hui :</strong> Fondatrice de La Manufacture de Laurence
-                                        </div>
-                                        <div class="timeline-item">
-                                            <strong>1995 - 2020 :</strong> 25 ans d'enseignement en institutions théâtrales
-                                        </div>
+                <p><strong>30 ans d'expérience</strong> dans l'enseignement théâtral et l'accompagnement artistique.</p>
+                <p>• 25 ans d'enseignement en institutions théâtrales</p>
+                <p>• 13 ans de préparation aux concours d'écoles supérieures</p>
+                <p>• Spécialiste de l'accompagnement des jeunes artistes</p>
+                <p style="margin-top: 1rem;">
+                    <a href="../pedagogues/laurence.html" style="color: var(--vintage-brown); text-decoration: underline;">→ Découvrir son parcours complet</a>
+                </p>
+            </div>
+
+            <!-- Adrien -->
+            <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="../../images/adrien.jpg" alt="Adrien" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                    <h3 style="color: var(--accent-color); margin: 0.5rem 0;">Adrien</h3>
+                    <p style="color: var(--vintage-brown); font-weight: 500; margin: 0;">Comédien et Pédagogue</p>
+                </div>
+                <p><strong>Formé à La Manufacture</strong>, devenu comédien professionnel et formateur.</p>
+                <p>• Ancien élève de La Manufacture</p>
+                <p>• Comédien professionnel actif</p>
+                <p>• Spécialiste jeu d'acteur et improvisation</p>
+                <p>• Approche moderne et dynamique</p>
+                <p style="margin-top: 1rem;">
+                    <a href="../pedagogues/adrien.html" style="color: var(--vintage-brown); text-decoration: underline;">→ Découvrir son parcours complet</a>
+                </p>
+            </div>
+
+            <!-- Ilan -->
+            <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="../../images/ilan.jpg" alt="Ilan" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                    <h3 style="color: var(--accent-color); margin: 0.5rem 0;">Ilan</h3>
+                    <p style="color: var(--vintage-brown); font-weight: 500; margin: 0;">Acteur et Formateur</p>
+                </div>
+                <p><strong>Artiste polyvalent</strong> spécialisé dans l'expression corporelle et vocale.</p>
+                <p>• Formation internationale en arts dramatiques</p>
+                <p>• Spécialiste expression corporelle et mouvement</p>
+                <p>• Expert en techniques vocales</p>
+                <p>• Approche holistique du jeu théâtral</p>
+                <p style="margin-top: 1rem;">
+                    <a href="../pedagogues/ilan.html" style="color: var(--vintage-brown); text-decoration: underline;">→ Découvrir son parcours complet</a>
+                </p>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0; padding: 1rem; background: var(--main-bg-color); border-left: 4px solid var(--accent-color);">
+                <p style="margin: 0; font-style: italic; color: var(--text-color);">
+                    "Une équipe bienveillante et exigeante pour révéler le meilleur de chaque élève"
+                </p>
+            </div>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="cours-mobile.html" class="btn-primary">Découvrir nos Cours</a>
+            <a href="contact-mobile.html" class="btn-secondary">Nous Contacter</a>
+        </div>
+    </section>
                                         <div class="timeline-item">
                                             <strong>1985 - 1995 :</strong> Formation et premiers pas dans l'enseignement
                                         </div>
@@ -170,46 +197,6 @@
                                 <div class="parcours-section">
                                     <h6>Parcours</h6>
                                     <div class="timeline-compact">
-                                        <div class="timeline-item">
-                                            <strong>2019 - Aujourd'hui :</strong> Coach vocal à La Manufacture de Laurence
-                                        </div>
-                                        <div class="timeline-item">
-                                            <strong>2012 - 2019 :</strong> Formation musicale et vocale professionnelle
-                                        </div>
-                                        <div class="timeline-item">
-                                            <strong>2008 - 2012 :</strong> Conservatoire et premiers enseignements
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="specialites-section">
-                                    <h6>Spécialités</h6>
-                                    <div class="specialites-grid">
-                                        <span class="specialite-tag">Technique vocale</span>
-                                        <span class="specialite-tag">Comédie musicale</span>
-                                        <span class="specialite-tag">Accompagnement piano</span>
-                                        <span class="specialite-tag">Respiration</span>
-                                        <span class="specialite-tag">Interprétation</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Invitation à rejoindre l'équipe -->
-                    <div class="add-pedagogue">
-                        <h5>Rejoignez notre équipe</h5>
-                        <p>Vous êtes un.e professionnel.le des arts du spectacle et souhaitez transmettre votre passion ?</p>
-                        <a href="contact-mobile.html" class="btn-secondary">Nous contacter</a>
-                    </div>
-                </div>
-                
-                <div class="cta-buttons" style="margin-top: 3rem;">
-                    <a href="cours-mobile.html" class="btn-primary">Découvrir nos Cours</a>
-                    <a href="contact-mobile.html" class="btn-secondary">Nous Contacter</a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>

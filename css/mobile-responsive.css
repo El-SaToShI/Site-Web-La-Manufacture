@@ -206,27 +206,51 @@
         transform: scale(1.1) !important;
     }
 
-    /* Hero section mobile responsive */
-    #hero {
+    /* Hero section mobile responsive - TOUTES LES SECTIONS */
+    #hero,
+    .hero-section {
         padding: 3rem 1.5rem !important;
         min-height: 50vh !important;
         text-align: center !important;
         width: 100% !important;
         box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     
-    .hero-section h2 {
+    .hero-section h2,
+    #hero h2 {
         font-size: 2rem !important;
         line-height: 1.2 !important;
         margin: 0 0 1.5rem !important;
         word-wrap: break-word !important;
+        text-align: center !important;
+        color: var(--text-color) !important;
     }
     
-    .hero-section p {
+    .hero-section p,
+    #hero p {
         font-size: 1rem !important;
         margin: 1.5rem 0 !important;
         line-height: 1.6 !important;
         max-width: 100% !important;
+        text-align: center !important;
+        color: var(--text-color) !important;
+    }
+
+    /* Style pour les sous-sections dans hero */
+    .hero-section h3 {
+        font-size: 1.4rem !important;
+        color: var(--accent-color) !important;
+        margin: 1.5rem 0 1rem !important;
+    }
+
+    .hero-section h4 {
+        font-size: 1.2rem !important;
+        color: var(--vintage-brown) !important;
+        margin: 1rem 0 0.5rem !important;
     }
 
     /* Boutons mobile */
