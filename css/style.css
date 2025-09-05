@@ -699,8 +699,8 @@ footer::before {
 }
 
 .add-pedagogue {
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--vintage-brown) 100%);
-    color: var(--main-bg-color);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--vintage-brown) 100%) !important;
+    color: #fefefe !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -721,24 +721,25 @@ footer::before {
     /* Maintenir l'opacité et ajouter une ombre */
     opacity: 1;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--vintage-brown) 100%) !important;
 }
 
 .add-pedagogue h5 {
-    color: var(--main-bg-color);
+    color: #fefefe !important;
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
 .add-pedagogue p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
     margin-bottom: 1.5rem;
     font-size: 1rem;
 }
 
 .add-pedagogue .btn-secondary {
     background-color: transparent;
-    color: var(--main-bg-color);
-    border: 2px solid var(--main-bg-color);
+    color: #fefefe; /* Blanc fixe pour le texte */
+    border: 2px solid #fefefe; /* Bordure blanche fixe */
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 8px;
@@ -749,11 +750,12 @@ footer::before {
 }
 
 .add-pedagogue .btn-secondary:hover {
-    background-color: var(--main-bg-color);
-    color: var(--accent-color);
+    background-color: #fefefe; /* Fond blanc fixe */
+    color: #cc5500; /* Texte orange fixe */
     transform: scale(1.05);
     /* Ajout d'une ombre pour la visibilité */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fefefe; /* Garder la bordure blanche */
 }
 
 /* Responsive amélioré avec gestion des conflits */
