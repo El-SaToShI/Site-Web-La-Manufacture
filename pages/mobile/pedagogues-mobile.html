@@ -41,40 +41,108 @@
     <section id="pedagogues" class="hero-section">
         <h2>Notre Équipe Pédagogique</h2>
         <p>Découvrez les artistes et professionnel.le.s passionné.e.s qui vous accompagneront dans votre parcours artistique à La Manufacture.</p>
+        <p><em>Touchez une bulle pour découvrir le parcours détaillé de chaque pédagogue.</em></p>
         
         <div style="text-align: left; max-width: 95%; margin: 2rem auto;">
             <!-- Laurence Voreux -->
-            <a href="../pedagogues/laurence.html" style="text-decoration: none; color: inherit;">
-                <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; cursor: pointer; transition: transform 0.2s;">
+            <div class="pedagogue-expandable-mobile">
+                <div class="pedagogue-card-mobile" onclick="togglePedagogueMobile('laurence')" style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; cursor: pointer; transition: transform 0.2s;">
                     <div style="text-align: center;">
                         <img src="../../images/laurence.jpg" alt="Laurence Voreux" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
                         <h3 style="color: var(--accent-color); margin: 0.5rem 0;">Laurence Voreux</h3>
                         <p style="color: var(--vintage-brown); font-weight: 500; margin: 0;">Fondatrice et Directrice Pédagogique</p>
                     </div>
                 </div>
-            </a>
+                
+                <div class="pedagogue-details-mobile" id="laurence-details-mobile" style="display: none; background: var(--main-bg-color); padding: 1.5rem; border-radius: 8px; margin-top: 0.5rem; border-left: 4px solid var(--accent-color);">
+                    <button onclick="togglePedagogueMobile('laurence')" style="float: right; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--accent-color);">×</button>
+                    <div style="clear: both;">
+                        <h4 style="color: var(--accent-color); margin-top: 0;">Parcours</h4>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p><strong>1995 - Aujourd'hui :</strong> Fondatrice de La Manufacture de Laurence</p>
+                            <p><strong>25 ans d'enseignement :</strong> Formation d'acteurs professionnels et d'amateurs</p>
+                            <p><strong>13 ans de préparation :</strong> Accompagnement pour l'entrée dans les grandes écoles</p>
+                        </div>
+                        
+                        <h4 style="color: var(--accent-color);">Spécialités</h4>
+                        <p>• Accompagnement des jeunes artistes</p>
+                        <p>• Préparation aux concours</p>
+                        <p>• Pédagogie théâtrale innovante</p>
+                        <p>• Direction artistique</p>
+                        
+                        <p style="margin-top: 1rem;">
+                            <a href="../pedagogues/laurence.html" style="color: var(--vintage-brown); text-decoration: underline;">→ Voir la page complète</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             <!-- Adrien -->
-            <a href="../pedagogues/adrien.html" style="text-decoration: none; color: inherit;">
-                <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; cursor: pointer; transition: transform 0.2s;">
+            <div class="pedagogue-expandable-mobile">
+                <div class="pedagogue-card-mobile" onclick="togglePedagogueMobile('adrien')" style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; cursor: pointer; transition: transform 0.2s;">
                     <div style="text-align: center;">
                         <img src="../../images/adrien.jpg" alt="Adrien" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
                         <h3 style="color: var(--accent-color); margin: 0.5rem 0;">Adrien</h3>
                         <p style="color: var(--vintage-brown); font-weight: 500; margin: 0;">Comédien et Pédagogue</p>
                     </div>
                 </div>
-            </a>
+                
+                <div class="pedagogue-details-mobile" id="adrien-details-mobile" style="display: none; background: var(--main-bg-color); padding: 1.5rem; border-radius: 8px; margin-top: 0.5rem; border-left: 4px solid var(--accent-color);">
+                    <button onclick="togglePedagogueMobile('adrien')" style="float: right; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--accent-color);">×</button>
+                    <div style="clear: both;">
+                        <h4 style="color: var(--accent-color); margin-top: 0;">Parcours</h4>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p><strong>2020 - Aujourd'hui :</strong> Pédagogue à La Manufacture de Laurence</p>
+                            <p><strong>2015 - 2019 :</strong> Formation à La Manufacture</p>
+                            <p><strong>2019 - Aujourd'hui :</strong> Comédien professionnel actif</p>
+                        </div>
+                        
+                        <h4 style="color: var(--accent-color);">Spécialités</h4>
+                        <p>• Jeu d'acteur et techniques de base</p>
+                        <p>• Improvisation et spontanéité</p>
+                        <p>• Approche moderne d'enseignement</p>
+                        <p>• Accompagnement personnalisé</p>
+                        
+                        <p style="margin-top: 1rem;">
+                            <a href="../pedagogues/adrien.html" style="color: var(--vintage-brown); text-decoration: underline;">→ Voir la page complète</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             <!-- Ilan -->
-            <a href="../pedagogues/pedagogue-ilan.html" style="text-decoration: none; color: inherit;">
-                <div style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; cursor: pointer; transition: transform 0.2s;">
+            <div class="pedagogue-expandable-mobile">
+                <div class="pedagogue-card-mobile" onclick="togglePedagogueMobile('ilan')" style="background: var(--light-grey); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; cursor: pointer; transition: transform 0.2s;">
                     <div style="text-align: center;">
                         <img src="../../images/ilan.jpg" alt="Ilan Mayaux" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
                         <h3 style="color: var(--accent-color); margin: 0.5rem 0;">Ilan Mayaux</h3>
                         <p style="color: var(--vintage-brown); font-weight: 500; margin: 0;">Écriture Scénique • Accompagnement Projets</p>
                     </div>
                 </div>
-            </a>
+                
+                <div class="pedagogue-details-mobile" id="ilan-details-mobile" style="display: none; background: var(--main-bg-color); padding: 1.5rem; border-radius: 8px; margin-top: 0.5rem; border-left: 4px solid var(--accent-color);">
+                    <button onclick="togglePedagogueMobile('ilan')" style="float: right; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--accent-color);">×</button>
+                    <div style="clear: both;">
+                        <h4 style="color: var(--accent-color); margin-top: 0;">Parcours</h4>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p><strong>2024 - Aujourd'hui :</strong> Pédagogue en écriture scénique à La Manufacture</p>
+                            <p><strong>Diplômé :</strong> Arts² - École Supérieure des Arts (Mons)</p>
+                            <p><strong>Expérience :</strong> Comédien spécialisé en radio et doublage</p>
+                            <p><strong>Création :</strong> Projets théâtraux et contenus audio originaux</p>
+                        </div>
+                        
+                        <h4 style="color: var(--accent-color);">Spécialités</h4>
+                        <p>• Écriture Scénique et Dramaturgie</p>
+                        <p>• Création de Projets théâtraux</p>
+                        <p>• Écriture Collaborative</p>
+                        <p>• Radio, Audio et Monologues</p>
+                        
+                        <p style="margin-top: 1rem;">
+                            <a href="../pedagogues/pedagogue-ilan.html" style="color: var(--vintage-brown); text-decoration: underline;">→ Voir la page complète</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             <div style="text-align: center; margin: 2rem 0; padding: 1rem; background: var(--main-bg-color); border-left: 4px solid var(--accent-color);">
                 <p style="margin: 0; font-style: italic; color: var(--text-color);">

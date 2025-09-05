@@ -1,8 +1,31 @@
 // Note: Code preloader supprimé car non utilisé dans ce site
 
 // Gestion des animations fade-in - Version sécurisée
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.fade-in-section');
+document.addEventListener('DOMContentLoaded', fun// Fermeture avec la touche Escape - Version sécurisée pour desktop et mobile
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        // Fermeture version desktop
+        const openPedagogue = document.querySelector('.pedagogue-expandable.expanded');
+        if (openPedagogue) {
+            const detailsElement = openPedagogue.querySelector('.pedagogue-details');
+            if (detailsElement && detailsElement.id) {
+                const pedagogueId = detailsElement.id.replace('-details', '');
+                if (pedagogueId) {
+                    togglePedagogue(pedagogueId);
+                }
+            }
+        }
+        
+        // Fermeture version mobile
+        const openDetailsMobile = document.querySelector('.pedagogue-details-mobile[style*="display: block"]');
+        if (openDetailsMobile && openDetailsMobile.id) {
+            const pedagogueId = openDetailsMobile.id.replace('-details-mobile', '');
+            if (pedagogueId) {
+                togglePedagogueMobile(pedagogueId);
+            }
+        }
+    }
+});const sections = document.querySelectorAll('.fade-in-section');
 
     // Vérifier qu'il y a des sections à animer
     if (sections.length > 0) {
@@ -129,6 +152,40 @@ function togglePedagogue(pedagogueId) {
                     inline: 'nearest'
                 });
             }, 300);
+        }, 100);
+    }
+}
+
+// Fonction pour gérer l'expansion des pédagogues sur mobile - Version adaptée mobile
+function togglePedagogueMobile(pedagogueId) {
+    // Vérifications de sécurité
+    if (!pedagogueId) return;
+    
+    const detailsElement = document.querySelector(`#${pedagogueId}-details-mobile`);
+    if (!detailsElement) return;
+    
+    const expandable = detailsElement.parentElement;
+    if (!expandable) return;
+    
+    const isCurrentlyExpanded = detailsElement.style.display === 'block';
+    
+    // Fermer tous les profils ouverts
+    const allDetailsMobile = document.querySelectorAll('.pedagogue-details-mobile');
+    allDetailsMobile.forEach(item => {
+        item.style.display = 'none';
+    });
+    
+    // Si le profil n'était pas ouvert, l'ouvrir
+    if (!isCurrentlyExpanded) {
+        detailsElement.style.display = 'block';
+        
+        // Scroll vers le profil ouvert après un petit délai
+        setTimeout(() => {
+            expandable.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start',
+                inline: 'nearest'
+            });
         }, 100);
     }
 }
