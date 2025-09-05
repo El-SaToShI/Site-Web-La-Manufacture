@@ -1,0 +1,39 @@
+/* CSS DE DEBUG MOBILE - À AJOUTER TEMPORAIREMENT */
+
+/* FORCER LA NAVIGATION HORIZONTALE - DEBUG MODE */
+@media (max-width: 768px) {
+    header nav ul {
+        background: red !important; /* Pour voir le conteneur */
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        padding: 5px !important;
+        box-sizing: border-box !important;
+    }
+    
+    header nav ul li {
+        background: blue !important; /* Pour voir chaque élément */
+        display: flex !important;
+        flex: 1 !important;
+        margin: 2px !important;
+        color: white !important;
+    }
+    
+    header nav ul li a {
+        background: green !important; /* Pour voir les liens */
+        color: white !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px 5px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Test de visibilité */
+body {
+    border: 5px solid purple !important;
+}
+
+nav {
+    border: 3px solid orange !important;
+}

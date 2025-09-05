@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Navigation Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f5f3;
+            overflow-x: hidden;
+            width: 100vw;
+            max-width: 100vw;
+        }
+        
+        header {
+            background: white;
+            padding: 1rem;
+            border-bottom: 2px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: row;
+            gap: 0.2rem;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            background: yellow; /* Debug */
+        }
+        
+        .mobile-nav li {
+            flex: 1;
+            max-width: 25%;
+            background: red; /* Debug */
+            margin: 0;
+            list-style: none;
+        }
+        
+        .mobile-nav a {
+            display: block;
+            padding: 0.5rem 0.2rem;
+            background: #8b6914;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .content {
+            padding: 2rem 1rem;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .test-info {
+            background: #e8e6e3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Test Navigation Mobile</h1>
+        <ul class="mobile-nav">
+            <li><a href="#1">Accueil</a></li>
+            <li><a href="#2">Pédagogues</a></li>
+            <li><a href="#3">À propos</a></li>
+            <li><a href="#4">Contact</a></li>
+        </ul>
+    </header>
+    
+    <div class="content">
+        <div class="test-info">
+            <h2>🔍 Test Navigation Mobile</h2>
+            <p><strong>Si vous voyez ça correctement :</strong></p>
+            <ul>
+                <li>✅ Les 4 boutons sont côte à côte horizontalement</li>
+                <li>✅ Chaque bouton fait environ 25% de largeur</li>
+                <li>✅ Pas de défilement horizontal</li>
+                <li>✅ Les couleurs de debug sont visibles (jaune/rouge)</li>
+            </ul>
+        </div>
+        
+        <div class="test-info">
+            <h3>📱 Instructions</h3>
+            <ol>
+                <li>Ouvrez cette page sur votre téléphone</li>
+                <li>Vérifiez que la navigation s'affiche correctement</li>
+                <li>Si oui, le problème vient du CSS principal</li>
+                <li>Si non, il y a un problème plus profond</li>
+            </ol>
+        </div>
+        
+        <div class="test-info">
+            <h3>🔧 Diagnostic</h3>
+            <p>Largeur d'écran : <span id="width"></span>px</p>
+            <p>Défilement horizontal : <span id="scroll"></span></p>
+        </div>
+        
+        <div class="test-info">
+            <h3>🔗 Navigation de test</h3>
+            <p><a href="index.html">← Retour au site principal</a></p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('width').textContent = window.innerWidth;
+        
+        const hasScroll = document.body.scrollWidth > window.innerWidth;
+        document.getElementById('scroll').textContent = hasScroll ? '❌ Détecté' : '✅ Aucun';
+        
+        window.addEventListener('resize', function() {
+            document.getElementById('width').textContent = window.innerWidth;
+            const scroll = document.body.scrollWidth > window.innerWidth;
+            document.getElementById('scroll').textContent = scroll ? '❌ Détecté' : '✅ Aucun';
+        });
+    </script>
+</body>
+</html>

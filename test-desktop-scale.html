@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
+    <title>Test Desktop-Mobile Scale</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="desktop-mobile-scale.css">
+    <style>
+        .test-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            z-index: 9999;
+            max-width: 200px;
+        }
+        
+        .scale-info {
+            background: #e3f2fd;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .desktop-view, .mobile-view {
+            padding: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        
+        .desktop-view {
+            background: #e8f5e8;
+            border-color: #4caf50;
+        }
+        
+        .mobile-view {
+            background: #fff3e0;
+            border-color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <div>Largeur écran: <span id="screen-width"></span>px</div>
+        <div>Zoom calculé: <span id="zoom-level"></span>%</div>
+        <div>Résolution: <span id="resolution"></span></div>
+    </div>
+
+    <header>
+        <h1><a href="index.html">Test Desktop Scale</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="pedagogues.html">Pédagogues</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="single-page">
+            <div class="section-title">
+                <h3>🖥️➡️📱 Test Rendu Desktop sur Mobile</h3>
+            </div>
+            
+            <div class="section-content">
+                <div class="scale-info">
+                    <h4>🎯 Objectif</h4>
+                    <p>Cette page doit avoir <strong>exactement</strong> la même apparence que sur ordinateur, mais simplement réduite proportionnellement pour s'adapter à votre écran mobile.</p>
+                </div>
+
+                <h4>✅ Ce qui doit être identique au desktop :</h4>
+                <ul>
+                    <li><strong>Navigation :</strong> 4 liens horizontaux dans le header</li>
+                    <li><strong>Mise en page :</strong> Colonnes et espacements identiques</li>
+                    <li><strong>Typographie :</strong> Mêmes tailles relatives de titres</li>
+                    <li><strong>Couleurs :</strong> Palette vintage industrielle intacte</li>
+                    <li><strong>Interactions :</strong> Hover et clics fonctionnent</li>
+                </ul>
+
+                <h4>📐 Calcul du Zoom</h4>
+                <p>Pour votre <strong>Samsung S20+</strong> (384px de large) :</p>
+                <p>Zoom = 384 ÷ 1024 = <strong>37.5%</strong></p>
+                <p>Le site desktop (1024px) est réduit à 37.5% pour tenir dans 384px.</p>
+
+                <h4>🔍 Comment Vérifier</h4>
+                <ol>
+                    <li><strong>Navigation :</strong> Les 4 liens doivent être sur une seule ligne</li>
+                    <li><strong>Proportions :</strong> Tout doit paraître "miniaturisé" mais proportionnel</li>
+                    <li><strong>Lisibilité :</strong> Texte petit mais net (zoom pour lire si nécessaire)</li>
+                    <li><strong>Défilement :</strong> Horizontal ET vertical autorisés</li>
+                    <li><strong>Cohérence :</strong> Identique au design ordinateur</li>
+                </ol>
+
+                <div class="comparison">
+                    <div class="desktop-view">
+                        <h5>🖥️ Vue Desktop</h5>
+                        <p>Layout complet, navigation horizontale, 3 colonnes pour les pédagogues, footer pleine largeur.</p>
+                    </div>
+                    <div class="mobile-view">
+                        <h5>📱 Vue Mobile (Vous)</h5>
+                        <p>EXACTEMENT le même layout, mais réduit à 37.5% pour tenir dans votre écran de 384px.</p>
+                    </div>
+                </div>
+
+                <h4>🧪 Pages à Tester</h4>
+                <p>Chaque page doit avoir le même rendu proportionnel :</p>
+                <ul>
+                    <li><a href="index.html">Page d'accueil</a> - Hero section et présentation</li>
+                    <li><a href="pedagogues.html">Pédagogues</a> - Grille 3 colonnes réduite</li>
+                    <li><a href="contact.html">Contact</a> - Formulaire et infos</li>
+                    <li><a href="a-propos.html">À propos</a> - Contenu et images</li>
+                </ul>
+
+                <h4>⚙️ Techniques Utilisées</h4>
+                <ul>
+                    <li><strong>Viewport fixe :</strong> <code>width=1024</code> au lieu de <code>device-width</code></li>
+                    <li><strong>CSS Zoom :</strong> <code>zoom: calc(100vw / 1024)</code></li>
+                    <li><strong>Fallback Transform :</strong> <code>transform: scale()</code> pour compatibilité</li>
+                    <li><strong>Styles desktop forcés :</strong> Override de tous les styles mobile</li>
+                </ul>
+
+                <div class="scale-info">
+                    <h4>💡 Avantages de cette Approche</h4>
+                    <ul>
+                        <li>✅ Rendu 100% identique desktop</li>
+                        <li>✅ Aucune fragmentation de texte</li>
+                        <li>✅ Mise en page préservée</li>
+                        <li>✅ Navigation desktop intacte</li>
+                        <li>✅ Zoom manuel possible par l'utilisateur</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/laurencevoreux/" target="_blank" title="Instagram">Instagram</a>
+                <a href="mailto:lamanufacturedelaurence@gmail.com" title="Email">Email</a>
+            </div>
+            <p>&copy; 2025 La Manufacture de Laurence - Test Desktop Scale</p>
+        </div>
+    </footer>
+
+    <script>
+        function updateTestInfo() {
+            const screenWidth = window.innerWidth;
+            const zoomLevel = Math.round((screenWidth / 1024) * 100);
+            
+            document.getElementById('screen-width').textContent = screenWidth;
+            document.getElementById('zoom-level').textContent = zoomLevel;
+            
+            // Détection du device
+            let resolution = 'Inconnu';
+            if (screenWidth <= 320) resolution = 'iPhone SE/5s';
+            else if (screenWidth <= 375) resolution = 'iPhone 6/7/8';
+            else if (screenWidth <= 384) resolution = 'Samsung S20+';
+            else if (screenWidth <= 414) resolution = 'iPhone Plus/Max';
+            else if (screenWidth <= 768) resolution = 'Tablette Portrait';
+            else resolution = 'Desktop';
+            
+            document.getElementById('resolution').textContent = resolution;
+        }
+        
+        window.addEventListener('load', updateTestInfo);
+        window.addEventListener('resize', updateTestInfo);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(updateTestInfo, 100);
+        });
+    </script>
+</body>
+</html>

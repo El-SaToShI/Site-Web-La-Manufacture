@@ -1,0 +1,207 @@
+<!DOCTYP    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="desktop-mobile-scale.css">html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
+    <title>Pédagogues - La Manufacture de Laurence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">La Manufacture de Laurence</a></h1>
+        <nav>
+            <ul>
+                <li><a href="a-propos.html">À Propos</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="pedagogues.html">Pédagogues</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="pedagogues" class="fade-in-section single-page">
+            <div class="section-title">
+                <h3>Pédagogues</h3>
+            </div>
+            <div class="section-content">
+                <h4>L'Équipe Pédagogique</h4>
+                <p>La Manufacture de Laurence s'appuie sur une équipe pluridisciplinaire d'artistes et de professionnel.le.s passionné.e.s.</p>
+                <p><em>Cliquez sur une carte pour découvrir le parcours détaillé de chaque pédagogue.</em></p>
+                
+                <div class="pedagogues-grid">
+                    <!-- Laurence Voreux -->
+                    <div class="pedagogue-expandable">
+                        <div class="pedagogue-card clickable" onclick="togglePedagogue('laurence')">
+                            <img src="images/laurence.jpg" alt="Laurence Voreux" class="pedagogue-photo">
+                            <h5>Laurence Voreux</h5>
+                            <p class="pedagogue-title">Fondatrice et Directrice Pédagogique</p>
+                            <p class="pedagogue-excerpt">30 ans d'expérience dans l'enseignement théâtral et l'accompagnement artistique.</p>
+                            <div class="expand-icon">
+                                <span>+</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pedagogue-details" id="laurence-details">
+                            <div class="details-content">
+                                <button class="close-details" onclick="togglePedagogue('laurence')" title="Fermer">×</button>
+                                
+                                <div class="parcours-section">
+                                    <h6>Parcours</h6>
+                                    <div class="timeline-compact">
+                                        <div class="timeline-item">
+                                            <strong>2020 - Aujourd'hui :</strong> Fondatrice de La Manufacture de Laurence
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>1995 - 2020 :</strong> 25 ans d'enseignement en institutions théâtrales
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Formation :</strong> École Nationale Supérieure d'Art Dramatique
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="specialites-section">
+                                    <h6>Spécialités</h6>
+                                    <div class="specialites-grid">
+                                        <span class="specialite-tag">Direction d'Acteur</span>
+                                        <span class="specialite-tag">Préparation Concours</span>
+                                        <span class="specialite-tag">Technique Corporelle</span>
+                                        <span class="specialite-tag">Improvisation</span>
+                                        <span class="specialite-tag">Travail du Texte</span>
+                                        <span class="specialite-tag">Mise en Scène</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adrien Varsalona -->
+                    <div class="pedagogue-expandable">
+                        <div class="pedagogue-card clickable" onclick="togglePedagogue('adrien')">
+                            <img src="images/adrien.jpg" alt="Adrien Varsalona" class="pedagogue-photo">
+                            <h5>Adrien Varsalona</h5>
+                            <p class="pedagogue-title">Drag (Cabaret) • Clown • Chant</p>
+                            <p class="pedagogue-excerpt">Diplômé IAD, acteur et metteur en scène spécialisé dans les arts de la performance.</p>
+                            <div class="expand-icon">
+                                <span>+</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pedagogue-details" id="adrien-details">
+                            <div class="details-content">
+                                <button class="close-details" onclick="togglePedagogue('adrien')" title="Fermer">×</button>
+                                
+                                <div class="parcours-section">
+                                    <h6>Parcours</h6>
+                                    <div class="timeline-compact">
+                                        <div class="timeline-item">
+                                            <strong>2024 - Aujourd'hui :</strong> Pédagogue à La Manufacture de Laurence
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>2023 :</strong> Diplômé de l'IAD (Institut des Arts de Diffusion)
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>2020-2023 :</strong> Formation théâtrale intensive et spécialisations
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Depuis 2021 :</strong> Performances et créations en arts de la scène
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="specialites-section">
+                                    <h6>Spécialités</h6>
+                                    <div class="specialites-grid">
+                                        <span class="specialite-tag">Drag & Cabaret</span>
+                                        <span class="specialite-tag">Clown & Bouffon</span>
+                                        <span class="specialite-tag">Théâtre Physique</span>
+                                        <span class="specialite-tag">Chant & Performance</span>
+                                        <span class="specialite-tag">Marionnettes</span>
+                                        <span class="specialite-tag">Doublage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ilan Mayaux -->
+                    <div class="pedagogue-expandable">
+                        <div class="pedagogue-card clickable" onclick="togglePedagogue('ilan')">
+                            <img src="images/ilan.jpg" alt="Ilan Mayaux" class="pedagogue-photo">
+                            <h5>Ilan Mayaux</h5>
+                            <p class="pedagogue-title">Écriture Scénique • Accompagnement Projets</p>
+                            <p class="pedagogue-excerpt">Diplômé d'Arts², accompagne les étudiants dans l'écriture de pièces théâtrales originales.</p>
+                            <div class="expand-icon">
+                                <span>+</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pedagogue-details" id="ilan-details">
+                            <div class="details-content">
+                                <button class="close-details" onclick="togglePedagogue('ilan')" title="Fermer">×</button>
+                                
+                                <div class="parcours-section">
+                                    <h6>Parcours</h6>
+                                    <div class="timeline-compact">
+                                        <div class="timeline-item">
+                                            <strong>2024 - Aujourd'hui :</strong> Pédagogue en écriture scénique à La Manufacture
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Diplômé :</strong> Arts² - École Supérieure des Arts (Mons)
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Expérience :</strong> Comédien spécialisé en radio et doublage
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Création :</strong> Projets théâtraux et contenus audio originaux
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="specialites-section">
+                                    <h6>Spécialités</h6>
+                                    <div class="specialites-grid">
+                                        <span class="specialite-tag">Écriture Scénique</span>
+                                        <span class="specialite-tag">Dramaturgie</span>
+                                        <span class="specialite-tag">Création de Projets</span>
+                                        <span class="specialite-tag">Écriture Collaborative</span>
+                                        <span class="specialite-tag">Radio & Audio</span>
+                                        <span class="specialite-tag">Monologues</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte d'invitation -->
+                    <div class="pedagogue-card add-pedagogue">
+                        <div class="add-pedagogue-content">
+                            <h5>Rejoindre l'Équipe</h5>
+                            <p>La Manufacture recherche toujours de nouveaux talents pédagogiques.</p>
+                            <a href="contact.html" class="btn-secondary">Nous contacter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/laurencevoreux/" target="_blank" title="Instagram">Instagram</a>
+                <a href="mailto:lamanufacturedelaurence@gmail.com" title="Email">Email</a>
+            </div>
+            <p>&copy; 2025 La Manufacture de Laurence. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

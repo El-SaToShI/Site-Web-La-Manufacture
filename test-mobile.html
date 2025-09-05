@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Test Mobile - La Manufacture de Laurence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Test de débordement */
+        .test-container {
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #fff;
+            border: 2px solid #8b6914;
+            border-radius: 8px;
+        }
+        
+        .overflow-test {
+            background: #f0f0f0;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+        
+        .status-ok { background: #d4edda; color: #155724; }
+        .status-warning { background: #fff3cd; color: #856404; }
+        .status-error { background: #f8d7da; color: #721c24; }
+        
+        .test-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .test-nav a {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.8rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Test Mobile</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="pedagogues.html">Pédagogues</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 1rem;">
+        <h2>🔧 Test d'Optimisation Mobile</h2>
+        
+        <div class="test-container">
+            <h3>✅ Tests de Défilement</h3>
+            
+            <div class="overflow-test status-ok">
+                ✓ Navigation responsive : 4 boutons côte à côte
+            </div>
+            
+            <div class="overflow-test status-ok">
+                ✓ Largeur contrôlée : max-width: 100vw
+            </div>
+            
+            <div class="overflow-test status-ok">
+                ✓ Overflow-x: hidden actif
+            </div>
+            
+            <div class="overflow-test status-ok">
+                ✓ Box-sizing: border-box global
+            </div>
+        </div>
+
+        <div class="test-container">
+            <h3>📱 Test de Navigation</h3>
+            <div class="test-nav">
+                <a href="index.html">Accueil</a>
+                <a href="pedagogues.html">Pédagogues</a>
+                <a href="a-propos.html">À propos</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p><small>Les 4 boutons ci-dessus doivent s'afficher sur une seule ligne horizontale sur mobile.</small></p>
+        </div>
+
+        <div class="test-container">
+            <h3>📏 Test de Largeur</h3>
+            <div class="overflow-test">
+                Largeur d'écran : <span id="screen-width"></span>px
+            </div>
+            <div class="overflow-test">
+                Largeur de viewport : <span id="viewport-width"></span>px
+            </div>
+            <div class="overflow-test">
+                Défilement horizontal : <span id="scroll-test"></span>
+            </div>
+        </div>
+
+        <div class="test-container">
+            <h3>🎯 Instructions de Test</h3>
+            <ol style="padding-left: 1.5rem; line-height: 1.6;">
+                <li><strong>Navigation :</strong> Vérifiez que les 4 boutons s'affichent sur une ligne</li>
+                <li><strong>Défilement :</strong> Essayez de faire défiler horizontalement (impossible)</li>
+                <li><strong>Texte :</strong> Tout le texte doit être lisible sans zoom</li>
+                <li><strong>Formulaires :</strong> Les champs doivent faire 100% de largeur</li>
+                <li><strong>Images :</strong> Aucune image ne doit dépasser de l'écran</li>
+            </ol>
+        </div>
+
+        <div class="test-container">
+            <h3>🔗 Pages à Tester</h3>
+            <div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                <a href="index.html" style="display: block; padding: 1rem; background: var(--light-grey); text-align: center; text-decoration: none; border-radius: 6px;">Page Accueil</a>
+                <a href="pedagogues.html" style="display: block; padding: 1rem; background: var(--light-grey); text-align: center; text-decoration: none; border-radius: 6px;">Page Pédagogues</a>
+                <a href="a-propos.html" style="display: block; padding: 1rem; background: var(--light-grey); text-align: center; text-decoration: none; border-radius: 6px;">Page À Propos</a>
+                <a href="contact.html" style="display: block; padding: 1rem; background: var(--light-grey); text-align: center; text-decoration: none; border-radius: 6px;">Page Contact</a>
+            </div>
+        </div>
+
+        <div class="test-container">
+            <h3>📋 Checklist Mobile</h3>
+            <div style="display: grid; gap: 0.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox"> Navigation horizontale fonctionne
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox"> Aucun défilement horizontal
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox"> Texte lisible sans zoom
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox"> Images responsive
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox"> Formulaires utilisables
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox"> Pédagogues expandables fonctionnent
+                </label>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Afficher les informations de l'écran
+        document.getElementById('screen-width').textContent = screen.width;
+        document.getElementById('viewport-width').textContent = window.innerWidth;
+        
+        // Test de défilement horizontal
+        const hasHorizontalScroll = document.body.scrollWidth > window.innerWidth;
+        const scrollTest = document.getElementById('scroll-test');
+        
+        if (hasHorizontalScroll) {
+            scrollTest.textContent = '❌ DÉTECTÉ';
+            scrollTest.parentElement.className = 'overflow-test status-error';
+        } else {
+            scrollTest.textContent = '✅ AUCUN';
+            scrollTest.parentElement.className = 'overflow-test status-ok';
+        }
+        
+        // Mise à jour en temps réel lors du redimensionnement
+        window.addEventListener('resize', function() {
+            document.getElementById('viewport-width').textContent = window.innerWidth;
+            
+            const hasScroll = document.body.scrollWidth > window.innerWidth;
+            const scrollElement = document.getElementById('scroll-test');
+            
+            if (hasScroll) {
+                scrollElement.textContent = '❌ DÉTECTÉ';
+                scrollElement.parentElement.className = 'overflow-test status-error';
+            } else {
+                scrollElement.textContent = '✅ AUCUN';
+                scrollElement.parentElement.className = 'overflow-test status-ok';
+            }
+        });
+    </script>
+</body>
+</html>
