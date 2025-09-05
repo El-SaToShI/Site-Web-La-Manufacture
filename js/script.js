@@ -209,14 +209,31 @@ function initThemeToggle() {
     themeToggle.setAttribute('aria-label', 'Basculer entre mode clair et sombre');
     themeToggle.setAttribute('title', 'Changer le thème');
     
-    // Récupérer le thème sauvegardé ou utiliser le thème clair par défaut
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    // Détecter la préférence du système/navigateur
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Récupérer le thème sauvegardé ou utiliser la préférence du système
+    let savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+        savedTheme = prefersDark ? 'dark' : 'light';
+        localStorage.setItem('theme', savedTheme);
+    }
     
     setTheme(savedTheme);
     updateToggleIcon(themeToggle, savedTheme);
     
     // Ajouter le bouton à la page
     document.body.appendChild(themeToggle);
+    
+    // Écouter les changements de préférence du système
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme-manual')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            setTheme(newTheme);
+            updateToggleIcon(themeToggle, newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+    });
     
     // Événement de clic
     themeToggle.addEventListener('click', function(e) {
@@ -228,6 +245,7 @@ function initThemeToggle() {
         setTheme(newTheme);
         updateToggleIcon(themeToggle, newTheme);
         localStorage.setItem('theme', newTheme);
+        localStorage.setItem('theme-manual', 'true'); // Marquer comme choix manuel
     });
     
     // Plus de logique de redimensionnement qui supprime le bouton

@@ -16,14 +16,14 @@ html {
     --font-body: 'Work Sans', sans-serif;
 }
 
-/* Variables pour le mode sombre */
+/* Variables pour le mode sombre - Inspiré des navigateurs natifs */
 [data-theme="dark"] {
-    --main-bg-color: #1a1a1a; /* Fond sombre */
-    --text-color: #e0e0e0; /* Texte clair */
-    --accent-color: #d4a017; /* Ocre plus lumineux */
-    --secondary-color: #b0b0b0; /* Gris clair */
-    --vintage-brown: #c9a876; /* Brun plus clair */
-    --light-grey: #2d2d2d; /* Gris sombre pour les cartes */
+    --main-bg-color: #0d1117; /* Fond sombre profond comme GitHub dark */
+    --text-color: #e6edf3; /* Texte clair et doux */
+    --accent-color: #ffa500; /* Orange doré plus chaleureux */
+    --secondary-color: #8b949e; /* Gris équilibré */
+    --vintage-brown: #d2a978; /* Brun doré raffiné */
+    --light-grey: #161b22; /* Gris sombre pour les cartes */
 }
 
 /* Bouton de bascule dark mode - En bas à gauche */
@@ -74,6 +74,19 @@ body {
     color: var(--text-color);
     box-sizing: border-box;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effets sophistiqués pour le mode sombre */
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .hero-section,
+[data-theme="dark"] .section,
+[data-theme="dark"] .card {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(255, 165, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.2);
 }
 
 * {
