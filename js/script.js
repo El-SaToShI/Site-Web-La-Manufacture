@@ -30,33 +30,22 @@ function initMobileMenu() {
     const mobileOverlay = document.querySelector('.mobile-nav-overlay');
     const mobileClose = document.querySelector('.mobile-nav-close');
     
-    // Debug pour vérifier que les éléments existent
-    console.log('Menu mobile - Éléments trouvés:', {
-        toggle: !!mobileToggle,
-        overlay: !!mobileOverlay,
-        close: !!mobileClose
-    });
-    
     // Vérifier que les éléments existent
     if (!mobileToggle || !mobileOverlay) {
-        console.log('Menu mobile - Éléments manquants, abandon de l\'initialisation');
         return;
     }
     
     // Ouvrir le menu
     mobileToggle.addEventListener('click', function(e) {
         e.preventDefault();
-        console.log('Menu mobile - Clic sur bouton hamburger');
         mobileOverlay.classList.add('active');
         document.body.style.overflow = 'hidden'; // Empêcher le scroll en arrière-plan
-        console.log('Menu mobile - Classe active ajoutée');
     });
     
     // Fermer le menu avec le bouton X
     if (mobileClose) {
         mobileClose.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Menu mobile - Clic sur bouton fermer');
             closeMobileMenu();
         });
     }
@@ -64,7 +53,6 @@ function initMobileMenu() {
     // Fermer le menu en cliquant sur l'overlay
     mobileOverlay.addEventListener('click', function(e) {
         if (e.target === mobileOverlay) {
-            console.log('Menu mobile - Clic sur overlay');
             closeMobileMenu();
         }
     });
@@ -83,11 +71,10 @@ function initMobileMenu() {
     });
 }
 
-// Fonction pour fermer le menu mobile - VERSION RENFORCÉE
+// Fonction pour fermer le menu mobile
 function closeMobileMenu() {
     const mobileOverlay = document.querySelector('.mobile-nav-overlay');
     if (mobileOverlay) {
-        console.log('Menu mobile - Fermeture du menu');
         mobileOverlay.classList.remove('active');
         document.body.style.overflow = ''; // Rétablir le scroll
     }

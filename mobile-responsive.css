@@ -59,7 +59,7 @@
         display: none !important;
     }
 
-    /* Afficher le bouton hamburger + DEBUG */
+    /* Afficher le bouton hamburger */
     .mobile-menu-toggle {
         display: flex !important;
         background: none !important;
@@ -75,9 +75,6 @@
         width: 44px !important;
         height: 44px !important;
         flex-shrink: 0 !important;
-        /* DEBUG - Bordure orange pour voir le bouton */
-        border: 2px solid orange !important;
-        background: rgba(255, 165, 0, 0.3) !important;
     }
 
     .mobile-menu-toggle:hover {
@@ -85,7 +82,7 @@
         transform: scale(1.05) !important;
     }
 
-    /* Menu overlay moderne - VERSION ULTRA SIMPLE POUR SAMSUNG A54 */
+    /* Menu overlay moderne - VERSION PROPRE */
     .mobile-nav-overlay {
         position: fixed !important;
         top: 0 !important;
@@ -99,17 +96,14 @@
         display: none !important;
         padding: 20px !important;
         box-sizing: border-box !important;
-        /* DEBUG - Bordure rouge pour voir si l'overlay existe */
-        border: 5px solid red !important;
+        backdrop-filter: blur(5px) !important;
     }
 
     .mobile-nav-overlay.active {
         display: block !important;
-        /* DEBUG - Fond vert pour confirmer l'activation */
-        background: rgba(0, 255, 0, 0.3) !important;
     }
 
-    /* Menu container moderne - CENTRAGE ABSOLU SAMSUNG A54 */
+    /* Menu container moderne - CENTRAGE PARFAIT SAMSUNG A54 */
     .mobile-nav-menu {
         position: fixed !important;
         top: 50% !important;
@@ -122,8 +116,6 @@
         width: 280px !important;
         max-width: calc(100vw - 40px) !important;
         text-align: center !important;
-        /* DEBUG - Bordure bleue pour voir le menu */
-        border: 3px solid blue !important;
         box-sizing: border-box !important;
         z-index: 1000000 !important;
         margin: 0 !important;
