@@ -1,31 +1,46 @@
+// Gestion du preloader - Version sécurisée
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
-    setTimeout(function() {
-        preloader.style.display = 'none';
-    }, 2000); // Attend la fin de l'animation de la fleur
+    if (preloader) {
+        setTimeout(function() {
+            preloader.style.display = 'none';
+        }, 2000); // Attend la fin de l'animation de la fleur
+    }
+    // Si le preloader n'existe pas, on continue sans erreur
 });
 
+// Gestion des animations fade-in - Version sécurisée
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.fade-in-section');
 
-    const observer = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+    // Vérifier qu'il y a des sections à animer
+    if (sections.length > 0) {
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
 });
 
-// Fonction améliorée pour gérer l'expansion/contraction des profils de pédagogues
+// Fonction améliorée pour gérer l'expansion/contraction des profils de pédagogues - Version sécurisée
 function togglePedagogue(pedagogueId) {
-    const expandable = document.querySelector(`#${pedagogueId}-details`).parentElement;
-    const details = document.querySelector(`#${pedagogueId}-details`);
+    // Vérifications de sécurité
+    if (!pedagogueId) return;
+    
+    const detailsElement = document.querySelector(`#${pedagogueId}-details`);
+    if (!detailsElement) return;
+    
+    const expandable = detailsElement.parentElement;
+    if (!expandable) return;
+    
     const isCurrentlyExpanded = expandable.classList.contains('expanded');
     
     // Fermer tous les profils ouverts avec animation
@@ -34,7 +49,9 @@ function togglePedagogue(pedagogueId) {
         if (item.classList.contains('expanded')) {
             item.classList.remove('expanded');
             const otherDetails = item.querySelector('.pedagogue-details');
-            otherDetails.classList.remove('expanded');
+            if (otherDetails) {
+                otherDetails.classList.remove('expanded');
+            }
         }
     });
     
@@ -43,7 +60,7 @@ function togglePedagogue(pedagogueId) {
         // Petit délai pour permettre la fermeture des autres
         setTimeout(() => {
             expandable.classList.add('expanded');
-            details.classList.add('expanded');
+            detailsElement.classList.add('expanded');
             
             // Scroll vers le profil ouvert après l'animation
             setTimeout(() => {
@@ -57,48 +74,66 @@ function togglePedagogue(pedagogueId) {
     }
 }
 
-// Fermeture avec la touche Escape
+// Fermeture avec la touche Escape - Version sécurisée
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const openPedagogue = document.querySelector('.pedagogue-expandable.expanded');
         if (openPedagogue) {
-            const pedagogueId = openPedagogue.querySelector('.pedagogue-details').id.replace('-details', '');
-            togglePedagogue(pedagogueId);
+            const detailsElement = openPedagogue.querySelector('.pedagogue-details');
+            if (detailsElement && detailsElement.id) {
+                const pedagogueId = detailsElement.id.replace('-details', '');
+                if (pedagogueId) {
+                    togglePedagogue(pedagogueId);
+                }
+            }
         }
     }
 });
 
-// Amélioration de l'accessibilité - focus management
+// Amélioration de l'accessibilité - focus management - Version sécurisée
 document.addEventListener('DOMContentLoaded', function() {
     const pedagogueCards = document.querySelectorAll('.pedagogue-card.clickable');
     
-    pedagogueCards.forEach(card => {
-        // Rendre les cartes accessibles au clavier
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-expanded', 'false');
-        
-        // Support clavier
-        card.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                const pedagogueId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-                togglePedagogue(pedagogueId);
-            }
-        });
-        
-        // Mise à jour de l'état aria-expanded
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    const isExpanded = mutation.target.classList.contains('expanded');
-                    card.setAttribute('aria-expanded', isExpanded.toString());
+    if (pedagogueCards.length > 0) {
+        pedagogueCards.forEach(card => {
+            // Rendre les cartes accessibles au clavier
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-expanded', 'false');
+            
+            // Support clavier
+            card.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    const onclickAttr = this.getAttribute('onclick');
+                    if (onclickAttr) {
+                        const match = onclickAttr.match(/'([^']+)'/);
+                        if (match && match[1]) {
+                            togglePedagogue(match[1]);
+                        }
+                    }
                 }
             });
+            
+            // Mise à jour de l'état aria-expanded
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const expandableParent = mutation.target.closest('.pedagogue-expandable');
+                        if (expandableParent) {
+                            const isExpanded = expandableParent.classList.contains('expanded');
+                            card.setAttribute('aria-expanded', isExpanded.toString());
+                        }
+                    }
+                });
+            });
+            
+            const parentExpandable = card.closest('.pedagogue-expandable');
+            if (parentExpandable) {
+                observer.observe(parentExpandable, { attributes: true });
+            }
         });
-        
-        observer.observe(card.parentElement, { attributes: true });
-    });
+    }
 });
 
 // MENU HAMBURGER MODERNE - Version Simplifiée et Sécurisée
