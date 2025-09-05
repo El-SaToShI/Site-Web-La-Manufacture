@@ -95,19 +95,19 @@
         let mobilePage = '';
         
         if (currentPage.endsWith('index.html') || currentPage.endsWith('/') || currentPage === '') {
-            mobilePage = 'index-mobile.html';
+            mobilePage = 'pages/mobile/index-mobile.html';
         } else if (currentPage.includes('a-propos.html')) {
-            mobilePage = 'a-propos-mobile.html';
+            mobilePage = 'pages/mobile/a-propos-mobile.html';
         } else if (currentPage.includes('cours.html')) {
-            mobilePage = 'cours-mobile.html';
+            mobilePage = 'pages/mobile/cours-mobile.html';
         } else if (currentPage.includes('pedagogues.html')) {
-            mobilePage = 'pedagogues-mobile.html';
+            mobilePage = 'pages/mobile/pedagogues-mobile.html';
         } else if (currentPage.includes('contact.html')) {
-            mobilePage = 'contact-mobile.html';
+            mobilePage = 'pages/mobile/contact-mobile.html';
         } else if (currentPage.includes('pedagogue-laurence.html')) {
-            mobilePage = 'pedagogue-laurence-mobile.html';
+            mobilePage = 'pages/mobile/pedagogue-laurence-mobile.html';
         } else {
-            mobilePage = 'index-mobile.html';
+            mobilePage = 'pages/mobile/index-mobile.html';
         }
         
         if (mobilePage) {
@@ -121,19 +121,19 @@
         let desktopPage = '';
         
         if (currentPage.includes('index-mobile.html')) {
-            desktopPage = 'index.html';
+            desktopPage = '../../index.html';
         } else if (currentPage.includes('a-propos-mobile.html')) {
-            desktopPage = 'a-propos.html';
+            desktopPage = '../desktop/a-propos.html';
         } else if (currentPage.includes('cours-mobile.html')) {
-            desktopPage = 'cours.html';
+            desktopPage = '../desktop/cours.html';
         } else if (currentPage.includes('pedagogues-mobile.html')) {
-            desktopPage = 'pedagogues.html';
+            desktopPage = '../desktop/pedagogues.html';
         } else if (currentPage.includes('contact-mobile.html')) {
-            desktopPage = 'contact.html';
+            desktopPage = '../desktop/contact.html';
         } else if (currentPage.includes('pedagogue-laurence-mobile.html')) {
-            desktopPage = 'pedagogue-laurence.html';
+            desktopPage = '../desktop/pedagogue-laurence.html';
         } else {
-            desktopPage = 'index.html';
+            desktopPage = '../../index.html';
         }
         
         if (desktopPage) {

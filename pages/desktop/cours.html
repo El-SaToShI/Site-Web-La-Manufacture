@@ -2,41 +2,27 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Cours - La Manufacture de Laurence - Version Mobile</title>
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
+    <title>Cours - La Manufacture de Laurence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="mobile-responsive.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="desktop-mobile-scale.css">
+    <script src="../../js/auto-detect.js"></script>
 </head>
 <body>
     <header>
-        <h1><a href="index-mobile.html">La Manufacture de Laurence</a></h1>
-        <button class="mobile-menu-toggle" aria-label="Menu" type="button">&#9776;</button>
+        <h1><a href="../../index.html">La Manufacture de Laurence</a></h1>
         <nav>
             <ul>
-                <li><a href="a-propos-mobile.html">À Propos</a></li>
-                <li><a href="cours-mobile.html">Cours</a></li>
-                <li><a href="pedagogues-mobile.html">Pédagogues</a></li>
-                <li><a href="contact-mobile.html">Contact</a></li>
+                <li><a href="a-propos.html">À Propos</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="pedagogues.html">Pédagogues</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Menu mobile overlay -->
-    <div class="mobile-nav-overlay">
-        <nav class="mobile-nav-menu">
-            <button class="mobile-nav-close" aria-label="Fermer le menu">&times;</button>
-            <ul>
-                <li><a href="index-mobile.html">Accueil</a></li>
-                <li><a href="a-propos-mobile.html">À Propos</a></li>
-                <li><a href="cours-mobile.html">Cours</a></li>
-                <li><a href="pedagogues-mobile.html">Pédagogues</a></li>
-                <li><a href="contact-mobile.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
 
     <main>
         <section id="cours" class="fade-in-section single-page">
@@ -73,11 +59,6 @@
                     <li><strong>Préparation aux concours (Juillet-Août) :</strong> Entraînement intensif, accompagnement personnalisé.</li>
                     <li><strong>Hors-module / Stages vacances :</strong> Initiation au théâtre et ateliers thématiques.</li>
                 </ul>
-                
-                <div class="cta-buttons" style="margin-top: 3rem;">
-                    <a href="pedagogues-mobile.html" class="btn-primary">Rencontrer nos Pédagogues</a>
-                    <a href="contact-mobile.html" class="btn-secondary">S'inscrire</a>
-                </div>
             </div>
         </section>
     </main>
@@ -92,6 +73,6 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="../../js/script.js"></script>
 </body>
 </html>
