@@ -466,6 +466,14 @@ footer::before {
     background: linear-gradient(135deg, var(--light-grey) 0%, var(--main-bg-color) 100%);
 }
 
+/* Empêcher le style hover général d'affecter la carte add-pedagogue */
+.add-pedagogue.pedagogue-card:hover {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--vintage-brown) 100%);
+    transform: translateY(-5px);
+    opacity: 1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
 .pedagogue-expandable.expanded .pedagogue-card {
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--vintage-brown) 100%);
     color: white;
@@ -704,10 +712,15 @@ footer::before {
     transition: transform 0.3s ease;
     width: 100%; /* Force la largeur */
     box-sizing: border-box;
+    /* Assurer que la carte reste visible */
+    opacity: 1;
 }
 
 .add-pedagogue:hover {
     transform: translateY(-5px);
+    /* Maintenir l'opacité et ajouter une ombre */
+    opacity: 1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .add-pedagogue h5 {
@@ -739,6 +752,8 @@ footer::before {
     background-color: var(--main-bg-color);
     color: var(--accent-color);
     transform: scale(1.05);
+    /* Ajout d'une ombre pour la visibilité */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive amélioré avec gestion des conflits */
