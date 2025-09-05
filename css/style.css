@@ -16,6 +16,44 @@ html {
     --font-body: 'Work Sans', sans-serif;
 }
 
+/* Variables pour le mode sombre */
+[data-theme="dark"] {
+    --main-bg-color: #1a1a1a; /* Fond sombre */
+    --text-color: #e0e0e0; /* Texte clair */
+    --accent-color: #d4a017; /* Ocre plus lumineux */
+    --secondary-color: #b0b0b0; /* Gris clair */
+    --vintage-brown: #c9a876; /* Brun plus clair */
+    --light-grey: #2d2d2d; /* Gris sombre pour les cartes */
+}
+
+/* Bouton de bascule dark mode */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: var(--main-bg-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
 body {
     font-family: var(--font-body);
     line-height: 1.7;
@@ -24,6 +62,7 @@ body {
     background: var(--main-bg-color);
     color: var(--text-color);
     box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
@@ -47,6 +86,7 @@ header {
     background: var(--main-bg-color);
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(60,60,60,0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 header h1 {

@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gestion du menu hamburger mobile - Version sécurisée
     initMobileMenu();
+    
+    // Initialiser le mode sombre/clair pour desktop
+    initThemeToggle();
 });
 
 // Fonction pour initialiser le menu mobile - VERSION RENFORCÉE
@@ -197,3 +200,62 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
+
+// Gestion du mode sombre/clair - Desktop uniquement
+function initThemeToggle() {
+    // Vérifier si on est sur desktop (largeur > 768px)
+    if (window.innerWidth <= 768) return;
+    
+    // Créer le bouton de bascule
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.setAttribute('aria-label', 'Basculer entre mode clair et sombre');
+    themeToggle.setAttribute('title', 'Changer le thème');
+    
+    // Récupérer le thème sauvegardé ou utiliser le thème clair par défaut
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    updateToggleIcon(themeToggle, savedTheme);
+    
+    // Ajouter le bouton à la page
+    document.body.appendChild(themeToggle);
+    
+    // Événement de clic
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        setTheme(newTheme);
+        updateToggleIcon(themeToggle, newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+    
+    // Gérer le redimensionnement - supprimer le bouton sur mobile
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768 && themeToggle.parentNode) {
+            themeToggle.remove();
+        } else if (window.innerWidth > 768 && !themeToggle.parentNode) {
+            document.body.appendChild(themeToggle);
+        }
+    });
+}
+
+function setTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+    }
+}
+
+function updateToggleIcon(button, theme) {
+    if (theme === 'dark') {
+        button.innerHTML = '☀️'; // Icône soleil pour passer au mode clair
+        button.setAttribute('aria-label', 'Passer au mode clair');
+        button.setAttribute('title', 'Passer au mode clair');
+    } else {
+        button.innerHTML = '🌙'; // Icône lune pour passer au mode sombre
+        button.setAttribute('aria-label', 'Passer au mode sombre');
+        button.setAttribute('title', 'Passer au mode sombre');
+    }
+}
