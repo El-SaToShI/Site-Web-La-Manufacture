@@ -435,38 +435,6 @@
         font-size: 1.2rem !important;
         font-weight: bold !important;
     }
-        margin-bottom: 0 !important;
-        text-align: center !important;
-    }
-    
-    /* Icône d'expansion mobile */
-    .expand-icon {
-        position: absolute !important;
-        top: 1rem !important;
-        right: 1rem !important;
-        z-index: 10 !important;
-    }
-    
-    .expand-icon span {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 32px !important;
-        height: 32px !important;
-        border: 2px solid var(--accent-color) !important;
-        border-radius: 50% !important;
-        font-size: 1.2rem !important;
-        font-weight: bold !important;
-        color: var(--accent-color) !important;
-        background: white !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .pedagogue-expandable.expanded .expand-icon span {
-        transform: rotate(45deg) !important;
-        background: var(--accent-color) !important;
-        color: white !important;
-    }
 
     /* Détails pédagogue mobile - ACCORDÉON STYLE */
     .pedagogue-details {
