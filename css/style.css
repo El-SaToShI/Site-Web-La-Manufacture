@@ -3,19 +3,22 @@ html {
     -webkit-text-size-adjust: 100%; /* Évite le resize automatique du texte sur iOS */
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    color-scheme: light dark; /* Support natif Samsung Internet */
 }
 
 :root {
-    --main-bg-color: #f7f5f3; /* Blanc cassé, légèrement sépia */
-    --text-color: #3c3c3c; /* Gris charbon industriel */
-    --accent-color: #8b6914; /* Ocre/bronze industriel */
-    --secondary-color: #6d6d6d; /* Gris métal */
-    --vintage-brown: #8b7355; /* Brun sépia */
-    --light-grey: #e8e6e3; /* Gris très clair, patiné */
+    /* Palette années 70 - Couleurs clichés */
+    --main-bg-color: #f4e4bc; /* Beige crème vintage */
+    --text-color: #2d1b0e; /* Brun chocolat foncé */
+    --accent-color: #d2691e; /* Orange brûlé typique 70s */
+    --secondary-color: #8b4513; /* Brun selle */
+    --vintage-brown: #cd853f; /* Brun doré */
+    --retro-orange: #ff8c00; /* Orange vif */
+    --mustard-yellow: #ffdb58; /* Jaune moutarde */
+    --burnt-sienna: #e97451; /* Terre de Sienne brûlée */
+    --avocado-green: #568203; /* Vert avocat 70s */
+    --light-grey: #f5f5dc; /* Beige très clair */
     --font-title: 'Anton', sans-serif;
     --font-body: 'Work Sans', sans-serif;
-    color-scheme: light dark; /* Support Samsung Internet */
 }
 
 /* Variables pour le mode sombre manuel - Compatible avec detection auto */
@@ -72,7 +75,8 @@ body {
     line-height: 1.7;
     margin: 0;
     padding: 0;
-    background: var(--main-bg-color);
+    /* Fond avec dégradé années 70 */
+    background: radial-gradient(circle at center, var(--main-bg-color) 0%, #e6d3a3 100%);
     color: var(--text-color);
     box-sizing: border-box;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -99,6 +103,33 @@ h1, h2, h3, h4 {
     font-family: var(--font-title);
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    /* Effet text-shadow années 70 */
+    text-shadow: 3px 3px 6px rgba(210, 105, 30, 0.4);
+    color: var(--accent-color);
+}
+
+/* Style rétro 70s pour les sections */
+.hero-section, .section {
+    background: linear-gradient(135deg, var(--mustard-yellow) 0%, var(--burnt-sienna) 50%, var(--retro-orange) 100%);
+    background-size: 200% 200%;
+    animation: retro-gradient 8s ease infinite;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(210, 105, 30, 0.3);
+    border: 3px solid var(--vintage-brown);
+}
+
+@keyframes retro-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes psychedelic-bg {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
 }
 
 header {
@@ -106,23 +137,26 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3rem;
-    border-bottom: 2px solid var(--light-grey);
+    border-bottom: 4px solid var(--retro-orange);
     position: sticky;
     top: 0;
-    background: var(--main-bg-color);
+    /* Fond header années 70 avec dégradé */
+    background: linear-gradient(90deg, var(--mustard-yellow) 0%, var(--burnt-sienna) 100%);
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(60,60,60,0.1);
+    box-shadow: 0 4px 16px rgba(210, 105, 30, 0.4);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 header h1 {
     margin: 0;
     font-size: 1.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 header h1 a {
     text-decoration: none;
     color: var(--text-color);
+    font-weight: bold;
 }
 
 nav ul {
@@ -146,18 +180,29 @@ nav a {
     font-size: 1rem;
     font-weight: 500;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 219, 88, 0.3);
+    border: 2px solid transparent;
 }
 
 nav a:hover {
-    color: var(--accent-color);
+    color: var(--main-bg-color);
+    background: var(--retro-orange);
+    border: 2px solid var(--vintage-brown);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(210, 105, 30, 0.4);
 }
 
 #hero {
     text-align: left;
     padding: 8rem 3rem;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-color) 100%);
+    /* Hero années 70 avec motif psychédélique */
+    background: linear-gradient(45deg, var(--burnt-sienna) 0%, var(--retro-orange) 25%, var(--mustard-yellow) 50%, var(--avocado-green) 75%, var(--vintage-brown) 100%);
+    background-size: 400% 400%;
+    animation: psychedelic-bg 12s ease infinite;
     color: var(--main-bg-color);
     min-height: 60vh;
     display: flex;
