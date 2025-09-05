@@ -339,7 +339,7 @@ main section.single-page {
     text-transform: uppercase;
     font-size: 1.3rem;
     margin: 0 0 0.5rem 0;
-    color: var(--vintage-brown);
+    color: var(--secondary-color);
     letter-spacing: 1px;
 }
 
@@ -803,7 +803,7 @@ footer::after {
 }
 
 .details-content h6 {
-    color: var(--vintage-brown);
+    color: var(--secondary-color);
     margin: 0 0 1.5rem 0;
     font-size: 1.2rem;
     font-weight: 600;
@@ -847,7 +847,7 @@ footer::after {
 }
 
 .timeline-compact .timeline-item strong {
-    color: var(--vintage-brown);
+    color: var(--secondary-color);
     font-weight: 600;
 }
 
@@ -2065,7 +2065,7 @@ footer::after {
 }
 
 .timeline-item h5 {
-    color: var(--vintage-brown);
+    color: var(--secondary-color);
     font-size: 1.1rem;
     margin: 0 0 0.5rem;
 }
@@ -2095,7 +2095,7 @@ footer::after {
 }
 
 .projet-info h5 {
-    color: var(--vintage-brown);
+    color: var(--secondary-color);
     margin: 0 0 1rem;
 }
 
@@ -2124,5 +2124,5 @@ footer::after {
 }
 
 .social-pedagogue a:hover {
-    color: var(--vintage-brown);
+    color: var(--secondary-color);
 }
