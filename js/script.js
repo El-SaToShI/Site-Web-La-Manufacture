@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const mobileOverlay = document.querySelector('.mobile-nav-overlay');
-    const mobileClose = document.querySelector('.mobile-nav-close');
     
     // Vérifier que les éléments existent
     if (!mobileToggle || !mobileOverlay) {
@@ -42,17 +41,16 @@ function initMobileMenu() {
         document.body.style.overflow = 'hidden'; // Empêcher le scroll en arrière-plan
     });
     
-    // Fermer le menu avec le bouton X
-    if (mobileClose) {
-        mobileClose.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeMobileMenu();
-        });
-    }
-    
-    // Fermer le menu en cliquant sur l'overlay
+    // Délégation d'événements pour le bouton de fermeture
     mobileOverlay.addEventListener('click', function(e) {
-        if (e.target === mobileOverlay) {
+        // Si on clique sur le bouton de fermeture
+        if (e.target.classList.contains('mobile-nav-close')) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+        }
+        // Si on clique sur l'overlay (en dehors du menu)
+        else if (e.target === mobileOverlay) {
             closeMobileMenu();
         }
     });
