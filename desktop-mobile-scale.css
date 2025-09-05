@@ -1,49 +1,40 @@
 /* CSS DESKTOP-TO-MOBILE - Rendu identique avec scaling intelligent */
+/* Ne s'applique QUE sur mobile pour éviter les problèmes desktop */
 
-/* RESET et VIEWPORT FIXE */
-html {
-    /* Force le viewport à une largeur desktop fixe */
-    width: 1024px !important;
-    overflow-x: auto !important;
-}
-
-body {
-    /* Largeur desktop fixe */
-    width: 1024px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    /* Zoom intelligent basé sur la largeur d'écran */
-    zoom: calc(100vw / 1024) !important;
-    transform-origin: top left !important;
-    overflow-x: auto !important;
-}
-
-/* ALTERNATIVE pour navigateurs qui ne supportent pas zoom */
-@supports not (zoom: 1) {
-    body {
-        zoom: 1 !important;
-        transform: scale(calc(100vw / 1024)) !important;
-        transform-origin: top left !important;
-        width: 1024px !important;
-        height: calc(100vh / (100vw / 1024)) !important;
-    }
-}
-
-/* MEDIA QUERY pour mobile - Force le rendu desktop */
+/* MEDIA QUERY pour mobile UNIQUEMENT - Force le rendu desktop */
 @media screen and (max-width: 768px) {
     
-    /* Viewport meta sera ignoré, on force desktop */
+    /* RESET et VIEWPORT FIXE pour mobile */
     html {
+        /* Force le viewport à une largeur desktop fixe */
         width: 1024px !important;
+        overflow-x: auto !important;
         min-width: 1024px !important;
     }
-    
+
     body {
+        /* Largeur desktop fixe */
         width: 1024px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        /* Zoom intelligent basé sur la largeur d'écran */
+        zoom: calc(100vw / 1024) !important;
+        transform-origin: top left !important;
+        overflow-x: auto !important;
         min-width: 1024px !important;
         /* Calcul du zoom pour S20+ (384px) */
-        zoom: calc(100vw / 1024) !important;
         /* Pour 384px: zoom = 384/1024 = 0.375 (37.5%) */
+    }
+
+    /* ALTERNATIVE pour navigateurs qui ne supportent pas zoom */
+    @supports not (zoom: 1) {
+        body {
+            zoom: 1 !important;
+            transform: scale(calc(100vw / 1024)) !important;
+            transform-origin: top left !important;
+            width: 1024px !important;
+            height: calc(100vh / (100vw / 1024)) !important;
+        }
     }
     
     /* Tous les éléments gardent leur taille desktop */
@@ -93,195 +84,126 @@ body {
     nav ul li a {
         color: var(--text-color) !important;
         text-decoration: none !important;
-        font-size: 1rem !important;
         font-weight: 500 !important;
-        text-transform: uppercase !important;
         transition: color 0.3s ease !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 4px !important;
+        font-size: 1rem !important;
         white-space: nowrap !important;
-        padding: 0 !important;
-        border: none !important;
-        background: none !important;
-        border-radius: 0 !important;
-        width: auto !important;
     }
     
     nav ul li a:hover {
         color: var(--accent-color) !important;
-        background: none !important;
+        background: var(--light-grey) !important;
     }
     
-    /* Contenu garde la mise en page desktop */
-    main, section, .single-page {
+    /* Hero section garde sa taille desktop */
+    #hero {
+        padding: 8rem 3rem !important;
+        min-height: 60vh !important;
+        text-align: left !important;
+    }
+    
+    .hero-section h2 {
+        font-size: 3rem !important;
+        line-height: 1.2 !important;
+        margin: 0 0 2rem !important;
+    }
+    
+    .hero-section p {
+        font-size: 1.2rem !important;
+        margin: 2rem 0 !important;
+        max-width: 600px !important;
+    }
+    
+    /* Boutons gardent leur apparence desktop */
+    .cta-buttons {
+        display: flex !important;
+        gap: 1.5rem !important;
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
         width: auto !important;
         max-width: none !important;
-        padding: 8rem 3rem !important; /* Padding desktop original */
-        text-align: left !important;
-        box-sizing: content-box !important;
     }
     
-    /* Titres gardent leur style desktop */
-    h1, h2, h3, h4, h5, h6 {
-        font-family: var(--font-title) !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1.5px !important;
-        text-align: left !important;
-        word-break: normal !important;
-        hyphens: none !important;
-        white-space: normal !important;
+    /* Sections gardent leur mise en page desktop */
+    .content-section {
+        padding: 4rem 3rem !important;
+        max-width: none !important;
+        width: auto !important;
     }
     
     .section-title h3 {
         font-size: 2.5rem !important;
-        margin-bottom: 2rem !important;
     }
     
     .section-content h4 {
         font-size: 1.8rem !important;
-        margin: 2rem 0 1rem 0 !important;
-        color: var(--accent-color) !important;
     }
     
-    /* Paragraphes style desktop */
-    p {
-        font-family: var(--font-body) !important;
-        line-height: 1.7 !important;
+    .section-content p {
         font-size: 1rem !important;
-        text-align: left !important;
-        margin: 1rem 0 !important;
-        word-break: normal !important;
-        hyphens: none !important;
+        line-height: 1.7 !important;
     }
     
-    /* Pédagogues gardent la grille desktop */
+    /* Grille des pédagogues reste desktop */
     .pedagogues-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
         gap: 2rem !important;
-        margin: 3rem 0 !important;
         width: auto !important;
         max-width: none !important;
-        padding: 0 !important;
     }
     
     .pedagogue-card {
-        background: var(--light-grey) !important;
         padding: 2rem !important;
-        border-radius: 12px !important;
-        box-shadow: 0 4px 12px rgba(60,60,60,0.1) !important;
-        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-        cursor: pointer !important;
         width: auto !important;
         max-width: none !important;
     }
     
-    .pedagogue-header {
+    /* Contact grid reste desktop */
+    .contact-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: 2rem !important;
+    }
+    
+    /* About page reste desktop */
+    .title-section {
         display: flex !important;
-        align-items: center !important;
-        gap: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
         flex-direction: row !important;
-        text-align: left !important;
+        align-items: center !important;
+        gap: 3rem !important;
+        padding: 4rem 3rem !important;
     }
     
-    .pedagogue-photo {
-        width: 120px !important;
-        height: 120px !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
-        filter: sepia(15%) contrast(1.05) !important;
-        border: 4px solid var(--main-bg-color) !important;
-        flex-shrink: 0 !important;
+    .content-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+        gap: 3rem !important;
     }
     
-    /* Footer desktop style */
+    /* Footer garde sa mise en page desktop */
     footer {
-        background: var(--text-color) !important;
-        color: var(--main-bg-color) !important;
-        padding: 3rem !important;
-        text-align: center !important;
-        width: auto !important;
-        max-width: none !important;
+        padding: 4rem 2rem !important;
     }
     
-    /* Supprime tous les styles mobiles précédents */
-    .mobile-nav,
-    .mobile-only,
-    .portrait-only,
-    .landscape-only {
+    /* Masquer le menu hamburger sur le rendu desktop mobile */
+    .mobile-menu-toggle {
         display: none !important;
     }
     
-    /* Force le défilement horizontal si nécessaire */
-    html, body {
-        overflow-x: auto !important;
-        overflow-y: auto !important;
+    .mobile-nav-overlay {
+        display: none !important;
     }
 }
 
-/* SCALING spécifique pour différentes résolutions */
-
-/* Samsung S20+ et similaires (384px) */
-@media screen and (max-width: 400px) {
-    body {
-        zoom: calc(100vw / 1024) !important;
-        /* Pour 384px: 384/1024 = 0.375 = 37.5% */
-    }
-}
-
-/* iPhone et petits écrans (320-375px) */
-@media screen and (max-width: 375px) {
-    body {
-        zoom: calc(100vw / 1024) !important;
-        /* Pour 375px: 375/1024 = 0.366 = 36.6% */
-    }
-}
-
-/* Très petits écrans (moins de 320px) */
-@media screen and (max-width: 320px) {
-    body {
-        zoom: calc(100vw / 1024) !important;
-        /* Pour 320px: 320/1024 = 0.3125 = 31.25% */
-    }
-}
-
-/* AJUSTEMENTS pour la lisibilité à petite échelle */
-@media screen and (max-width: 768px) {
-    
-    /* Améliore la lisibilité des textes zoomés */
-    body {
-        -webkit-text-size-adjust: none !important;
-        -moz-text-size-adjust: none !important;
-        -ms-text-size-adjust: none !important;
-        text-size-adjust: none !important;
-    }
-    
-    /* Améliore le rendu des images */
-    img {
-        image-rendering: auto !important;
-        image-rendering: crisp-edges !important;
-        image-rendering: -webkit-optimize-contrast !important;
-    }
-    
-    /* Améliore le rendu des fonts */
-    * {
-        -webkit-font-smoothing: antialiased !important;
-        -moz-osx-font-smoothing: grayscale !important;
-        text-rendering: optimizeLegibility !important;
-    }
-}
-
-/* FALLBACK pour navigateurs qui ne supportent pas le zoom */
-@supports not (zoom: 1) {
-    @media screen and (max-width: 768px) {
-        body {
-            transform: scale(calc(100vw / 1024)) !important;
-            transform-origin: top left !important;
-            width: 1024px !important;
-        }
-        
-        /* Ajuste la hauteur pour éviter le défilement vertical excessif */
-        html {
-            height: calc(100% / calc(100vw / 1024)) !important;
-        }
-    }
+/* Styles pour desktop uniquement (pas de contraintes) */
+@media screen and (min-width: 769px) {
+    /* Rien ici - laisse le CSS principal gérer desktop naturellement */
 }
