@@ -300,27 +300,46 @@
         line-height: 1.5 !important;
     }
 
-    /* Section pédagogues mobile - LAYOUT CENTRÉ */
-    #pedagogues .section-content {
+    /* Section pédagogues mobile - LAYOUT CENTRÉ HAMBURGERISÉ */
+    #pedagogues .section-title {
         text-align: center !important;
-        padding: 1rem !important;
-        max-width: none !important;
-        margin: 0 auto !important;
+        margin-bottom: 2rem !important;
     }
 
-    #pedagogues .section-content h4 {
-        font-size: 1.8rem !important;
+    #pedagogues .section-title h3 {
+        font-size: 2rem !important;
         color: var(--accent-color) !important;
-        margin-bottom: 1rem !important;
         text-align: center !important;
+        margin: 0 !important;
     }
 
-    #pedagogues .section-content p {
+    .pedagogues-intro {
+        text-align: center !important;
+        padding: 0 1rem !important;
+        margin-bottom: 2rem !important;
+        max-width: 100% !important;
+    }
+
+    .pedagogues-intro h4 {
+        font-size: 1.8rem !important;
+        color: var(--vintage-brown) !important;
+        margin: 0 0 1.5rem 0 !important;
+        text-align: center !important;
+        font-weight: 600 !important;
+    }
+
+    .pedagogues-intro p {
         font-size: 1rem !important;
         line-height: 1.6 !important;
-        margin: 0.5rem auto 1.5rem auto !important;
+        margin: 0.75rem auto !important;
         max-width: 90% !important;
         text-align: center !important;
+        color: var(--secondary-color) !important;
+    }
+
+    .pedagogues-intro em {
+        font-size: 0.9rem !important;
+        color: var(--accent-color) !important;
     }
 
     /* Grille des pédagogues mobile - LAYOUT HORIZONTAL */
