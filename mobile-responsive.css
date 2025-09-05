@@ -23,12 +23,12 @@
         font-size: 16px !important;
     }
 
-    /* Header mobile avec hamburger - TITRE COMPLET */
+    /* Header mobile avec hamburger - TITRE COMPLET FORCÉ */
     header {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 0.8rem 1rem !important;
+        padding: 0.5rem 0.8rem !important;
         flex-direction: row !important;
         width: 100% !important;
         box-sizing: border-box !important;
@@ -37,18 +37,23 @@
         z-index: 1000 !important;
         background: var(--main-bg-color) !important;
         border-bottom: 2px solid var(--light-grey) !important;
-        gap: 0.5rem !important;
+        gap: 0.3rem !important;
+        min-height: 60px !important;
     }
     
     header h1 {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important;
         margin: 0 !important;
         text-align: left !important;
         flex: 1 !important;
-        line-height: 1.2 !important;
+        line-height: 1.1 !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
-        max-width: calc(100% - 60px) !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        max-width: calc(100vw - 80px) !important;
+        min-width: 0 !important;
     }
     
     header h1 a {
@@ -61,22 +66,23 @@
         display: none !important;
     }
 
-    /* Afficher le bouton hamburger - COMPACT */
+    /* Afficher le bouton hamburger - TRÈS COMPACT */
     .mobile-menu-toggle {
         display: flex !important;
         background: none !important;
         border: none !important;
-        font-size: 1.3rem !important;
+        font-size: 1.2rem !important;
         color: var(--accent-color) !important;
         cursor: pointer !important;
-        padding: 0.4rem !important;
+        padding: 0.3rem !important;
         border-radius: 4px !important;
         transition: all 0.3s ease !important;
         align-items: center !important;
         justify-content: center !important;
-        width: 40px !important;
-        height: 40px !important;
+        width: 35px !important;
+        height: 35px !important;
         flex-shrink: 0 !important;
+        margin-left: 0.5rem !important;
     }
 
     .mobile-menu-toggle:hover {
