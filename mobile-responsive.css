@@ -802,8 +802,20 @@
     }
 }
 
-/* ORIENTATION PORTRAIT - Correction spécifique */
+/* ORIENTATION PORTRAIT - Correction spécifique CENTRAGE FORCÉ */
 @media screen and (max-width: 768px) and (orientation: portrait) {
+    
+    /* CENTRAGE GLOBAL FORCÉ */
+    body {
+        text-align: center !important;
+    }
+    
+    main {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
     
     /* Section pédagogues mobile - ORIENTATION PORTRAIT FORCÉE */
     #pedagogues {
@@ -815,40 +827,57 @@
         opacity: 1 !important;
         width: 100% !important;
         overflow: visible !important;
+        text-align: center !important;
+        margin: 0 auto !important;
     }
 
     #pedagogues .section-title {
         text-align: center !important;
-        margin-bottom: 1.5rem !important;
+        margin: 0 auto 1.5rem auto !important;
         padding: 1rem !important;
         background: var(--main-bg-color) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     #pedagogues .section-title h3 {
         font-size: 1.8rem !important;
         color: var(--accent-color) !important;
         text-align: center !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         padding: 0.5rem !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+    #pedagogues .section-content {
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
     }
 
     .pedagogues-intro {
         text-align: center !important;
         padding: 1rem !important;
-        margin-bottom: 1.5rem !important;
-        max-width: 100% !important;
+        margin: 0 auto 1.5rem auto !important;
+        max-width: 95% !important;
         background: var(--light-grey) !important;
         border-radius: 8px !important;
-        margin: 1rem !important;
+        width: calc(100% - 2rem) !important;
+        box-sizing: border-box !important;
+        display: block !important;
     }
 
     .pedagogues-intro h4 {
         font-size: 1.6rem !important;
         color: var(--vintage-brown) !important;
-        margin: 0 0 1rem 0 !important;
+        margin: 0 auto 1rem auto !important;
         text-align: center !important;
         font-weight: 600 !important;
         padding: 0.5rem !important;
+        width: 100% !important;
+        display: block !important;
     }
 
     .pedagogues-intro p {
@@ -859,16 +888,20 @@
         text-align: center !important;
         color: var(--secondary-color) !important;
         padding: 0.25rem !important;
+        display: block !important;
+        width: auto !important;
     }
 
-    /* Grille des pédagogues - PORTRAIT OPTIMISÉ */
+    /* Grille des pédagogues - PORTRAIT OPTIMISÉ CENTRÉ */
     .pedagogues-grid {
         display: flex !important;
         flex-direction: column !important;
         gap: 1rem !important;
         width: 100% !important;
-        margin: 1rem 0 !important;
+        margin: 1rem auto !important;
         padding: 0 1rem !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
     }
 }
 
