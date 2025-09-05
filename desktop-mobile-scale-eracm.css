@@ -1,0 +1,235 @@
+/* DESKTOP-TO-MOBILE SCALING - Version ERACM Inspirée */
+/* Approche hybride : rendu desktop + optimisations modernes */
+
+/* RESET et VIEWPORT INTELLIGENT */
+html {
+    /* Force le viewport à une largeur desktop fixe */
+    width: 1024px !important;
+    min-width: 1024px !important;
+    overflow-x: hidden !important;
+    
+    /* Optimisations de rendu moderne */
+    -webkit-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+}
+
+body {
+    /* Largeur desktop fixe avec zoom intelligent */
+    width: 1024px !important;
+    min-width: 1024px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    
+    /* Zoom basé sur la largeur d'écran réelle */
+    zoom: calc(100vw / 1024) !important;
+    transform-origin: top left !important;
+    
+    /* Amélioration de la lisibilité sur mobile */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* ALTERNATIVE pour navigateurs qui ne supportent pas zoom */
+@supports not (zoom: 1) {
+    body {
+        zoom: 1 !important;
+        transform: scale(calc(100vw / 1024)) !important;
+        transform-origin: top left !important;
+        width: 1024px !important;
+        height: calc(100vh / (100vw / 1024)) !important;
+    }
+}
+
+/* MEDIA QUERIES - Approche ERACM avec optimisations */
+
+/* Mobile Portrait (smartphones) */
+@media screen and (max-width: 768px) {
+    html {
+        width: 1024px !important;
+        min-width: 1024px !important;
+        overflow-x: hidden !important;
+    }
+    
+    body {
+        width: 1024px !important;
+        min-width: 1024px !important;
+        zoom: calc(100vw / 1024) !important;
+        /* Pour Samsung S20+ (384px): zoom = 0.375 (37.5%) */
+    }
+    
+    /* Amélioration des zones tactiles - Inspiré ERACM */
+    nav a,
+    .btn-primary,
+    .btn-secondary,
+    .pedagogue-card.clickable {
+        /* Zone tactile minimum même après zoom */
+        min-height: 44px !important;
+        min-width: 44px !important;
+        
+        /* Amélioration du contraste */
+        border-width: 2px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    }
+    
+    /* Navigation mobile optimisée */
+    header nav ul li a {
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Amélioration de la lisibilité des titres */
+    header h1,
+    .section-title h3,
+    .pedagogue-info h4 {
+        text-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Images optimisées pour mobile */
+    img {
+        image-rendering: -webkit-optimize-contrast !important;
+        image-rendering: crisp-edges !important;
+    }
+    
+    /* Cartes pédagogues avec meilleur contraste */
+    .pedagogue-card {
+        box-shadow: 0 6px 20px rgba(60,60,60,0.2) !important;
+        border: 2px solid var(--light-grey) !important;
+    }
+}
+
+/* Très petits écrans (iPhone SE, etc.) */
+@media screen and (max-width: 400px) {
+    body {
+        /* Zoom légèrement ajusté pour très petits écrans */
+        zoom: calc(100vw / 1024 * 1.05) !important;
+    }
+    
+    /* Amélioration du contraste pour la lisibilité */
+    header nav ul li a {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(5px) !important;
+    }
+}
+
+/* Tablettes en portrait */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+        zoom: calc(100vw / 1024 * 0.95) !important;
+    }
+}
+
+/* Tablettes en paysage */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    body {
+        zoom: calc(100vw / 1024 * 0.9) !important;
+    }
+}
+
+/* Mode paysage mobile - Optimisation spéciale */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    html {
+        width: 1024px !important;
+        height: auto !important;
+    }
+    
+    body {
+        /* Utilise la hauteur disponible pour le calcul */
+        zoom: calc(100vh / 600) !important;
+        width: 1024px !important;
+    }
+    
+    /* Navigation encore plus compacte en paysage */
+    header {
+        padding: 0.5rem 1rem !important;
+    }
+    
+    header nav ul li a {
+        padding: 0.3rem 0.5rem !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Écrans haute densité (Retina, AMOLED) */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        /* Zoom optimisé pour les écrans haute densité */
+        zoom: calc(100vw / 1024 * 0.98) !important;
+        -webkit-font-smoothing: subpixel-antialiased !important;
+    }
+    
+    /* Amélioration de la netteté des bordures */
+    nav a,
+    .pedagogue-card,
+    .btn-primary,
+    .btn-secondary {
+        border-width: 1.5px !important;
+    }
+}
+
+/* Optimisation pour les grands écrans mobiles (iPhone Pro Max, etc.) */
+@media screen and (min-width: 400px) and (max-width: 480px) {
+    body {
+        zoom: calc(100vw / 1024 * 1.02) !important;
+    }
+}
+
+/* Animation fluide lors des changements d'orientation */
+@media screen and (max-width: 768px) {
+    html, body {
+        transition: zoom 0.3s ease !important;
+    }
+    
+    /* Prévention du reflow pendant les transitions */
+    * {
+        transition: transform 0.3s ease !important;
+    }
+}
+
+/* Optimisations accessibilité mobile */
+@media screen and (max-width: 768px) {
+    /* Focus visible amélioré */
+    nav a:focus,
+    .pedagogue-card:focus,
+    button:focus {
+        outline: 3px solid var(--accent-color) !important;
+        outline-offset: 2px !important;
+    }
+    
+    /* Amélioration du contraste pour les états hover/focus */
+    nav a:hover,
+    nav a:focus {
+        background: var(--accent-color) !important;
+        color: white !important;
+        transform: scale(1.05) !important;
+    }
+}
+
+/* Dark mode automatique sur mobile si supporté */
+@media screen and (max-width: 768px) and (prefers-color-scheme: dark) {
+    /* Amélioration du contraste en mode sombre */
+    header nav ul li a {
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: var(--text-color) !important;
+    }
+    
+    .pedagogue-card {
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+    }
+}
+
+/* Support pour les anciens navigateurs mobiles */
+@media screen and (max-width: 768px) {
+    /* Fallback pour browsers sans support calc() */
+    .fallback-zoom {
+        zoom: 0.375 !important; /* 384px / 1024px */
+    }
+    
+    /* Fallback pour transform si zoom non supporté */
+    .fallback-transform {
+        transform: scale(0.375) !important;
+        transform-origin: top left !important;
+    }
+}

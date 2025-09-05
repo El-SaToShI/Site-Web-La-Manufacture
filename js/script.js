@@ -100,3 +100,114 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card.parentElement, { attributes: true });
     });
 });
+
+// MENU HAMBURGER MODERNE - Inspiré ERACM
+document.addEventListener('DOMContentLoaded', function() {
+    // Créer le bouton hamburger et le menu mobile
+    createMobileMenu();
+    
+    // Gestion des événements
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    const mobileClose = document.querySelector('.mobile-nav-close');
+    
+    if (mobileToggle && mobileOverlay && mobileClose) {
+        mobileToggle.addEventListener('click', openMobileMenu);
+        mobileClose.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileOverlay) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Fermeture avec Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileOverlay.style.display === 'block') {
+                closeMobileMenu();
+            }
+        });
+    }
+});
+
+function createMobileMenu() {
+    const header = document.querySelector('header');
+    const nav = document.querySelector('header nav');
+    
+    if (!header || !nav) return;
+    
+    // Créer le bouton hamburger
+    const mobileToggle = document.createElement('button');
+    mobileToggle.className = 'mobile-menu-toggle';
+    mobileToggle.innerHTML = '☰';
+    mobileToggle.setAttribute('aria-label', 'Ouvrir le menu');
+    
+    // Ajouter le bouton après le h1
+    const h1 = header.querySelector('h1');
+    h1.insertAdjacentElement('afterend', mobileToggle);
+    
+    // Créer le menu overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+    
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-nav-menu';
+    
+    // Bouton fermer
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'mobile-nav-close';
+    closeBtn.innerHTML = '×';
+    closeBtn.setAttribute('aria-label', 'Fermer le menu');
+    
+    // Copier la navigation
+    const navClone = nav.cloneNode(true);
+    
+    // Assembler le menu
+    mobileMenu.appendChild(closeBtn);
+    mobileMenu.appendChild(navClone);
+    overlay.appendChild(mobileMenu);
+    document.body.appendChild(overlay);
+}
+
+function openMobileMenu() {
+    const overlay = document.querySelector('.mobile-nav-overlay');
+    const mobileMenu = document.querySelector('.mobile-nav-menu');
+    
+    if (overlay && mobileMenu) {
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Animation d'entrée
+        setTimeout(() => {
+            overlay.style.opacity = '1';
+            mobileMenu.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 10);
+        
+        // Focus sur le premier lien
+        const firstLink = mobileMenu.querySelector('a');
+        if (firstLink) {
+            setTimeout(() => firstLink.focus(), 300);
+        }
+    }
+}
+
+function closeMobileMenu() {
+    const overlay = document.querySelector('.mobile-nav-overlay');
+    const mobileMenu = document.querySelector('.mobile-nav-menu');
+    
+    if (overlay && mobileMenu) {
+        // Animation de sortie
+        overlay.style.opacity = '0';
+        mobileMenu.style.transform = 'translate(-50%, -50%) scale(0.9)';
+        
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+        
+        // Remettre le focus sur le bouton hamburger
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (toggle) {
+            toggle.focus();
+        }
+    }
+}
