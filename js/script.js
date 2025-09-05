@@ -41,21 +41,30 @@ function initMobileMenu() {
         document.body.style.overflow = 'hidden';
     });
     
-    // CORRECTION CROIX - Event listener sur body pour capturer tous les clics
-    document.body.addEventListener('click', function(e) {
-        // Si on clique sur le bouton de fermeture (croix)
+    // Attacher l'événement de fermeture directement à la croix
+    const closeButton = document.querySelector('.mobile-nav-close');
+    if (closeButton) {
+        closeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+        });
+    }
+    
+    // CORRECTION CROIX - Event listener amélioré pour la fermeture du menu
+    document.addEventListener('click', function(e) {
+        // Si on clique sur le bouton de fermeture (croix) ou sur son contenu
         if (e.target.classList.contains('mobile-nav-close') || 
-            e.target.textContent === '×') {
+            e.target.textContent === '×' ||
+            e.target.closest('.mobile-nav-close')) {
             e.preventDefault();
             e.stopPropagation();
             closeMobileMenu();
             return;
         }
-    });
-    
-    // Fermer en cliquant sur l'overlay (en dehors du menu)
-    mobileOverlay.addEventListener('click', function(e) {
-        if (e.target === mobileOverlay) {
+        
+        // Fermer en cliquant sur l'overlay (en dehors du menu)
+        if (e.target.classList.contains('mobile-nav-overlay')) {
             closeMobileMenu();
         }
     });
