@@ -758,6 +758,30 @@ footer::before {
     border: 2px solid #cc5500 !important; /* Bordure ORANGE pour contraste */
 }
 
+/* NOUVEAU: Bouton spécial pour pedagogue - AUCUN CONFLIT POSSIBLE */
+.btn-pedagogue-special {
+    background-color: transparent;
+    color: #fefefe;
+    border: 2px solid #fefefe;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+.btn-pedagogue-special:hover {
+    background-color: #fefefe;
+    color: #cc5500;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid #cc5500;
+    text-decoration: none;
+}
+
 /* Responsive amélioré avec gestion des conflits */
 @media (max-width: 1024px) {
     .pedagogues-grid {
