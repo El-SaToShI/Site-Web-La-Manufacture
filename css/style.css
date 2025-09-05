@@ -26,11 +26,11 @@ html {
     --light-grey: #2d2d2d; /* Gris sombre pour les cartes */
 }
 
-/* Bouton de bascule dark mode - DEBUG: visible sur tous les écrans */
+/* Bouton de bascule dark mode - En bas à gauche */
 .theme-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    bottom: 20px;
+    left: 20px;
     background: var(--accent-color);
     color: var(--main-bg-color);
     border: none;
@@ -42,7 +42,17 @@ html {
     transition: all 0.3s ease;
     z-index: 1001;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    display: block !important; /* Force l'affichage pour debug */
+}
+
+/* Adaptation mobile du bouton thème */
+@media (max-width: 768px) {
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        bottom: 15px;
+        left: 15px;
+    }
 }
 
 .theme-toggle:hover {
