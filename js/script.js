@@ -1,3 +1,31 @@
+/* 
+🎭 LA MANUFACTURE DE LAURENCE - MAIN SCRIPT 🎭
+Author: Sasha Romero
+Secret level: Check the console 👀
+*/
+
+// 🥚 Easter egg in the console
+console.log('%c🎭 Welcome to La Manufacture de Laurence! 🎭', 'color: #8b0000; font-size: 18px; font-weight: bold;');
+console.log('%cDeveloped with ❤️ by Sasha Romero', 'color: #b87333; font-style: italic;');
+console.log('%c🕵️ Pro tip: Try clicking on Laurence\'s photo 5 times in the About section...', 'color: #2c3e50; font-size: 12px;');
+
+// Secret konami code easter egg
+let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+let konamiIndex = 0;
+
+document.addEventListener('keydown', function(e) {
+    if (e.keyCode === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+            console.log('%c🎮 KONAMI CODE ACTIVATED! 🎮\n🎭 "All the world\'s a stage" - Shakespeare', 'color: #ff0080; font-size: 16px; font-weight: bold;');
+            alert('🎭 Easter Egg Unlocked! You found the Konami Code!\n"All the world\'s a stage" - Shakespeare');
+            konamiIndex = 0;
+        }
+    } else {
+        konamiIndex = 0;
+    }
+});
+
 // Note: Code preloader supprimé car non utilisé dans ce site
 
 // Gestion des animations fade-in - Version sécurisée

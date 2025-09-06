@@ -77,5 +77,40 @@
     </footer>
 
     <script src="../../js/script.js"></script>
+    
+    <!-- 🥚 Easter Egg Script - For the curious developers -->
+    <script>
+        // Shh... Secret Easter Egg 🐣
+        // Sasha's signature hidden in plain sight
+        let clickCount = 0;
+        const laurenceImg = document.querySelector('.title-image');
+        
+        if (laurenceImg) {
+            laurenceImg.addEventListener('click', function() {
+                clickCount++;
+                
+                // Little visual feedback for persistent clickers
+                if (clickCount === 3) {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => this.style.transform = '', 200);
+                }
+                
+                // The magic number 🎭
+                if (clickCount === 5) {
+                    // Reset for future discoveries
+                    clickCount = 0;
+                    this.style.transform = '';
+                    
+                    // Launch the chaos! 🚀
+                    window.open('../../pages/utils/sasha-signature.html', '_blank');
+                }
+                
+                // Reset after 3 seconds of inactivity
+                setTimeout(() => {
+                    if (clickCount < 5) clickCount = 0;
+                }, 3000);
+            });
+        }
+    </script>
 </body>
 </html>
