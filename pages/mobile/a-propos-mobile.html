@@ -40,7 +40,7 @@
 
     <section id="a-propos" class="hero-section">
         <h2>À Propos de La Manufacture</h2>
-        <img src="../../images/laurence.jpg" alt="Portrait de Laurence Voreux, fondatrice de La Manufacture" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 1rem 0;">
+        <img src="../../images/laurence.jpg" alt="Portrait de Laurence Voreux, fondatrice de La Manufacture" class="laurence-photo-mobile" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 1rem 0; transition: all 0.3s ease; cursor: pointer;">
         <p>Une école de théâtre unique fondée par Laurence Voreux, dédiée à révéler le potentiel artistique de chacun dans un environnement bienveillant et professionnel.</p>
         
         <div style="text-align: left; max-width: 90%; margin: 2rem auto;">
@@ -85,5 +85,78 @@
     </footer>
 
     <script src="../../js/script.js"></script>
+    
+    <!-- 🥚 Mobile Easter Egg Script - Sasha's mobile signature -->
+    <script>
+        // Mobile-optimized easter egg for touch devices 📱
+        let mobileClickCount = 0;
+        const laurenceImgMobile = document.querySelector('img[alt*="Laurence"]');
+        
+        if (laurenceImgMobile) {
+            // Add subtle cursor pointer for mobile hint
+            laurenceImgMobile.style.cursor = 'pointer';
+            
+            laurenceImgMobile.addEventListener('click', function() {
+                mobileClickCount++;
+                
+                // Mobile-friendly haptic feedback simulation
+                if (navigator.vibrate) {
+                    navigator.vibrate(50); // Short vibration on each click
+                }
+                
+                // Visual feedback for mobile users
+                if (mobileClickCount === 2) {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                    setTimeout(() => this.style.transform = '', 300);
+                }
+                
+                if (mobileClickCount === 4) {
+                    this.style.transform = 'scale(1.1) rotate(-2deg)';
+                    this.style.filter = 'hue-rotate(90deg)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.filter = '';
+                    }, 500);
+                }
+                
+                // The magic happens! 🎭
+                if (mobileClickCount === 5) {
+                    // Reset for future discoveries
+                    mobileClickCount = 0;
+                    this.style.transform = '';
+                    this.style.filter = '';
+                    
+                    // Mobile-specific vibration pattern for success
+                    if (navigator.vibrate) {
+                        navigator.vibrate([100, 50, 100, 50, 200]);
+                    }
+                    
+                    // Launch the mobile-optimized chaos! 🚀
+                    window.open('../../pages/utils/sasha-signature.html', '_blank');
+                }
+                
+                // Mobile timeout (shorter for mobile users)
+                setTimeout(() => {
+                    if (mobileClickCount < 5) mobileClickCount = 0;
+                }, 2500);
+            });
+            
+            // Double-tap detection as alternative trigger (mobile UX)
+            let lastTap = 0;
+            laurenceImgMobile.addEventListener('touchend', function(e) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                
+                if (tapLength < 500 && tapLength > 0) {
+                    // Double tap detected - add subtle hint
+                    console.log('🎭 Mobile hint: Try tapping 5 times! Current: ' + mobileClickCount + '/5');
+                }
+                lastTap = currentTime;
+            });
+        }
+        
+        // Mobile-specific easter egg message
+        console.log('📱 Mobile version loaded! Sasha was here too 🚀');
+    </script>
 </body>
 </html>

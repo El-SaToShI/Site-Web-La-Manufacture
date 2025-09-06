@@ -10,12 +10,16 @@ console.log('%cDeveloped with ❤️ by Sasha Romero', 'color: #b87333; font-sty
 console.log('%c🕵️ Pro tip: Try clicking on Laurence\'s photo 5 times in the About section...', 'color: #2c3e50; font-size: 12px;');
 
 // Secret konami code easter egg
-let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA']; // ↑↑↓↓←→←→BA
 let konamiIndex = 0;
 
 document.addEventListener('keydown', function(e) {
-    if (e.keyCode === konamiCode[konamiIndex]) {
+    console.log('Key pressed:', e.code, 'Expected:', konamiCode[konamiIndex]); // Debug log
+    
+    if (e.code === konamiCode[konamiIndex]) {
         konamiIndex++;
+        console.log('Konami progress:', konamiIndex, '/', konamiCode.length); // Debug log
+        
         if (konamiIndex === konamiCode.length) {
             console.log('%c🎮 KONAMI CODE ACTIVATED! 🎮\n🎭 "All the world\'s a stage" - Shakespeare', 'color: #ff0080; font-size: 16px; font-weight: bold;');
             alert('🎭 Easter Egg Unlocked! You found the Konami Code!\n"All the world\'s a stage" - Shakespeare');
