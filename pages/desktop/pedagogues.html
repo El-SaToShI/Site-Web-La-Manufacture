@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/desktop-mobile-scale.css">
     <script src="../../js/auto-detect.js"></script>
-    <script src="../../js/content-manager.js"></script>
 </head>
 <body>
     <header>
@@ -37,9 +36,6 @@
                 <p><em>Cliquez sur une carte pour découvrir le parcours détaillé de chaque pédagogue.</em></p>
                 
                 <div class="pedagogues-grid" id="pedagogues-list">
-                    <!-- Le contenu sera généré dynamiquement par content-manager.js -->
-                    <!-- Fallback content (sera remplacé) -->
-                    
                     <!-- Laurence Voreux - Fondatrice -->
                     <div class="pedagogue-expandable">
                         <div class="pedagogue-card clickable" onclick="togglePedagogue('laurence')">
@@ -105,54 +101,6 @@
                             <div class="expand-icon">
                                 <span>+</span>
                             </div>
-                        </div>
-                                
-                                <div class="parcours-section">
-                                    <h6>Parcours</h6>
-                                    <div class="timeline-compact">
-                                        <div class="timeline-item">
-                                            <strong>2020 - Aujourd'hui :</strong> Fondatrice de La Manufacture de Laurence
-                                        </div>
-                                        <div class="timeline-item">
-                                            <strong>1995 - 2020 :</strong> 25 ans d'enseignement en institutions théâtrales
-                                        </div>
-                                        <div class="timeline-item">
-                                            <strong>Formation :</strong> École Nationale Supérieure d'Art Dramatique
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="specialites-section">
-                                    <h6>Spécialités</h6>
-                                    <div class="specialites-grid">
-                                        <span class="specialite-tag">Direction d'Acteur</span>
-                                        <span class="specialite-tag">Préparation Concours</span>
-                                        <span class="specialite-tag">Technique Corporelle</span>
-                                        <span class="specialite-tag">Improvisation</span>
-                                        <span class="specialite-tag">Travail du Texte</span>
-                                        <span class="specialite-tag">Mise en Scène</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Adrien Varsalona -->
-                    <div class="pedagogue-expandable">
-                        <div class="pedagogue-card clickable" onclick="togglePedagogue('adrien')">
-                            <img src="../../images/adrien.jpg" alt="Adrien Varsalona" class="pedagogue-photo">
-                            <h5>Adrien Varsalona</h5>
-                            <p class="pedagogue-title">Drag (Cabaret) • Clown • Chant</p>
-                            <p class="pedagogue-excerpt">Diplômé IAD, acteur et metteur en scène spécialisé dans les arts de la performance.</p>
-                            <div class="expand-icon">
-                                <span>+</span>
-                            </div>
-                        </div>
-                        
-                        <div class="pedagogue-details" id="adrien-details">
-                            <div class="details-content">
-                                <button class="close-details" onclick="togglePedagogue('adrien')" title="Fermer">×</button>
-                                
                         </div>
                         
                         <div class="pedagogue-details" id="adrien-details">

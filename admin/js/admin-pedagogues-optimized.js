@@ -72,7 +72,8 @@ class PedagogueManager {
             this.pedagogues = response.data || this.getDefaultPedagogues();
             
         } catch (error) {
-            console.warn('API non disponible, basculement en mode local:', error);
+            // Masquer l'erreur API en production
+            // console.warn('API non disponible, basculement en mode local:', error);
             this.fallbackToLocalMode();
         }
     }

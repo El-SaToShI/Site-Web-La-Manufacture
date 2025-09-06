@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Simple - La Manufacture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/simple-admin.css">
+    <link rel="stylesheet" href="css/help-system.css">
+</head>
+<body>
+    <div class="simple-admin">
+        <!-- En-tête Simple -->
+        <header class="simple-header">
+            <div>
+                <h1>
+                    <i class="fas fa-theater-masks"></i>
+                    Interface Simple
+                </h1>
+                <p class="welcome-text">Bonjour <span id="userName">Laurence</span> ! Que voulez-vous faire aujourd'hui ?</p>
+            </div>
+            <div class="auto-save-indicator" id="autoSaveStatus">
+                <i class="fas fa-check-circle"></i>
+                <span>Tout est sauvegardé</span>
+            </div>
+        </header>
+
+        <!-- Dashboard Principal -->
+        <div id="mainDashboard" class="dashboard-simple">
+            <!-- Modifier les Cours -->
+            <div class="action-card" data-action="courses">
+                <div class="action-card-header">
+                    <i class="fas fa-graduation-cap action-card-icon"></i>
+                    <h3 class="action-card-title">Mes Cours</h3>
+                    <p class="action-card-subtitle">Modifier descriptions et informations</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Modifiez facilement les descriptions de vos cours, tarifs et horaires.
+                        Interface simple comme un traitement de texte.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-edit"></i> Modifier mes cours
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gérer les Photos -->
+            <div class="action-card" data-action="photos">
+                <div class="action-card-header green">
+                    <i class="fas fa-camera action-card-icon"></i>
+                    <h3 class="action-card-title">Mes Photos</h3>
+                    <p class="action-card-subtitle">Ajouter et organiser les images</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Ajoutez des photos en les glissant dans la zone. 
+                        Organisez votre galerie en quelques clics.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-upload"></i> Gérer mes photos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modifier les Pédagogues -->
+            <div class="action-card" data-action="pedagogues">
+                <div class="action-card-header orange">
+                    <i class="fas fa-users action-card-icon"></i>
+                    <h3 class="action-card-title">L'Équipe</h3>
+                    <p class="action-card-subtitle">Modifier les profils des pédagogues</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Mettez à jour les présentations de l'équipe, 
+                        ajoutez de nouvelles photos et descriptions.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-user-edit"></i> Modifier l'équipe
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gérer l'Agenda -->
+            <div class="action-card" data-action="agenda">
+                <div class="action-card-header red">
+                    <i class="fas fa-calendar-plus action-card-icon"></i>
+                    <h3 class="action-card-title">Mon Agenda</h3>
+                    <p class="action-card-subtitle">Ajouter spectacles et événements</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Ajoutez facilement vos spectacles et événements.
+                        Formulaire guidé étape par étape.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-plus"></i> Gérer l'agenda
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modifier la Page d'Accueil -->
+            <div class="action-card" data-action="homepage">
+                <div class="action-card-header">
+                    <i class="fas fa-home action-card-icon"></i>
+                    <h3 class="action-card-title">Page d'Accueil</h3>
+                    <p class="action-card-subtitle">Modifier le message principal</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Changez le texte de bienvenue et les informations 
+                        principales de votre site.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-home"></i> Modifier l'accueil
+                    </button>
+                </div>
+            </div>
+
+            <!-- Informations de Contact -->
+            <!-- Apparence du Site -->
+            <div class="action-card" data-action="design">
+                <div class="action-card-header">
+                    <i class="fas fa-palette action-card-icon"></i>
+                    <h3 class="action-card-title">Apparence</h3>
+                    <p class="action-card-subtitle">Personnaliser couleurs, polices, logo</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Changez facilement les couleurs, la police et le logo du site.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-paint-brush"></i> Modifier l'apparence
+                    </button>
+                </div>
+            </div>
+
+            <!-- Paramètres du Site -->
+            <div class="action-card" data-action="settings">
+                <div class="action-card-header">
+                    <i class="fas fa-cog action-card-icon"></i>
+                    <h3 class="action-card-title">Paramètres</h3>
+                    <p class="action-card-subtitle">Options avancées et sécurité</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Gérez les options du site, la sauvegarde et la sécurité.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-tools"></i> Modifier les paramètres
+                    </button>
+                </div>
+            </div>
+            <div class="action-card" data-action="contact">
+                <div class="action-card-header green">
+                    <i class="fas fa-address-book action-card-icon"></i>
+                    <h3 class="action-card-title">Contact</h3>
+                    <p class="action-card-subtitle">Modifier adresse et coordonnées</p>
+                </div>
+                <div class="action-card-content">
+                    <p class="action-card-description">
+                        Mettez à jour votre adresse, téléphone, 
+                        email et horaires d'ouverture.
+                    </p>
+                    <button class="action-card-button">
+                        <i class="fas fa-phone"></i> Modifier le contact
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Cours -->
+        <section id="courses-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Modifier mes Cours
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="guided-form">
+                    <!-- Sélection du cours -->
+                    <div class="form-step active" id="course-selection">
+                        <h3>Étape 1 : Choisissez le cours à modifier</h3>
+                        <div class="step-indicator">
+                            <div class="step-dot active">1</div>
+                            <div class="step-dot">2</div>
+                            <div class="step-dot">3</div>
+                        </div>
+                        
+                        <div class="dashboard-simple">
+                            <div class="action-card" data-course="theatre-adultes">
+                                <div class="action-card-header">
+                                    <i class="fas fa-theater-masks action-card-icon"></i>
+                                    <h4 class="action-card-title">Théâtre Adultes</h4>
+                                </div>
+                                <div class="action-card-content">
+                                    <p>Cours de théâtre pour adultes, tous niveaux</p>
+                                    <button class="action-card-button" onclick="editCourse('theatre-adultes')">
+                                        Modifier ce cours
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="action-card" data-course="theatre-enfants">
+                                <div class="action-card-header green">
+                                    <i class="fas fa-child action-card-icon"></i>
+                                    <h4 class="action-card-title">Théâtre Enfants</h4>
+                                </div>
+                                <div class="action-card-content">
+                                    <p>Cours de théâtre pour enfants 6-12 ans</p>
+                                    <button class="action-card-button" onclick="editCourse('theatre-enfants')">
+                                        Modifier ce cours
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="action-card" data-course="theatre-ados">
+                                <div class="action-card-header orange">
+                                    <i class="fas fa-user-friends action-card-icon"></i>
+                                    <h4 class="action-card-title">Théâtre Ados</h4>
+                                </div>
+                                <div class="action-card-content">
+                                    <p>Cours de théâtre pour adolescents 13-17 ans</p>
+                                    <button class="action-card-button" onclick="editCourse('theatre-ados')">
+                                        Modifier ce cours
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Édition du cours -->
+                    <div class="form-step" id="course-editing">
+                        <h3>Étape 2 : Modifiez les informations</h3>
+                        <div class="step-indicator">
+                            <div class="step-dot completed">1</div>
+                            <div class="step-dot active">2</div>
+                            <div class="step-dot">3</div>
+                        </div>
+
+                        <div class="form-group-simple">
+                            <label class="form-label-simple">Titre du cours</label>
+                            <div class="form-help">Le nom qui apparaîtra sur votre site</div>
+                            <input type="text" class="form-input-simple" id="courseTitle" placeholder="Ex: Théâtre Adultes">
+                        </div>
+
+                        <div class="form-group-simple">
+                            <label class="form-label-simple">Description courte</label>
+                            <div class="form-help">Une phrase qui résume votre cours</div>
+                            <input type="text" class="form-input-simple" id="courseShort" placeholder="Ex: Découvrez le plaisir du théâtre dans une ambiance conviviale">
+                        </div>
+
+                        <div class="form-group-simple">
+                            <label class="form-label-simple">Description détaillée</label>
+                            <div class="form-help">Décrivez votre cours comme vous le feriez à un ami</div>
+                            <div class="wysiwyg-container">
+                                <div class="wysiwyg-toolbar">
+                                    <button class="wysiwyg-btn" data-command="bold">
+                                        <i class="fas fa-bold"></i> Gras
+                                    </button>
+                                    <button class="wysiwyg-btn" data-command="italic">
+                                        <i class="fas fa-italic"></i> Italique
+                                    </button>
+                                    <button class="wysiwyg-btn" data-command="underline">
+                                        <i class="fas fa-underline"></i> Souligné
+                                    </button>
+                                    <button class="wysiwyg-btn" data-command="insertUnorderedList">
+                                        <i class="fas fa-list-ul"></i> Liste
+                                    </button>
+                                    <button class="wysiwyg-btn" data-command="insertOrderedList">
+                                        <i class="fas fa-list-ol"></i> Numéros
+                                    </button>
+                                </div>
+                                <div class="wysiwyg-editor" id="courseDescription" contenteditable="true">
+                                    Cliquez ici pour écrire la description de votre cours...
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-simple">
+                            <label class="form-label-simple">Tarif</label>
+                            <div class="form-help">Prix à afficher (vous pouvez ajouter des détails)</div>
+                            <input type="text" class="form-input-simple" id="coursePrice" placeholder="Ex: 25€ par séance ou 200€ l'année">
+                        </div>
+
+                        <div class="form-group-simple">
+                            <label class="form-label-simple">Horaires</label>
+                            <div class="form-help">Quand ont lieu vos cours ?</div>
+                            <input type="text" class="form-input-simple" id="courseSchedule" placeholder="Ex: Mardis de 19h à 21h">
+                        </div>
+
+                        <div class="simple-nav">
+                            <button class="nav-button secondary" onclick="showCourseSelection()">
+                                <i class="fas fa-arrow-left"></i> Retour
+                            </button>
+                            <button class="nav-button" onclick="previewCourse()">
+                                Aperçu <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Prévisualisation -->
+                    <div class="form-step" id="course-preview">
+                        <h3>Étape 3 : Vérifiez le résultat</h3>
+                        <div class="step-indicator">
+                            <div class="step-dot completed">1</div>
+                            <div class="step-dot completed">2</div>
+                            <div class="step-dot active">3</div>
+                        </div>
+
+                        <div class="feedback-message success">
+                            <i class="fas fa-eye"></i>
+                            Voici comment votre cours apparaîtra sur le site
+                        </div>
+
+                        <div id="coursePreviewContent" class="action-card">
+                            <!-- Le contenu sera généré par JavaScript -->
+                        </div>
+
+                        <div class="simple-nav">
+                            <button class="nav-button secondary" onclick="showCourseEditing()">
+                                <i class="fas fa-edit"></i> Modifier
+                            </button>
+                            <button class="nav-button" onclick="saveCourse()">
+                                <i class="fas fa-save"></i> Sauvegarder
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Photos -->
+        <section id="photos-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-camera"></i>
+                    Gérer mes Photos
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="photo-manager">
+                    <!-- Zone d'upload -->
+                    <div class="upload-zone" id="uploadZone">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <div class="upload-text">Glissez vos photos ici</div>
+                        <div class="upload-help">ou cliquez pour choisir des fichiers</div>
+                        <input type="file" id="photoInput" multiple accept="image/*" style="display: none;">
+                    </div>
+
+                    <!-- Galerie -->
+                    <div class="photo-gallery">
+                        <h4>Mes Photos</h4>
+                        <div class="gallery-grid" id="photoGallery">
+                            <!-- Les photos seront ajoutées ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Pédagogues -->
+        <section id="pedagogues-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-users"></i>
+                    Modifier l'Équipe
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="dashboard-simple">
+                    <div class="action-card" data-pedagogue="laurence">
+                        <div class="action-card-header">
+                            <i class="fas fa-user action-card-icon"></i>
+                            <h4 class="action-card-title">Laurence</h4>
+                        </div>
+                        <div class="action-card-content">
+                            <p>Directrice et fondatrice</p>
+                            <button class="action-card-button" onclick="editPedagogue('laurence')">
+                                Modifier le profil
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-card" data-pedagogue="adrien">
+                        <div class="action-card-header green">
+                            <i class="fas fa-user action-card-icon"></i>
+                            <h4 class="action-card-title">Adrien</h4>
+                        </div>
+                        <div class="action-card-content">
+                            <p>Comédien et metteur en scène</p>
+                            <button class="action-card-button" onclick="editPedagogue('adrien')">
+                                Modifier le profil
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-card" data-pedagogue="ilan">
+                        <div class="action-card-header orange">
+                            <i class="fas fa-user action-card-icon"></i>
+                            <h4 class="action-card-title">Ilan</h4>
+                        </div>
+                        <div class="action-card-content">
+                            <p>Comédien spécialisé jeune public</p>
+                            <button class="action-card-button" onclick="editPedagogue('ilan')">
+                                Modifier le profil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Agenda -->
+        <section id="agenda-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-calendar-plus"></i>
+                    Gérer l'Agenda
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="guided-form">
+                    <h3>Ajouter un nouvel événement</h3>
+                    
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Type d'événement</label>
+                        <div class="form-help">Qu'est-ce que vous organisez ?</div>
+                        <select class="form-input-simple" id="eventType">
+                            <option value="">Choisissez le type d'événement</option>
+                            <option value="spectacle">Spectacle</option>
+                            <option value="atelier">Atelier découverte</option>
+                            <option value="stage">Stage intensif</option>
+                            <option value="portes-ouvertes">Portes ouvertes</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Titre de l'événement</label>
+                        <div class="form-help">Le nom de votre spectacle ou événement</div>
+                        <input type="text" class="form-input-simple" id="eventTitle" placeholder="Ex: Les Fourberies de Scapin">
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Date et heure</label>
+                        <div class="form-help">Quand aura lieu votre événement ?</div>
+                        <input type="datetime-local" class="form-input-simple" id="eventDate">
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Lieu</label>
+                        <div class="form-help">Où se déroule l'événement ?</div>
+                        <input type="text" class="form-input-simple" id="eventLocation" placeholder="Ex: Théâtre de La Manufacture">
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Description</label>
+                        <div class="form-help">Présentez votre événement</div>
+                        <textarea class="form-input-simple form-textarea-simple" id="eventDescription" placeholder="Décrivez votre événement..."></textarea>
+                    </div>
+
+                    <div class="simple-nav">
+                        <button class="nav-button" onclick="saveEvent()">
+                            <i class="fas fa-save"></i> Ajouter l'événement
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Page d'Accueil -->
+        <section id="homepage-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-home"></i>
+                    Modifier la Page d'Accueil
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="guided-form">
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Message de bienvenue</label>
+                        <div class="form-help">Le premier texte que verront vos visiteurs</div>
+                        <div class="wysiwyg-container">
+                            <div class="wysiwyg-toolbar">
+                                <button class="wysiwyg-btn" data-command="bold">
+                                    <i class="fas fa-bold"></i> Gras
+                                </button>
+                                <button class="wysiwyg-btn" data-command="italic">
+                                    <i class="fas fa-italic"></i> Italique
+                                </button>
+                            </div>
+                            <div class="wysiwyg-editor" id="welcomeMessage" contenteditable="true">
+                                Bienvenue à La Manufacture de Laurence...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="simple-nav">
+                        <button class="nav-button" onclick="saveHomepage()">
+                            <i class="fas fa-save"></i> Sauvegarder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <!-- Section Apparence -->
+        <section id="design-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-palette"></i>
+                    Modifier l'Apparence du Site
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="guided-form">
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Couleur principale</label>
+                        <input type="color" class="form-input-simple" id="sitePrimaryColor" value="#6366f1">
+                    </div>
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Police du site</label>
+                        <select class="form-input-simple" id="siteFont">
+                            <option value="Inter">Inter</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                        </select>
+                    </div>
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Logo du site</label>
+                        <input type="file" class="form-input-simple" id="siteLogo" accept="image/*">
+                    </div>
+                    <div class="simple-nav">
+                        <button class="nav-button" onclick="saveDesign()">
+                            <i class="fas fa-save"></i> Sauvegarder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Paramètres -->
+        <section id="settings-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-cog"></i>
+                    Paramètres du Site
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="guided-form">
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Sauvegarde automatique</label>
+                        <select class="form-input-simple" id="autoSaveSetting">
+                            <option value="on">Activée</option>
+                            <option value="off">Désactivée</option>
+                        </select>
+                    </div>
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Sécurité du mot de passe</label>
+                        <select class="form-input-simple" id="passwordSecurity">
+                            <option value="strong">Mot de passe fort</option>
+                            <option value="simple">Mot de passe simple</option>
+                        </select>
+                    </div>
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Notifications email</label>
+                        <select class="form-input-simple" id="emailNotifications">
+                            <option value="on">Activées</option>
+                            <option value="off">Désactivées</option>
+                        </select>
+                    </div>
+                    <div class="simple-nav">
+                        <button class="nav-button" onclick="saveSettings()">
+                            <i class="fas fa-save"></i> Sauvegarder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact-section" class="work-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-address-book"></i>
+                    Modifier les Informations de Contact
+                </h2>
+                <button class="back-button" onclick="showDashboard()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="guided-form">
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Adresse</label>
+                        <div class="form-help">Où se trouve votre théâtre ?</div>
+                        <textarea class="form-input-simple" id="contactAddress" placeholder="123 Rue du Théâtre&#10;75001 Paris"></textarea>
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Téléphone</label>
+                        <div class="form-help">Numéro pour vous contacter</div>
+                        <input type="tel" class="form-input-simple" id="contactPhone" placeholder="01 23 45 67 89">
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Email</label>
+                        <div class="form-help">Adresse email principale</div>
+                        <input type="email" class="form-input-simple" id="contactEmail" placeholder="contact@lamanufacture.fr">
+                    </div>
+
+                    <div class="form-group-simple">
+                        <label class="form-label-simple">Horaires d'ouverture</label>
+                        <div class="form-help">Quand pouvez-vous recevoir du public ?</div>
+                        <textarea class="form-input-simple" id="contactHours" placeholder="Lundi - Vendredi : 10h - 18h&#10;Samedi : 10h - 14h&#10;Dimanche : Fermé"></textarea>
+                    </div>
+
+                    <div class="simple-nav">
+                        <button class="nav-button" onclick="saveContact()">
+                            <i class="fas fa-save"></i> Sauvegarder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/simple-admin.js"></script>
+    <script src="js/visual-manager.js"></script>
+    <script src="js/help-system.js"></script>
+</body>
+</html>

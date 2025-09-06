@@ -4,9 +4,10 @@
 
 class AdminAuth {
     constructor() {
-        // Utilisation de la configuration centralisée
-        this.config = ADMIN_CONFIG?.auth || {};
-        this.users = this.config.users || {};
+    // Utilisation de la configuration centralisée avec fallback
+    this.config = ADMIN_CONFIG?.auth || {};
+    this.users = this.config.users || this.getFallbackUsers();
+        
         this.currentUser = null;
         this.sessionTimeout = 30 * 60 * 1000; // 30 minutes
         this.sessionTimer = null;
@@ -18,6 +19,17 @@ class AdminAuth {
         this.isLockedOut = false;
         
         this.init();
+    }
+    
+    getFallbackUsers() {
+        // Utilisateurs de secours si la configuration n'est pas chargée
+        return {
+            'laurence': {
+                password: '1234',
+                role: 'admin',
+                name: 'Laurence Voreux'
+            }
+        };
     }
     
     init() {
@@ -66,7 +78,8 @@ class AdminAuth {
     }
     
     authenticate(username, password) {
-        return this.users[username] && this.users[username] === password;
+        const user = this.users[username];
+        return user && user.password === password;
     }
     
     loginSuccess(username) {

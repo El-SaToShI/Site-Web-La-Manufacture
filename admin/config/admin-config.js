@@ -18,7 +18,7 @@ const ADMIN_CONFIG = {
         // ⚠️ CHANGEZ CES IDENTIFIANTS AVANT LE PREMIER DÉPLOIEMENT !
         users: {
             'laurence': {
-                password: 'VotreMotDePasseFort2024!', // ⚠️ À CHANGER ABSOLUMENT
+                password: '1234',
                 role: 'admin',
                 name: 'Laurence Voreux'
             }

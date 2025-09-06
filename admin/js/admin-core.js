@@ -260,7 +260,7 @@ class AdminCore {
         
         // Initialiser le gestionnaire d'agenda (à créer)
         // this.managers.agenda = new AgendaManager();
-        console.log('Section Agenda chargée (gestionnaire à implémenter)');
+    // ...existing code...
     }
     
     loadMediaSection() {
@@ -290,7 +290,7 @@ class AdminCore {
             `;
         }
         
-        console.log('Section Médias chargée (gestionnaire à implémenter)');
+    // ...existing code...
     }
     
     loadPedagoguesSection() {
@@ -304,7 +304,7 @@ class AdminCore {
             }
         }
         
-        console.log('Section Pédagogues chargée avec gestionnaire existant');
+    // ...existing code...
     }
     
     loadDesignSection() {
@@ -327,7 +327,7 @@ class AdminCore {
             `;
         }
         
-        console.log('Section Design chargée (gestionnaire à implémenter)');
+    // ...existing code...
     }
     
     loadSettingsSection() {
@@ -364,7 +364,7 @@ class AdminCore {
             `;
         }
         
-        console.log('Section Paramètres chargée');
+    // ...existing code...
     }
     
     saveCurrentSection() {
