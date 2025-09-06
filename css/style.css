@@ -472,6 +472,7 @@ footer {
     padding: 4rem 2rem;
     background: var(--text-color);
     color: var(--main-bg-color);
+    position: relative;
 }
 
 .footer-content {
@@ -2491,5 +2492,36 @@ footer::before {
     .calendar-widget,
     .events-list {
         padding: 1rem;
+    }
+}
+
+/* ========================================
+   ACCÈS PÉDAGOGUES FOOTER
+   ======================================== */
+.admin-access-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.admin-link-footer {
+    color: var(--secondary-color);
+    font-size: 0.75rem;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    font-weight: 400;
+}
+
+.admin-link-footer:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Cacher sur mobile pour éviter l'encombrement */
+@media (max-width: 768px) {
+    .admin-access-footer {
+        display: none;
     }
 }
