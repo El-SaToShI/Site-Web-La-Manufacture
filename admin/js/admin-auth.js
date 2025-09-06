@@ -4,14 +4,18 @@
 
 class AdminAuth {
     constructor() {
-        this.users = {
-            'laurence': 'manufacture2025',
-            'admin': 'admin2025',
-            'sasha': 'dev2025'
-        };
+        // Utilisation de la configuration centralisée
+        this.config = ADMIN_CONFIG?.auth || {};
+        this.users = this.config.users || {};
         this.currentUser = null;
         this.sessionTimeout = 30 * 60 * 1000; // 30 minutes
         this.sessionTimer = null;
+        
+        // Sécurité renforcée
+        this.loginAttempts = 0;
+        this.maxAttempts = this.config.maxLoginAttempts || 3;
+        this.lockoutTime = this.config.lockoutDuration || 15 * 60 * 1000;
+        this.isLockedOut = false;
         
         this.init();
     }

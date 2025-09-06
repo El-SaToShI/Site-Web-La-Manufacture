@@ -15,18 +15,19 @@ const ADMIN_CONFIG = {
     auth: {
         sessionKey: 'admin_token',
         tokenExpiry: 24 * 60 * 60 * 1000, // 24 heures
+        // ⚠️ CHANGEZ CES IDENTIFIANTS AVANT LE PREMIER DÉPLOIEMENT !
         users: {
             'laurence': {
-                password: 'manufacture2024',
+                password: 'VotreMotDePasseFort2024!', // ⚠️ À CHANGER ABSOLUMENT
                 role: 'admin',
-                name: 'Laurence'
-            },
-            'admin': {
-                password: 'admin123',
-                role: 'admin', 
-                name: 'Administrateur'
+                name: 'Laurence Voreux'
             }
-        }
+            // Suppression du compte admin par défaut pour sécurité
+        },
+        // Sécurité renforcée pour GitHub Pages
+        maxLoginAttempts: 3,
+        lockoutDuration: 15 * 60 * 1000, // 15 minutes
+        requireStrongPassword: true
     },
     
     // Interface Settings
