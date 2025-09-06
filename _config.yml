@@ -1,0 +1,59 @@
+# 🌟 LA MANUFACTURE DE LAURENCE
+# Configuration GitHub Pages
+
+# URL de base (sera automatiquement définie par GitHub)
+baseurl: ""
+url: "https://el-satoshi.github.io"
+
+# Informations du site
+title: "La Manufacture de Laurence"
+description: "École de musique innovante - Enseignement personnalisé et passionné"
+author: "Laurence Voreux"
+
+# Configuration Jekyll
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Fichiers à exclure
+exclude:
+  - admin/
+  - _BACKUPS/
+  - README.md
+  - .gitignore
+  - node_modules/
+  - package*.json
+
+# Fichiers à inclure
+include:
+  - .htaccess
+  - _headers
+  - _redirects
+
+# Configuration des pages
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Plugins GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Configuration SEO
+lang: fr
+locale: fr_FR
+
+# Configuration PWA
+manifest: "./manifest.json"
+
+# Headers de sécurité pour GitHub Pages
+webrick:
+  headers:
+    X-Content-Type-Options: "nosniff"
+    X-Frame-Options: "DENY"
+    X-XSS-Protection: "1; mode=block"

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/desktop-mobile-scale.css">
     <script src="../../js/auto-detect.js"></script>
+    <script src="../../js/content-manager.js"></script>
 </head>
 <body>
     <header>
@@ -35,18 +36,14 @@
                 <p>La Manufacture de Laurence s'appuie sur une équipe pluridisciplinaire d'artistes et de professionnel.le.s passionné.e.s.</p>
                 <p><em>Cliquez sur une carte pour découvrir le parcours détaillé de chaque pédagogue.</em></p>
                 
-                <div class="pedagogues-grid">
-                    <!-- Laurence Voreux -->
-                    <div class="pedagogue-expandable">
-                        <div class="pedagogue-card clickable" onclick="togglePedagogue('laurence')">
-                            <img src="../../images/laurence.jpg" alt="Laurence Voreux" class="pedagogue-photo">
-                            <h5>Laurence Voreux</h5>
-                            <p class="pedagogue-title">Fondatrice et Directrice Pédagogique</p>
-                            <p class="pedagogue-excerpt">30 ans d'expérience dans l'enseignement théâtral et l'accompagnement artistique.</p>
-                            <div class="expand-icon">
-                                <span>+</span>
-                            </div>
-                        </div>
+                <div class="pedagogues-grid" id="pedagogues-list">
+                    <!-- Le contenu sera généré dynamiquement par content-manager.js -->
+                    <!-- Fallback content (sera remplacé) -->
+                    <div class="pedagogue-card loading">
+                        <div class="loading-skeleton"></div>
+                        <p>Chargement des profils...</p>
+                    </div>
+                </div>
                         
                         <div class="pedagogue-details" id="laurence-details">
                             <div class="details-content">
@@ -193,11 +190,6 @@
         </section>
     </main>
 
-    <!-- Accès pédagogues en position fixe -->
-    <div class="admin-access-footer">
-        <a href="admin-agenda.html" class="admin-link-footer">🔧 Accès Pédagogues</a>
-    </div>
-
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -205,6 +197,9 @@
                 <a href="mailto:lamanufacturedelaurence@gmail.com" title="Email">Email</a>
             </div>
             <p>&copy; 2025 La Manufacture de Laurence. Tous droits réservés.</p>
+            <p class="admin-access-link">
+                <a href="../../admin/index.html" style="color: inherit; text-decoration: underline;">Admin Access</a>
+            </p>
         </div>
     </footer>
 

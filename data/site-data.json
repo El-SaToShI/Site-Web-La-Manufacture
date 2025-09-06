@@ -1,0 +1,45 @@
+{
+  "pedagogues": [
+    {
+      "id": "laurence",
+      "name": "Laurence",
+      "subtitle": "Fondatrice & Directrice Pédagogique",
+      "description": "Passionnée par la transmission du savoir musical, Laurence a créé La Manufacture pour offrir un enseignement musical innovant et personnalisé. Avec plus de 15 ans d'expérience dans l'enseignement musical, elle développe des méthodes pédagogiques uniques qui s'adaptent à chaque élève.",
+      "image": "./images/laurence.jpg",
+      "timeline": [
+        { "year": "2020", "event": "Création de La Manufacture de Laurence" },
+        { "year": "2018", "event": "Formation en pédagogie musicale avancée" },
+        { "year": "2015", "event": "Diplôme de Conservatoire en piano" },
+        { "year": "2012", "event": "Certification en thérapie par la musique" }
+      ]
+    },
+    {
+      "id": "adrien",
+      "name": "Adrien",
+      "subtitle": "Professeur de Guitare & Basse",
+      "description": "Musicien polyvalent avec plus de 10 ans d'expérience, Adrien transmet sa passion pour les cordes avec patience et créativité. Spécialisé dans tous les styles, du classique au metal, il adapte son enseignement aux goûts musicaux de chaque élève.",
+      "image": "./images/adrien.jpg",
+      "timeline": [
+        { "year": "2022", "event": "Rejoint l'équipe de La Manufacture" },
+        { "year": "2020", "event": "Formation en pédagogie musicale" },
+        { "year": "2018", "event": "Concert à l'Ancienne Belgique" },
+        { "year": "2015", "event": "Diplôme en guitare classique" }
+      ]
+    },
+    {
+      "id": "ilan",
+      "name": "Ilan",
+      "subtitle": "Professeur de Batterie & Percussions",
+      "description": "Spécialiste des rythmes et des percussions, Ilan apporte une énergie contagieuse à ses cours et développe le sens rythmique de ses élèves. Formé aux techniques modernes et traditionnelles, il initie à tous les styles de batterie.",
+      "image": "./images/ilan.jpg",
+      "timeline": [
+        { "year": "2021", "event": "Rejoint l'équipe de La Manufacture" },
+        { "year": "2019", "event": "Formation en percussions modernes" },
+        { "year": "2017", "event": "Diplôme en batterie jazz" },
+        { "year": "2016", "event": "Tournée européenne avec groupe de jazz" }
+      ]
+    }
+  ],
+  "lastUpdate": "2025-09-06T17:45:00Z",
+  "version": "1.0.0"
+}

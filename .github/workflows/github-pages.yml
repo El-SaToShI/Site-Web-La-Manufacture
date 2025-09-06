@@ -1,0 +1,66 @@
+name: 🚀 Déploiement GitHub Pages
+
+on:
+  # Déclenchement sur push vers main
+  push:
+    branches: [ main ]
+  
+  # Déclenchement manuel
+  workflow_dispatch:
+
+# Permissions pour GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Éviter les déploiements concurrents
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Job de build et déploiement
+  deploy:
+    name: 🌟 Build & Deploy
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    # 1. Checkout du code
+    - name: 📁 Checkout Repository
+      uses: actions/checkout@v4
+    
+    # 2. Configuration des pages
+    - name: ⚙️ Setup Pages
+      uses: actions/configure-pages@v4
+    
+    # 3. Build du site (si nécessaire)
+    - name: 🔨 Build Site
+      run: |
+        echo "🌟 Préparation du site pour GitHub Pages..."
+        echo "📊 Vérification des fichiers..."
+        ls -la
+        echo "✅ Site prêt pour le déploiement"
+    
+    # 4. Upload des artifacts
+    - name: 📤 Upload Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+    
+    # 5. Déploiement
+    - name: 🚀 Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+    
+    # 6. Notification de succès
+    - name: ✅ Success Notification
+      if: success()
+      run: |
+        echo "🎉 Déploiement réussi !"
+        echo "🌐 Site disponible à : ${{ steps.deployment.outputs.page_url }}"
+        echo "⏰ Délai de propagation : 1-5 minutes"

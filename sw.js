@@ -60,6 +60,12 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
 
+    // Ignorer les requêtes vers des domaines externes (Google Fonts, etc.)
+    if (url.origin !== location.origin) {
+        event.respondWith(fetch(request));
+        return;
+    }
+
     // Cache first pour les ressources statiques
     if (STATIC_FILES.some(file => url.pathname === file)) {
         event.respondWith(

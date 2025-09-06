@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - La Manufacture de Laurence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS Optimisé -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <!-- Scripts de suivi -->
+    <script src="../js/activity-logger.js"></script>
+    <script src="../js/activity-dashboard.js"></script>
+</head>
+<body>
+    <!-- Écran de connexion -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1><i class="fas fa-theater-masks"></i> La Manufacture</h1>
+                <p>Interface d'Administration</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <p><i class="fas fa-shield-alt"></i> Connexion sécurisée</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface d'administration principale -->
+    <div id="adminInterface" class="admin-interface" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-theater-masks"></i> Admin Panel</h2>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="currentUser">Laurence</span>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Tableau de Bord
+                </li>
+                <li class="menu-item" data-section="content">
+                    <i class="fas fa-file-alt"></i> Contenu des Pages
+                </li>
+                <li class="menu-item" data-section="pedagogues">
+                    <i class="fas fa-users"></i> Pédagogues
+                </li>
+                <li class="menu-item" data-section="agenda">
+                    <i class="fas fa-calendar"></i> Agenda
+                </li>
+                <li class="menu-item" data-section="media">
+                    <i class="fas fa-images"></i> Médias
+                </li>
+                <li class="menu-item" data-section="design">
+                    <i class="fas fa-palette"></i> Apparence
+                </li>
+                <li class="menu-item" data-section="activity">
+                    <i class="fas fa-chart-line"></i> Suivi des Modifications
+                </li>
+                <li class="menu-item" data-section="settings">
+                    <i class="fas fa-cog"></i> Paramètres
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1 id="sectionTitle">Tableau de Bord</h1>
+                <div class="header-actions">
+                    <button class="btn-preview">
+                        <i class="fas fa-eye"></i> Aperçu du Site
+                    </button>
+                    <button class="btn-save">
+                        <i class="fas fa-save"></i> Sauvegarder
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line"></i> Statistiques Rapides</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="stat-item">
+                                    <span class="stat-number">5</span>
+                                    <span class="stat-label">Pages Actives</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">3</span>
+                                    <span class="stat-label">Pédagogues</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" id="eventCount">0</span>
+                                    <span class="stat-label">Événements</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-tasks"></i> Actions Rapides</h3>
+                            </div>
+                            <div class="card-content">
+                                <button class="quick-action" data-action="add-event">
+                                    <i class="fas fa-plus"></i> Ajouter un Événement
+                                </button>
+                                <button class="quick-action" data-action="edit-homepage">
+                                    <i class="fas fa-edit"></i> Modifier l'Accueil
+                                </button>
+                                <button class="quick-action" data-action="upload-image">
+                                    <i class="fas fa-upload"></i> Ajouter une Image
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card full-width">
+                            <div class="card-header">
+                                <h3><i class="fas fa-clock"></i> Activité Récente</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="activity-feed" id="activityFeed">
+                                    <div class="activity-item">
+                                        <i class="fas fa-edit"></i>
+                                        <span>Dernière connexion aujourd'hui</span>
+                                        <time>Il y a 2 minutes</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Management Section -->
+                <section id="content-section" class="content-section">
+                    <div class="content-editor">
+                        <div class="editor-toolbar">
+                            <select id="pageSelector" class="page-selector">
+                                <option value="index">Page d'Accueil</option>
+                                <option value="a-propos">À Propos</option>
+                                <option value="cours">Cours</option>
+                                <option value="contact">Contact</option>
+                            </select>
+                            <button class="btn-new-page">
+                                <i class="fas fa-plus"></i> Nouvelle Page
+                            </button>
+                        </div>
+                        
+                        <div class="editor-workspace">
+                            <div class="editor-panel">
+                                <h3>Éditeur de Contenu</h3>
+                                <div id="contentEditor" class="rich-editor">
+                                    <!-- L'éditeur WYSIWYG sera injecté ici -->
+                                </div>
+                            </div>
+                            
+                            <div class="preview-panel">
+                                <h3>Aperçu en Temps Réel</h3>
+                                <iframe id="previewFrame" class="preview-frame"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pedagogues Management Section -->
+                <section id="pedagogues-section" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> Gestion des Pédagogues</h2>
+                        <button id="addPedagogueBtn" class="btn-primary">
+                            <i class="fas fa-plus"></i> Ajouter un Pédagogue
+                        </button>
+                    </div>
+                    
+                    <div class="pedagogues-container">
+                        <!-- Liste des pédagogues existants -->
+                        <div class="pedagogues-grid" id="pedagoguesGrid">
+                            <!-- Chargé dynamiquement -->
+                        </div>
+                        
+                        <!-- Formulaire d'édition de pédagogue -->
+                        <div id="pedagogueEditor" class="pedagogue-editor" style="display: none;">
+                            <div class="editor-header">
+                                <h3 id="editorTitle">Ajouter un Pédagogue</h3>
+                                <button id="closePedagogueEditor" class="btn-icon">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <form id="pedagogueForm" class="pedagogue-form">
+                                <div class="form-grid">
+                                    <!-- Informations de base -->
+                                    <div class="form-section">
+                                        <h4><i class="fas fa-user"></i> Informations Générales</h4>
+                                        
+                                        <div class="form-group">
+                                            <label for="pedagogueName">Nom complet *</label>
+                                            <input type="text" id="pedagogueName" name="name" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="pedagogueRole">Rôle/Spécialité *</label>
+                                            <input type="text" id="pedagogueRole" name="role" placeholder="Ex: Comédien professionnel et pédagogue" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="pedagogueExcerpt">Description courte *</label>
+                                            <textarea id="pedagogueExcerpt" name="excerpt" rows="3" placeholder="Résumé en une phrase pour la carte..." required></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Image du pédagogue -->
+                                    <div class="form-section">
+                                        <h4><i class="fas fa-image"></i> Photo du Pédagogue</h4>
+                                        
+                                        <div class="image-upload-area" id="imageUploadArea">
+                                            <div class="upload-placeholder">
+                                                <i class="fas fa-upload"></i>
+                                                <p>Glissez-déposez une image ou cliquez pour sélectionner</p>
+                                                <small>Formats acceptés: JPG, PNG, WebP (max 5MB)</small>
+                                            </div>
+                                            <input type="file" id="pedagogueImage" name="image" accept="image/*" style="display: none;">
+                                        </div>
+                                        
+                                        <div class="image-preview" id="imagePreview" style="display: none;">
+                                            <img id="previewImg" src="" alt="Aperçu">
+                                            <button type="button" id="removeImage" class="btn-danger btn-small">
+                                                <i class="fas fa-trash"></i> Supprimer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Timeline du parcours -->
+                                <div class="form-section full-width">
+                                    <h4><i class="fas fa-timeline"></i> Parcours Professionnel</h4>
+                                    <div class="timeline-editor">
+                                        <div class="timeline-items" id="timelineItems">
+                                            <!-- Items ajoutés dynamiquement -->
+                                        </div>
+                                        <button type="button" id="addTimelineItem" class="btn-secondary">
+                                            <i class="fas fa-plus"></i> Ajouter une étape
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description détaillée -->
+                                <div class="form-section full-width">
+                                    <h4><i class="fas fa-file-alt"></i> Description Détaillée</h4>
+                                    <div class="wysiwyg-container">
+                                        <div class="wysiwyg-toolbar">
+                                            <button type="button" data-command="bold" title="Gras">
+                                                <i class="fas fa-bold"></i>
+                                            </button>
+                                            <button type="button" data-command="italic" title="Italique">
+                                                <i class="fas fa-italic"></i>
+                                            </button>
+                                            <button type="button" data-command="underline" title="Souligné">
+                                                <i class="fas fa-underline"></i>
+                                            </button>
+                                            <div class="toolbar-separator"></div>
+                                            <button type="button" data-command="insertUnorderedList" title="Liste à puces">
+                                                <i class="fas fa-list-ul"></i>
+                                            </button>
+                                            <button type="button" data-command="insertOrderedList" title="Liste numérotée">
+                                                <i class="fas fa-list-ol"></i>
+                                            </button>
+                                            <div class="toolbar-separator"></div>
+                                            <button type="button" data-command="createLink" title="Lien">
+                                                <i class="fas fa-link"></i>
+                                            </button>
+                                        </div>
+                                        <div id="pedagogueDescription" class="wysiwyg-editor" contenteditable="true">
+                                            <p>Décrivez le parcours détaillé, les formations, l'expérience, la philosophie pédagogique...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Prévisualisation -->
+                                <div class="form-section full-width">
+                                    <h4><i class="fas fa-eye"></i> Aperçu de la Carte Pédagogue</h4>
+                                    <div class="pedagogue-preview" id="pedagoguePreview">
+                                        <!-- Aperçu généré dynamiquement -->
+                                    </div>
+                                </div>
+                                
+                                <!-- Actions -->
+                                <div class="form-actions">
+                                    <button type="button" id="cancelPedagogue" class="btn-secondary">Annuler</button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Enregistrer
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Agenda Management Section -->
+                <section id="agenda-section" class="content-section">
+                    <!-- Contenu généré dynamiquement -->
+                </section>
+
+                <!-- Media Management Section -->
+                <section id="media-section" class="content-section">
+                    <!-- Contenu généré dynamiquement -->
+                </section>
+
+                <!-- Design Management Section -->
+                <section id="design-section" class="content-section">
+                    <!-- Contenu généré dynamiquement -->
+                </section>
+
+                <!-- Activity Tracking Section -->
+                <section id="activity-section" class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-line"></i> Suivi des Modifications</h2>
+                        <p>Historique complet des actions effectuées sur le site</p>
+                    </div>
+                    <!-- Le contenu sera généré par ActivityDashboard -->
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings-section" class="content-section">
+                    <!-- Contenu généré dynamiquement -->
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin-core.js"></script>
+    <!-- JavaScript Optimisé -->
+    <script src="config/admin-config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-content.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+    <!-- Version optimisée des pédagogues -->
+    <script src="js/admin-pedagogues-optimized.js"></script>
+</body>
+</html>
