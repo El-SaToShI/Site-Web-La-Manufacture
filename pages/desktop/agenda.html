@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
+    <title>Agenda - La Manufacture de Laurence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/desktop-mobile-scale.css">
+    <script src="../../js/auto-detect.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="../../index.html">La Manufacture de Laurence</a></h1>
+        <button class="mobile-menu-toggle" aria-label="Menu" type="button">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="a-propos.html">À Propos</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="pedagogues.html">Pédagogues</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="agenda" class="fade-in-section single-page">
+            <div class="section-title">
+                <h3>Agenda</h3>
+            </div>
+            <div class="section-content">
+                <div class="agenda-container">
+                    <!-- Calendrier interactif -->
+                    <div class="calendar-widget">
+                        <div class="calendar-header">
+                            <button id="prevMonth" class="nav-btn">‹</button>
+                            <h4 id="currentMonth"></h4>
+                            <button id="nextMonth" class="nav-btn">›</button>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-weekdays">
+                                <div>Lun</div>
+                                <div>Mar</div>
+                                <div>Mer</div>
+                                <div>Jeu</div>
+                                <div>Ven</div>
+                                <div>Sam</div>
+                                <div>Dim</div>
+                            </div>
+                            <div id="calendarDays" class="calendar-days"></div>
+                        </div>
+                    </div>
+
+                    <!-- Liste des événements -->
+                    <div class="events-list">
+                        <h4>Prochains Événements</h4>
+                        <div id="eventsList" class="events-container">
+                            <!-- Les événements seront ajoutés dynamiquement -->
+                        </div>
+                        
+                        <!-- Interface d'administration (pour les pédagogues) -->
+                        <div class="admin-panel" id="adminPanel" style="display: none;">
+                            <h5>Administration Rapide</h5>
+                            <p style="text-align: center; margin: 1rem 0;">
+                                <a href="admin-agenda.html" class="btn-advanced-admin" style="display: inline-block; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8b0000, #a00000); color: white; text-decoration: none; border-radius: 8px; font-weight: 500; margin-bottom: 1rem;">
+                                    ✨ Interface Complète d'Administration
+                                </a>
+                            </p>
+                            <form id="eventForm">
+                                <input type="text" id="eventTitle" placeholder="Titre de l'événement" required>
+                                <input type="date" id="eventDate" required>
+                                <input type="time" id="eventTime" required>
+                                <input type="text" id="eventLocation" placeholder="Lieu">
+                                <textarea id="eventDescription" placeholder="Description" rows="3"></textarea>
+                                <select id="eventType">
+                                    <option value="cours">Cours</option>
+                                    <option value="spectacle">Spectacle</option>
+                                    <option value="audition">Audition</option>
+                                    <option value="atelier">Atelier</option>
+                                    <option value="reunion">Réunion</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <div class="form-buttons">
+                                    <button type="submit" class="btn-primary">Ajouter</button>
+                                    <button type="button" class="btn-secondary" onclick="closeAdminPanel()">Annuler</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Bouton d'accès admin -->
+                        <button id="adminToggle" class="btn-admin" onclick="toggleAdminPanel()">
+                            🔒 Accès Pédagogue
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/votre-compte" target="_blank" title="Instagram">Instagram</a>
+                <a href="https://www.facebook.com/votre-page" target="_blank" title="Facebook">Facebook</a>
+                <a href="mailto:lamanufacturedelaurence@gmail.com" title="Email">Email</a>
+            </div>
+            <p>&copy; 2025 La Manufacture de Laurence. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <script src="../../js/agenda.js"></script>
+</body>
+</html>

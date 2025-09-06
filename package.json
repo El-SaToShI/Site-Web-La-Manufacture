@@ -1,0 +1,49 @@
+{
+  "name": "la-manufacture-laurence",
+  "version": "2.0.0",
+  "description": "Site web pour La Manufacture de Laurence - Agenda et gestion d'événements avec OCR",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "npm run minify-css && npm run optimize-js",
+    "minify-css": "echo 'CSS déjà optimisé'",
+    "optimize-js": "echo 'JS optimisé manuellement'",
+    "test": "echo 'Tests à implémenter'",
+    "lint": "echo 'Lint JS files'",
+    "deploy": "git add . && git commit -m 'Optimisation et déploiement v2.0.0' && git push origin main"
+  },
+  "keywords": [
+    "agenda",
+    "événements",
+    "spectacle",
+    "OCR",
+    "IndexedDB",
+    "mobile-first",
+    "PWA"
+  ],
+  "author": "La Manufacture de Laurence",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/El-SaToShI/Site-Web-La-Manufacture.git"
+  },
+  "bugs": {
+    "url": "https://github.com/El-SaToShI/Site-Web-La-Manufacture/issues"
+  },
+  "homepage": "https://el-satoshi.github.io/Site-Web-La-Manufacture/",
+  "dependencies": {
+    "tesseract.js": "^4.1.1"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

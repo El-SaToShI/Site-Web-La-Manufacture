@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
+    <title>Administration Agenda - La Manufacture de Laurence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/admin-agenda.css">
+    <link rel="stylesheet" href="../../css/desktop-mobile-scale.css">
+    <script src="https://unpkg.com/tesseract.js@v4.1.1/dist/tesseract.min.js"></script>
+    <script src="../../js/auto-detect.js"></script>
+    <script src="../../js/storage-manager.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="../../index.html">La Manufacture de Laurence</a></h1>
+        <button class="mobile-menu-toggle" aria-label="Menu" type="button">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="a-propos.html">À Propos</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="pedagogues.html">Pédagogues</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="admin-agenda" class="fade-in-section single-page">
+            <div class="section-title">
+                <h3>🔧 Administration Agenda</h3>
+                <p class="admin-subtitle">Interface complète de gestion des événements</p>
+            </div>
+            
+            <div class="admin-container">
+                <!-- Sidebar avec navigation -->
+                <div class="admin-sidebar">
+                    <div class="admin-nav">
+                        <button class="nav-item active" data-tab="create">
+                            <span class="nav-icon">✨</span>
+                            Créer Événement
+                        </button>
+                        <button class="nav-item" data-tab="manage">
+                            <span class="nav-icon">📋</span>
+                            Gérer Événements
+                        </button>
+                        <button class="nav-item" data-tab="import">
+                            <span class="nav-icon">📥</span>
+                            Import/Export
+                        </button>
+                        <button class="nav-item" data-tab="settings">
+                            <span class="nav-icon">⚙️</span>
+                            Paramètres
+                        </button>
+                    </div>
+                    
+                    <div class="quick-stats">
+                        <h4>📊 Statistiques</h4>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalEvents">0</span>
+                            <span class="stat-label">Événements total</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="upcomingEvents">0</span>
+                            <span class="stat-label">À venir</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="thisMonthEvents">0</span>
+                            <span class="stat-label">Ce mois</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenu principal -->
+                <div class="admin-content">
+                    
+                    <!-- ONGLET CRÉATION D'ÉVÉNEMENT -->
+                    <div class="tab-content active" id="tab-create">
+                        <div class="content-header">
+                            <h4>✨ Créer un Nouvel Événement</h4>
+                            <button class="btn-preview" onclick="previewEvent()">👁️ Aperçu</button>
+                        </div>
+                        
+                        <form id="advancedEventForm" class="advanced-form">
+                            <div class="form-grid">
+                                <!-- Analyse automatique d'affiche -->
+                                <div class="form-section poster-analysis">
+                                    <h5>🎭 Analyse Automatique d'Affiche</h5>
+                                    <div class="poster-upload-area" id="posterUploadArea">
+                                        <input type="file" id="posterFile" accept="image/*,.pdf" style="display: none;">
+                                        <div class="poster-upload-placeholder">
+                                            <span class="poster-upload-icon">🎭</span>
+                                            <span class="poster-upload-text">Déposez votre affiche ici</span>
+                                            <span class="poster-upload-hint">JPG, PNG, PDF - Analyse automatique</span>
+                                            <button type="button" class="btn-upload-poster" onclick="document.getElementById('posterFile').click()">
+                                                📤 Choisir une affiche
+                                            </button>
+                                        </div>
+                                        <div class="poster-analysis-progress" id="analysisProgress" style="display: none;">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" id="progressFill"></div>
+                                            </div>
+                                            <span class="progress-text" id="progressText">Analyse en cours...</span>
+                                        </div>
+                                        <div class="poster-preview" id="posterPreview" style="display: none;">
+                                            <img id="posterPreviewImg" alt="Aperçu affiche">
+                                            <div class="analysis-results" id="analysisResults">
+                                                <h6>🤖 Informations détectées :</h6>
+                                                <div class="detected-info" id="detectedInfo"></div>
+                                                <button type="button" class="btn-apply-analysis" onclick="applyAnalysisResults()">
+                                                    ✨ Appliquer les informations
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Informations de base -->
+                                <div class="form-section">
+                                    <h5>📝 Informations de base</h5>
+                                    <div class="input-group">
+                                        <label for="eventTitle">Titre de l'événement *</label>
+                                        <input type="text" id="eventTitle" placeholder="Ex: Cours de Théâtre - Niveau 1" required>
+                                    </div>
+                                    
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label for="eventDate">Date *</label>
+                                            <input type="date" id="eventDate" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="eventStartTime">Heure début *</label>
+                                            <input type="time" id="eventStartTime" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="eventEndTime">Heure fin</label>
+                                            <input type="time" id="eventEndTime">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <label for="eventLocation">Lieu</label>
+                                        <input type="text" id="eventLocation" placeholder="Ex: Salle principale, Studio B">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <label for="eventDescription">Description</label>
+                                        <textarea id="eventDescription" rows="4" placeholder="Description détaillée de l'événement..."></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Catégorisation et visuel -->
+                                <div class="form-section">
+                                    <h5>🎨 Catégorie et Apparence</h5>
+                                    
+                                    <div class="input-group">
+                                        <label for="eventType">Type d'événement *</label>
+                                        <select id="eventType" required>
+                                            <option value="">Sélectionnez un type</option>
+                                            <option value="cours">📚 Cours</option>
+                                            <option value="spectacle">🎭 Spectacle</option>
+                                            <option value="audition">🎤 Audition</option>
+                                            <option value="atelier">🛠️ Atelier</option>
+                                            <option value="reunion">👥 Réunion</option>
+                                            <option value="masterclass">🌟 Masterclass</option>
+                                            <option value="portes-ouvertes">🚪 Portes Ouvertes</option>
+                                            <option value="autre">📌 Autre</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <label>Couleur sur l'agenda</label>
+                                        <div class="color-palette">
+                                            <input type="color" id="eventColor" value="#8b0000">
+                                            <div class="preset-colors">
+                                                <button type="button" class="color-preset" data-color="#8b0000" style="background: #8b0000;" title="Rouge théâtre"></button>
+                                                <button type="button" class="color-preset" data-color="#2c3e50" style="background: #2c3e50;" title="Bleu marine"></button>
+                                                <button type="button" class="color-preset" data-color="#b87333" style="background: #b87333;" title="Cuivre"></button>
+                                                <button type="button" class="color-preset" data-color="#4a4a4a" style="background: #4a4a4a;" title="Gris"></button>
+                                                <button type="button" class="color-preset" data-color="#228b22" style="background: #228b22;" title="Vert"></button>
+                                                <button type="button" class="color-preset" data-color="#8b008b" style="background: #8b008b;" title="Violet"></button>
+                                                <button type="button" class="color-preset" data-color="#ff8c00" style="background: #ff8c00;" title="Orange"></button>
+                                                <button type="button" class="color-preset" data-color="#20b2aa" style="background: #20b2aa;" title="Turquoise"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <label for="eventImage">Image de l'événement</label>
+                                        <div class="image-upload-area" id="imageUploadArea">
+                                            <input type="file" id="eventImage" accept="image/*" style="display: none;">
+                                            <div class="upload-placeholder">
+                                                <span class="upload-icon">📸</span>
+                                                <span class="upload-text">Cliquez pour ajouter une image</span>
+                                                <span class="upload-hint">PNG, JPG, GIF jusqu'à 5MB</span>
+                                            </div>
+                                            <div class="image-preview" id="imagePreview" style="display: none;">
+                                                <img id="previewImg" alt="Aperçu">
+                                                <button type="button" class="remove-image" onclick="removeImage()">×</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Paramètres avancés -->
+                            <div class="form-section advanced-settings">
+                                <h5>⚙️ Paramètres Avancés</h5>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-item">
+                                        <input type="checkbox" id="eventRecurring">
+                                        <label for="eventRecurring">Événement récurrent</label>
+                                    </div>
+                                    
+                                    <div class="recurring-options" id="recurringOptions" style="display: none;">
+                                        <select id="recurringType">
+                                            <option value="weekly">Chaque semaine</option>
+                                            <option value="biweekly">Toutes les 2 semaines</option>
+                                            <option value="monthly">Chaque mois</option>
+                                        </select>
+                                        <input type="number" id="recurringCount" min="2" max="52" value="10" placeholder="Nombre d'occurrences">
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <input type="checkbox" id="eventNotification">
+                                        <label for="eventNotification">Notification email</label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <input type="checkbox" id="eventPublic" checked>
+                                        <label for="eventPublic">Visible pour le public</label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <input type="checkbox" id="eventRequiresBooking">
+                                        <label for="eventRequiresBooking">Réservation obligatoire</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="booking-settings" id="bookingSettings" style="display: none;">
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label for="maxParticipants">Places disponibles</label>
+                                            <input type="number" id="maxParticipants" min="1" placeholder="Ex: 20">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="bookingDeadline">Date limite réservation</label>
+                                            <input type="date" id="bookingDeadline">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Boutons d'action -->
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="resetForm()">🔄 Réinitialiser</button>
+                                <button type="button" class="btn-draft" onclick="saveDraft()">💾 Sauvegarder brouillon</button>
+                                <button type="submit" class="btn-primary">✨ Créer l'événement</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- ONGLET GESTION D'ÉVÉNEMENTS -->
+                    <div class="tab-content" id="tab-manage">
+                        <div class="content-header">
+                            <h4>📋 Gérer les Événements</h4>
+                            <div class="manage-controls">
+                                <input type="search" id="searchEvents" placeholder="🔍 Rechercher un événement...">
+                                <select id="filterType">
+                                    <option value="">Tous les types</option>
+                                    <option value="cours">Cours</option>
+                                    <option value="spectacle">Spectacle</option>
+                                    <option value="atelier">Atelier</option>
+                                </select>
+                                <select id="filterPeriod">
+                                    <option value="all">Toutes les périodes</option>
+                                    <option value="today">Aujourd'hui</option>
+                                    <option value="week">Cette semaine</option>
+                                    <option value="month">Ce mois</option>
+                                    <option value="upcoming">À venir</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="events-table-container">
+                            <table class="events-table" id="eventsTable">
+                                <thead>
+                                    <tr>
+                                        <th>🗓️ Date</th>
+                                        <th>📝 Titre</th>
+                                        <th>🏷️ Type</th>
+                                        <th>📍 Lieu</th>
+                                        <th>👁️ Statut</th>
+                                        <th>⚡ Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="eventsTableBody">
+                                    <!-- Les événements seront ajoutés dynamiquement -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ONGLET IMPORT/EXPORT -->
+                    <div class="tab-content" id="tab-import">
+                        <div class="content-header">
+                            <h4>📥 Import / Export</h4>
+                        </div>
+                        
+                        <div class="import-export-grid">
+                            <div class="import-section">
+                                <h5>📥 Importer des événements</h5>
+                                
+                                <div class="import-option">
+                                    <h6>📄 Fichier CSV</h6>
+                                    <input type="file" id="csvImport" accept=".csv" style="display: none;">
+                                    <button class="btn-import" onclick="document.getElementById('csvImport').click()">
+                                        📄 Choisir fichier CSV
+                                    </button>
+                                    <p class="import-hint">Format: titre,date,heure,lieu,description,type</p>
+                                </div>
+                                
+                                <div class="import-option">
+                                    <h6>📅 Calendrier Google</h6>
+                                    <button class="btn-import" onclick="importFromGoogle()">
+                                        📅 Importer de Google Calendar
+                                    </button>
+                                    <p class="import-hint">Connectez votre compte Google</p>
+                                </div>
+                                
+                                <div class="import-option">
+                                    <h6>🔄 Fichier ICS</h6>
+                                    <input type="file" id="icsImport" accept=".ics" style="display: none;">
+                                    <button class="btn-import" onclick="document.getElementById('icsImport').click()">
+                                        🔄 Choisir fichier ICS
+                                    </button>
+                                    <p class="import-hint">Compatible avec tous les calendriers</p>
+                                </div>
+                            </div>
+
+                            <div class="export-section">
+                                <h5>📤 Exporter les événements</h5>
+                                
+                                <div class="export-options">
+                                    <button class="btn-export" onclick="exportToCSV()">
+                                        📄 Exporter en CSV
+                                    </button>
+                                    <button class="btn-export" onclick="exportToICS()">
+                                        📅 Exporter en ICS
+                                    </button>
+                                    <button class="btn-export" onclick="exportToPDF()">
+                                        📋 Générer PDF
+                                    </button>
+                                    <button class="btn-export" onclick="exportToJSON()">
+                                        🔧 Backup JSON
+                                    </button>
+                                </div>
+                                
+                                <div class="export-settings">
+                                    <h6>Paramètres d'export</h6>
+                                    <label><input type="checkbox" checked> Événements passés</label>
+                                    <label><input type="checkbox" checked> Événements à venir</label>
+                                    <label><input type="checkbox" checked> Événements brouillons</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ONGLET PARAMÈTRES -->
+                    <div class="tab-content" id="tab-settings">
+                        <div class="content-header">
+                            <h4>⚙️ Paramètres</h4>
+                        </div>
+                        
+                        <div class="settings-sections">
+                            <div class="settings-section">
+                                <h5>🎨 Apparence</h5>
+                                <div class="setting-item">
+                                    <label for="defaultColor">Couleur par défaut</label>
+                                    <input type="color" id="defaultColor" value="#8b0000">
+                                </div>
+                                <div class="setting-item">
+                                    <label for="calendarView">Vue calendrier par défaut</label>
+                                    <select id="calendarView">
+                                        <option value="month">Mois</option>
+                                        <option value="week">Semaine</option>
+                                        <option value="agenda">Agenda</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h5>🔔 Notifications</h5>
+                                <div class="setting-item">
+                                    <input type="checkbox" id="emailNotifications">
+                                    <label for="emailNotifications">Notifications email</label>
+                                </div>
+                                <div class="setting-item">
+                                    <input type="checkbox" id="reminderNotifications">
+                                    <label for="reminderNotifications">Rappels automatiques</label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h5>🔒 Sécurité</h5>
+                                <button class="btn-secondary" onclick="changePassword()">
+                                    🔑 Changer le mot de passe
+                                </button>
+                                <button class="btn-danger" onclick="resetAllData()">
+                                    ⚠️ Réinitialiser toutes les données
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/votre-compte" target="_blank" title="Instagram">Instagram</a>
+                <a href="https://www.facebook.com/votre-page" target="_blank" title="Facebook">Facebook</a>
+                <a href="mailto:lamanufacturedelaurence@gmail.com" title="Email">Email</a>
+            </div>
+            <p>&copy; 2025 La Manufacture de Laurence. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <script src="../../js/admin-agenda.js"></script>
+</body>
+</html>

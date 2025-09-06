@@ -6,13 +6,33 @@
     <meta name="description" content="La Manufacture de Laurence - École professionnelle de théâtre dirigée par Laurence Mercier. Formation artistique et pédagogique de qualité.">
     <meta name="keywords" content="théâtre, école, formation, Laurence Mercier, pédagogie, art dramatique">
     <meta name="author" content="La Manufacture de Laurence">
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="application-name" content="La Manufacture">
+    
+    <!-- Performance -->
+    <link rel="preload" href="css/optimized/main.min.css" as="style">
+    <link rel="preload" href="js/config.js" as="script">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    
     <title>La Manufacture de Laurence - École Professionnelle de Théâtre</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles optimisés -->
+    <link rel="stylesheet" href="css/optimized/main.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/desktop-mobile-scale.css">
-    <script src="js/auto-detect.js"></script>
+    
+    <!-- Scripts optimisés -->
+    <script src="js/config.js" defer></script>
+    <script src="js/utils/dom-utils.js" defer></script>
+    <script src="js/auto-detect.js" defer></script>
 </head>
 <body>
     <header>
@@ -23,6 +43,7 @@
                 <li><a href="pages/desktop/a-propos.html">À Propos</a></li>
                 <li><a href="pages/desktop/cours.html">Cours</a></li>
                 <li><a href="pages/desktop/pedagogues.html">Pédagogues</a></li>
+                <li><a href="pages/desktop/agenda.html">Agenda</a></li>
                 <li><a href="pages/desktop/contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -30,7 +51,7 @@
 
     <main>
         <section id="hero">
-            <h2>L'Art de la Scène</h2>
+            <h2>La Manufacture de Laurence</h2>
             <p>Découvrez votre potentiel théâtral au sein d'une formation exigeante et bienveillante.</p>
             <div class="hero-buttons">
                 <a href="a-propos.html" class="btn-primary">Découvrir La Manufacture</a>
@@ -54,5 +75,20 @@
     </footer>
 
     <script src="js/script.js"></script>
+    
+    <!-- Service Worker pour optimisation -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('Service Worker enregistré:', registration.scope);
+                    AppConfig.log('Service Worker activé', 'info');
+                })
+                .catch(error => {
+                    console.log('Erreur Service Worker:', error);
+                    AppConfig.log('Erreur Service Worker: ' + error, 'warn');
+                });
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - La Manufacture de Laurence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/mobile-responsive.css">
+    <link rel="stylesheet" href="../../css/agenda-mobile.css">
+    <script src="../../js/auto-detect.js"></script>
+    <script src="../../js/storage-manager.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="index-mobile.html">La Manufacture de Laurence</a></h1>
+        <button class="mobile-menu-toggle" aria-label="Menu" type="button">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="a-propos-mobile.html">À Propos</a></li>
+                <li><a href="cours-mobile.html">Cours</a></li>
+                <li><a href="pedagogues-mobile.html">Pédagogues</a></li>
+                <li><a href="agenda-mobile.html" class="active">Agenda</a></li>
+                <li><a href="contact-mobile.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="agenda-mobile" class="fade-in-section single-page">
+            <div class="section-title">
+                <h3>📅 Agenda des Événements</h3>
+                <p class="agenda-subtitle">Découvrez nos prochains cours, spectacles et ateliers</p>
+            </div>
+
+            <!-- Navigation du calendrier mobile -->
+            <div class="mobile-calendar-nav">
+                <button class="nav-btn" id="prevMonth" aria-label="Mois précédent">‹</button>
+                <div class="month-year-display">
+                    <h4 id="currentMonthYear">Septembre 2025</h4>
+                </div>
+                <button class="nav-btn" id="nextMonth" aria-label="Mois suivant">›</button>
+            </div>
+
+            <!-- Vue rapide du mois -->
+            <div class="mobile-month-view">
+                <div class="weekdays-header">
+                    <div class="weekday">D</div>
+                    <div class="weekday">L</div>
+                    <div class="weekday">M</div>
+                    <div class="weekday">M</div>
+                    <div class="weekday">J</div>
+                    <div class="weekday">V</div>
+                    <div class="weekday">S</div>
+                </div>
+                <div class="calendar-grid-mobile" id="calendarGridMobile">
+                    <!-- Les jours seront générés dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Filtres rapides mobile -->
+            <div class="mobile-filters">
+                <div class="filter-chips">
+                    <button class="filter-chip active" data-filter="all">Tous</button>
+                    <button class="filter-chip" data-filter="cours">Cours</button>
+                    <button class="filter-chip" data-filter="spectacle">Spectacles</button>
+                    <button class="filter-chip" data-filter="atelier">Ateliers</button>
+                </div>
+            </div>
+
+            <!-- Liste des événements mobile -->
+            <div class="mobile-events-section">
+                <div class="events-header">
+                    <h4>🎭 Événements</h4>
+                    <button class="admin-toggle-mobile" id="adminToggleMobile">
+                        🔧 Admin
+                    </button>
+                </div>
+                
+                <div id="mobileEventsList" class="mobile-events-container">
+                    <!-- Les événements seront ajoutés dynamiquement -->
+                </div>
+
+                <!-- Message si aucun événement -->
+                <div class="no-events-message" id="noEventsMessage" style="display: none;">
+                    <div class="no-events-icon">📅</div>
+                    <h5>Aucun événement prévu</h5>
+                    <p>Les prochains événements apparaîtront ici</p>
+                </div>
+            </div>
+
+            <!-- Interface d'administration mobile -->
+            <div class="mobile-admin-panel" id="mobileAdminPanel" style="display: none;">
+                <div class="admin-header">
+                    <h4>🔧 Administration Mobile</h4>
+                    <button class="close-admin-mobile" onclick="closeMobileAdmin()">×</button>
+                </div>
+
+                <!-- Onglets d'administration mobile -->
+                <div class="mobile-admin-tabs">
+                    <button class="mobile-tab active" data-tab="quick-add">➕ Ajouter</button>
+                    <button class="mobile-tab" data-tab="poster-scan">📸 Scanner</button>
+                    <button class="mobile-tab" data-tab="manage">📋 Gérer</button>
+                </div>
+
+                <!-- Ajout rapide d'événement -->
+                <div class="mobile-tab-content active" id="tab-quick-add">
+                    <form id="mobileEventForm" class="mobile-form">
+                        <div class="form-group-mobile">
+                            <label for="mobileEventTitle">Titre *</label>
+                            <input type="text" id="mobileEventTitle" placeholder="Ex: Cours de Théâtre" required>
+                        </div>
+
+                        <div class="form-row-mobile">
+                            <div class="form-group-mobile">
+                                <label for="mobileEventDate">Date *</label>
+                                <input type="date" id="mobileEventDate" required>
+                            </div>
+                            <div class="form-group-mobile">
+                                <label for="mobileEventTime">Heure *</label>
+                                <input type="time" id="mobileEventTime" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group-mobile">
+                            <label for="mobileEventLocation">Lieu</label>
+                            <input type="text" id="mobileEventLocation" placeholder="Salle, studio...">
+                        </div>
+
+                        <div class="form-group-mobile">
+                            <label for="mobileEventType">Type *</label>
+                            <select id="mobileEventType" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="cours">📚 Cours</option>
+                                <option value="spectacle">🎭 Spectacle</option>
+                                <option value="audition">🎤 Audition</option>
+                                <option value="atelier">🛠️ Atelier</option>
+                                <option value="reunion">👥 Réunion</option>
+                                <option value="autre">📌 Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group-mobile">
+                            <label for="mobileEventDescription">Description</label>
+                            <textarea id="mobileEventDescription" rows="3" placeholder="Description de l'événement..."></textarea>
+                        </div>
+
+                        <button type="submit" class="mobile-btn-primary">✨ Créer l'événement</button>
+                    </form>
+                </div>
+
+                <!-- Scanner d'affiche mobile -->
+                <div class="mobile-tab-content" id="tab-poster-scan">
+                    <div class="mobile-poster-scanner">
+                        <div class="scan-options">
+                            <button class="scan-btn" id="takePicture">
+                                📷 Prendre une photo
+                            </button>
+                            <button class="scan-btn" id="selectFromGallery">
+                                🖼️ Choisir dans la galerie
+                            </button>
+                        </div>
+                        
+                        <input type="file" id="mobilePosterFile" accept="image/*" capture="environment" style="display: none;">
+                        <input type="file" id="mobileGalleryFile" accept="image/*" style="display: none;">
+                        
+                        <div class="mobile-scan-preview" id="mobileScanPreview" style="display: none;">
+                            <img id="mobileScanImage" alt="Affiche scannée">
+                            <div class="scan-progress" id="mobileScanProgress" style="display: none;">
+                                <div class="progress-bar-mobile">
+                                    <div class="progress-fill-mobile" id="mobileProgressFill"></div>
+                                </div>
+                                <span class="progress-text-mobile" id="mobileProgressText">Analyse en cours...</span>
+                            </div>
+                            <div class="scan-results" id="mobileScanResults" style="display: none;">
+                                <h5>🤖 Informations détectées</h5>
+                                <div class="detected-info-mobile" id="mobileDetectedInfo"></div>
+                                <button class="mobile-btn-success" onclick="applyMobileResults()">
+                                    ✨ Utiliser ces informations
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestion des événements mobile -->
+                <div class="mobile-tab-content" id="tab-manage">
+                    <div class="mobile-events-manage">
+                        <div class="search-mobile">
+                            <input type="search" id="mobileSearchEvents" placeholder="🔍 Rechercher...">
+                        </div>
+                        
+                        <div class="mobile-events-list" id="mobileManageList">
+                            <!-- Liste des événements à gérer -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton d'accès à l'interface complète -->
+            <div class="desktop-access">
+                <a href="../desktop/admin-agenda.html" class="desktop-link">
+                    💻 Interface complète (Desktop)
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/votre-compte" target="_blank" title="Instagram">Instagram</a>
+                <a href="https://www.facebook.com/votre-page" target="_blank" title="Facebook">Facebook</a>
+                <a href="mailto:lamanufacturedelaurence@gmail.com" title="Email">Email</a>
+            </div>
+            <p>&copy; 2025 La Manufacture de Laurence. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <script src="../../js/storage-manager.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+    <script src="../../js/agenda-mobile.js"></script>
+</body>
+</html>
