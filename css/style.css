@@ -228,8 +228,18 @@ nav a:hover {
 }
 
 .hero-buttons {
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .hero-buttons {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
 .btn-primary, .btn-secondary {
