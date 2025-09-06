@@ -2,9 +2,11 @@
 # .gitignore pour La Manufacture
 # ======================================
 
-# Dossiers de sauvegarde locale
+# Dossiers de sauvegarde locale (PRIORITÉ ABSOLUE)
 _BACKUPS/
+_BACKUPS/*
 backups/
+*.backup
 
 # Fichiers de déploiement local
 deploy-github.ps1
