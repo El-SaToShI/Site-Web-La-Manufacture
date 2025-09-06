@@ -13,7 +13,31 @@ class AdminAgenda {
         this.init();
     }
 
+    checkAuthentication() {
+        const savedPassword = localStorage.getItem('adminPassword') || 'manufacture2025';
+        const enteredPassword = prompt("🔒 Accès Administration - Mot de passe pédagogue:");
+        
+        if (enteredPassword === null) {
+            // L'utilisateur a annulé
+            window.location.href = '../agenda.html';
+            return false;
+        }
+        
+        if (enteredPassword === savedPassword) {
+            return true;
+        } else {
+            alert("❌ Mot de passe incorrect");
+            window.location.href = '../agenda.html';
+            return false;
+        }
+    }
+
     async init() {
+        // Vérifier l'authentification avant d'initialiser
+        if (!this.checkAuthentication()) {
+            return; // Arrêter l'initialisation si pas authentifié
+        }
+        
         // Initialiser le système de stockage
         await this.initStorage();
         

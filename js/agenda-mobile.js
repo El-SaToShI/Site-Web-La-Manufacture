@@ -310,12 +310,17 @@ class MobileAgenda {
     }
 
     showMobileAdmin() {
-        const panel = document.getElementById('mobileAdminPanel');
-        panel.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        
-        // Charger la liste de gestion
-        this.renderMobileManageList();
+        const password = prompt("Mot de passe pédagogue:");
+        if (password === "manufacture2025") {
+            const panel = document.getElementById('mobileAdminPanel');
+            panel.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Charger la liste de gestion
+            this.renderMobileManageList();
+        } else if (password !== null) {
+            this.showNotification('❌ Mot de passe incorrect', 'error');
+        }
     }
 
     switchMobileTab(tabId) {
