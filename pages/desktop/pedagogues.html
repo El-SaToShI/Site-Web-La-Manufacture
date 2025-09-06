@@ -39,15 +39,73 @@
                 <div class="pedagogues-grid" id="pedagogues-list">
                     <!-- Le contenu sera généré dynamiquement par content-manager.js -->
                     <!-- Fallback content (sera remplacé) -->
-                    <div class="pedagogue-card loading">
-                        <div class="loading-skeleton"></div>
-                        <p>Chargement des profils...</p>
-                    </div>
-                </div>
+                    
+                    <!-- Laurence Voreux - Fondatrice -->
+                    <div class="pedagogue-expandable">
+                        <div class="pedagogue-card clickable" onclick="togglePedagogue('laurence')">
+                            <img src="../../images/laurence.jpg" alt="Laurence Voreux" class="pedagogue-photo">
+                            <h5>Laurence Voreux</h5>
+                            <p class="pedagogue-title">Fondatrice et Directrice Pédagogique</p>
+                            <p class="pedagogue-excerpt">25 ans d'expérience dans l'enseignement théâtral et la préparation aux grandes écoles.</p>
+                            <div class="expand-icon">
+                                <span>+</span>
+                            </div>
+                        </div>
                         
                         <div class="pedagogue-details" id="laurence-details">
                             <div class="details-content">
                                 <button class="close-details" onclick="togglePedagogue('laurence')" title="Fermer">×</button>
+                                
+                                <div class="parcours-section">
+                                    <h6>Parcours</h6>
+                                    <div class="timeline-compact">
+                                        <div class="timeline-item">
+                                            <strong>1995 - Aujourd'hui :</strong> Fondatrice de La Manufacture de Laurence
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>25 ans d'enseignement :</strong> Formation d'acteurs professionnels et d'amateurs
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>13 ans de préparation :</strong> Accompagnement pour l'entrée dans les grandes écoles
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Expertise :</strong> Pédagogie théâtrale innovante et bienveillante
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="specialites-section">
+                                    <h6>Spécialités</h6>
+                                    <div class="specialites-grid">
+                                        <span class="specialite-tag">Direction Pédagogique</span>
+                                        <span class="specialite-tag">Préparation Concours</span>
+                                        <span class="specialite-tag">Accompagnement Jeunes Artistes</span>
+                                        <span class="specialite-tag">Méthodes Innovantes</span>
+                                        <span class="specialite-tag">Formation Professionnelle</span>
+                                        <span class="specialite-tag">Développement Artistique</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="link-section">
+                                    <a href="../pedagogues/laurence.html" class="btn-pedagogue-detail">
+                                        Voir le profil complet →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adrien -->
+                    <div class="pedagogue-expandable">
+                        <div class="pedagogue-card clickable" onclick="togglePedagogue('adrien')">
+                            <img src="../../images/adrien.jpg" alt="Adrien" class="pedagogue-photo">
+                            <h5>Adrien</h5>
+                            <p class="pedagogue-title">Comédien Professionnel • Pédagogue Spécialisé</p>
+                            <p class="pedagogue-excerpt">Ancien élève de La Manufacture, désormais comédien professionnel et pédagogue passionné.</p>
+                            <div class="expand-icon">
+                                <span>+</span>
+                            </div>
+                        </div>
                                 
                                 <div class="parcours-section">
                                     <h6>Parcours</h6>
@@ -95,6 +153,12 @@
                             <div class="details-content">
                                 <button class="close-details" onclick="togglePedagogue('adrien')" title="Fermer">×</button>
                                 
+                        </div>
+                        
+                        <div class="pedagogue-details" id="adrien-details">
+                            <div class="details-content">
+                                <button class="close-details" onclick="togglePedagogue('adrien')" title="Fermer">×</button>
+                                
                                 <div class="parcours-section">
                                     <h6>Parcours</h6>
                                     <div class="timeline-compact">
@@ -123,6 +187,12 @@
                                         <span class="specialite-tag">Marionnettes</span>
                                         <span class="specialite-tag">Doublage</span>
                                     </div>
+                                </div>
+                                
+                                <div class="link-section">
+                                    <a href="../pedagogues/adrien.html" class="btn-pedagogue-detail">
+                                        Voir le profil complet →
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -173,6 +243,12 @@
                                         <span class="specialite-tag">Monologues</span>
                                     </div>
                                 </div>
+                                
+                                <div class="link-section">
+                                    <a href="../pedagogues/pedagogue-ilan.html" class="btn-pedagogue-detail">
+                                        Voir le profil complet →
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,5 +280,34 @@
     </footer>
 
     <script src="../../js/script.js"></script>
+    <script>
+        // Fonction pour gérer l'expansion des cartes pédagogues
+        function togglePedagogue(pedagogueId) {
+            const details = document.getElementById(pedagogueId + '-details');
+            const card = details.previousElementSibling;
+            const icon = card.querySelector('.expand-icon span');
+            
+            if (details.style.display === 'none' || details.style.display === '') {
+                // Fermer tous les autres détails
+                document.querySelectorAll('.pedagogue-details').forEach(detail => {
+                    detail.style.display = 'none';
+                    const otherCard = detail.previousElementSibling;
+                    const otherIcon = otherCard.querySelector('.expand-icon span');
+                    if (otherIcon) otherIcon.textContent = '+';
+                });
+                
+                // Ouvrir celui-ci
+                details.style.display = 'block';
+                if (icon) icon.textContent = '−';
+                
+                // Scroll vers les détails
+                details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                // Fermer
+                details.style.display = 'none';
+                if (icon) icon.textContent = '+';
+            }
+        }
+    </script>
 </body>
 </html>
