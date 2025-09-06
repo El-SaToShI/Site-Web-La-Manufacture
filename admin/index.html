@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/admin.css">
-    
-    <!-- Scripts de suivi -->
-    <script src="../js/activity-logger.js"></script>
-    <script src="../js/activity-dashboard.js"></script>
 </head>
 <body>
     <!-- Écran de connexion -->
@@ -363,15 +359,19 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/admin-core.js"></script>
-    <!-- JavaScript Optimisé -->
+    <!-- Scripts de base -->
+    <script src="../js/activity-logger.js"></script>
+    <script src="../js/activity-dashboard.js"></script>
+    
+    <!-- Scripts admin -->
     <script src="config/admin-config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/admin-auth.js"></script>
     <script src="js/admin-content.js"></script>
     <script src="js/admin-dashboard.js"></script>
-    <!-- Version optimisée des pédagogues -->
     <script src="js/admin-pedagogues-optimized.js"></script>
+    
+    <!-- Script principal (doit être en dernier) -->
+    <script src="js/admin-core.js"></script>
 </body>
 </html>

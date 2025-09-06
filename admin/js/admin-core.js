@@ -305,25 +305,17 @@ class AdminCore {
     }
     
     loadPedagoguesSection() {
+        // Ne pas écraser le contenu HTML existant de la section pédagogues
         const pedagoguesSection = document.getElementById('pedagogues-section');
-        if (pedagoguesSection && !pedagoguesSection.hasChildNodes()) {
-            pedagoguesSection.innerHTML = `
-                <div class="pedagogues-manager">
-                    <div class="pedagogues-toolbar">
-                        <button class="btn-add-pedagogue">
-                            <i class="fas fa-plus"></i> Ajouter un Pédagogue
-                        </button>
-                    </div>
-                    <div class="pedagogues-list">
-                        <div id="pedagogues-grid">
-                            <!-- La liste des pédagogues sera générée ici -->
-                        </div>
-                    </div>
-                </div>
-            `;
+        if (pedagoguesSection) {
+            // Initialiser le gestionnaire des pédagogues existant
+            if (window.PedagogueManager && !this.managers.pedagogues) {
+                this.managers.pedagogues = new PedagogueManager();
+                console.log('✅ Gestionnaire de pédagogues initialisé');
+            }
         }
         
-        console.log('Section Pédagogues chargée (gestionnaire à implémenter)');
+        console.log('Section Pédagogues chargée avec gestionnaire existant');
     }
     
     loadDesignSection() {

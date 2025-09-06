@@ -23,6 +23,11 @@ exclude:
   - .gitignore
   - node_modules/
   - package*.json
+  - deploy-github.ps1
+  - DEVELOPMENT.md
+  - TODO.md
+  - "*.tmp"
+  - "*.log"
 
 # Fichiers à inclure
 include:

@@ -23,17 +23,13 @@ class DashboardManager {
     }
     
     initActivityLogger() {
-        // Initialisation du système de suivi
+        // Initialisation du système de suivi - SEULEMENT pour le logging, PAS l'interface
         if (window.activityLogger) {
             window.activityLogger.logActivity('system', 'Dashboard chargé', 'Accès au tableau de bord admin');
         }
         
-        // Initialisation du dashboard d'activité
-        setTimeout(() => {
-            if (window.ActivityDashboard) {
-                window.activityDashboard = new ActivityDashboard();
-            }
-        }, 1000);
+        // NE PAS initialiser automatiquement le dashboard d'activité ici
+        // Il sera initialisé uniquement quand l'utilisateur accède à la section
     }
     
     bindEvents() {

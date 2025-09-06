@@ -26,6 +26,13 @@ class ActivityDashboard {
      * 🎨 Création de l'interface HTML
      */
     createDashboardHTML() {
+        // Vérifier qu'on est bien dans la section activity
+        const activitySection = document.getElementById('activity-section');
+        if (!activitySection) {
+            console.log('Section activité non trouvée, dashboard non créé');
+            return;
+        }
+
         const dashboardHTML = `
             <div id="activity-dashboard" class="admin-section">
                 <div class="section-header">
@@ -184,10 +191,12 @@ class ActivityDashboard {
             </style>
         `;
 
-        // Insertion dans le conteneur admin
-        const adminContainer = document.querySelector('.admin-container, #admin-content, main');
-        if (adminContainer) {
-            adminContainer.insertAdjacentHTML('beforeend', dashboardHTML);
+        // Insertion UNIQUEMENT dans la section activity
+        const activitySection = document.getElementById('activity-section');
+        if (activitySection) {
+            activitySection.insertAdjacentHTML('beforeend', dashboardHTML);
+        } else {
+            console.error('Section activity-section non trouvée pour le dashboard');
         }
     }
 
