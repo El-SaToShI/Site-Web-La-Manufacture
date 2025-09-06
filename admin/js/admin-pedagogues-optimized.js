@@ -19,11 +19,6 @@ class PedagogueManager {
      */
     async init() {
         try {
-            // Log de l'initialisation
-            if (window.activityLogger) {
-                window.activityLogger.logActivity('system', 'Gestionnaire Pédagogues initialisé', 'Chargement du module de gestion des pédagogues');
-            }
-            
             // Chargement de la configuration
             this.loadConfig();
             

@@ -19,17 +19,6 @@ class DashboardManager {
         this.loadStats();
         this.updateActivityFeed();
         this.loadQuickActions();
-        this.initActivityLogger();
-    }
-    
-    initActivityLogger() {
-        // Initialisation du système de suivi - SEULEMENT pour le logging, PAS l'interface
-        if (window.activityLogger) {
-            window.activityLogger.logActivity('system', 'Dashboard chargé', 'Accès au tableau de bord admin');
-        }
-        
-        // NE PAS initialiser automatiquement le dashboard d'activité ici
-        // Il sera initialisé uniquement quand l'utilisateur accède à la section
     }
     
     bindEvents() {
@@ -168,27 +157,14 @@ class DashboardManager {
         const activityFeed = document.getElementById('activityFeed');
         if (!activityFeed) return;
         
-        const activities = JSON.parse(localStorage.getItem('adminActivities') || '[]');
-        
-        if (activities.length === 0) {
-            activityFeed.innerHTML = `
-                <div class="activity-item">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Bienvenue dans l'interface d'administration!</span>
-                    <time>Maintenant</time>
-                </div>
-            `;
-            return;
-        }
-        
-        // Afficher les 5 dernières activités
-        activityFeed.innerHTML = activities.slice(0, 5).map(activity => `
+        // Affichage statique simple sans système de tracking
+        activityFeed.innerHTML = `
             <div class="activity-item">
-                <i class="${this.getActivityIcon(activity.message)}"></i>
-                <span>${activity.message}</span>
-                <time>${this.formatTime(activity.timestamp)}</time>
+                <i class="fas fa-info-circle"></i>
+                <span>Interface d'administration chargée</span>
+                <time>Maintenant</time>
             </div>
-        `).join('');
+        `;
     }
     
     getActivityIcon(message) {
@@ -353,7 +329,6 @@ class DashboardManager {
     exportData() {
         const data = {
             stats: this.stats,
-            activities: JSON.parse(localStorage.getItem('adminActivities') || '[]'),
             pages: JSON.parse(localStorage.getItem('adminSavedPages') || '{}'),
             events: JSON.parse(localStorage.getItem('agendaEvents') || '[]'),
             pedagogues: JSON.parse(localStorage.getItem('adminPedagogues') || '[]'),
@@ -389,7 +364,6 @@ class DashboardManager {
                 
                 // Importer les données
                 if (data.stats) this.stats = data.stats;
-                if (data.activities) localStorage.setItem('adminActivities', JSON.stringify(data.activities));
                 if (data.pages) localStorage.setItem('adminSavedPages', JSON.stringify(data.pages));
                 if (data.events) localStorage.setItem('agendaEvents', JSON.stringify(data.events));
                 if (data.pedagogues) localStorage.setItem('adminPedagogues', JSON.stringify(data.pedagogues));

@@ -88,9 +88,6 @@ class AdminAuth {
         // Démarrer le timer de session
         this.startSessionTimer();
         
-        // Log de l'activité
-        this.logActivity(`Connexion réussie pour ${username}`);
-        
         // Animation d'entrée
         this.animateInterfaceEntry();
     }
@@ -134,9 +131,6 @@ class AdminAuth {
         if (this.sessionTimer) {
             clearTimeout(this.sessionTimer);
         }
-        
-        // Log de l'activité
-        this.logActivity(`Déconnexion de ${this.currentUser}`);
         
         this.currentUser = null;
         
@@ -266,40 +260,6 @@ class AdminAuth {
     removeErrorMessages() {
         const errorMessages = document.querySelectorAll('.message.error');
         errorMessages.forEach(msg => msg.remove());
-    }
-    
-    logActivity(message) {
-        const activities = JSON.parse(localStorage.getItem('adminActivities') || '[]');
-        activities.unshift({
-            message,
-            timestamp: Date.now(),
-            user: this.currentUser
-        });
-        
-        // Garder seulement les 50 dernières activités
-        if (activities.length > 50) {
-            activities.splice(50);
-        }
-        
-        localStorage.setItem('adminActivities', JSON.stringify(activities));
-        
-        // Mettre à jour l'affichage si nécessaire
-        this.updateActivityFeed();
-    }
-    
-    updateActivityFeed() {
-        const activityFeed = document.getElementById('activityFeed');
-        if (!activityFeed) return;
-        
-        const activities = JSON.parse(localStorage.getItem('adminActivities') || '[]');
-        
-        activityFeed.innerHTML = activities.slice(0, 5).map(activity => `
-            <div class="activity-item">
-                <i class="fas fa-clock"></i>
-                <span>${activity.message}</span>
-                <time>${this.formatTime(activity.timestamp)}</time>
-            </div>
-        `).join('');
     }
     
     formatTime(timestamp) {

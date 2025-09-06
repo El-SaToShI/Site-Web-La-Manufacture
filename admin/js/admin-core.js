@@ -187,11 +187,6 @@ class AdminCore {
         this.initializeSectionManager(sectionName);
         
         this.currentSection = sectionName;
-        
-        // Log de l'activité
-        if (window.adminAuth) {
-            window.adminAuth.logActivity(`Navigation vers ${this.getSectionTitle(sectionName)}`);
-        }
     }
     
     getSectionTitle(sectionName) {
@@ -202,7 +197,6 @@ class AdminCore {
             agenda: 'Gestion de l\'Agenda',
             media: 'Gestion des Médias',
             design: 'Apparence du Site',
-            activity: 'Suivi des Modifications',
             settings: 'Paramètres'
         };
         return titles[sectionName] || 'Section Inconnue';
@@ -229,11 +223,6 @@ class AdminCore {
             case 'design':
                 if (!this.managers.design) {
                     this.loadDesignSection();
-                }
-                break;
-            case 'activity':
-                if (!this.managers.activity) {
-                    this.loadActivitySection();
                 }
                 break;
             case 'settings':
@@ -341,23 +330,6 @@ class AdminCore {
         console.log('Section Design chargée (gestionnaire à implémenter)');
     }
     
-    loadActivitySection() {
-        const activitySection = document.getElementById('activity-section');
-        if (activitySection && window.ActivityDashboard) {
-            // Vérifier si le dashboard n'est pas déjà initialisé
-            if (!this.managers.activity) {
-                this.managers.activity = new ActivityDashboard();
-                
-                // Log de l'activité
-                if (window.activityLogger) {
-                    window.activityLogger.logActivity('system', 'Section Activité chargée', 'Accès au dashboard de suivi des modifications');
-                }
-            }
-        }
-        
-        console.log('Section Suivi des Modifications chargée');
-    }
-    
     loadSettingsSection() {
         const settingsSection = document.getElementById('settings-section');
         if (settingsSection && !settingsSection.hasChildNodes()) {
@@ -425,10 +397,6 @@ class AdminCore {
     previewSite() {
         // Ouvrir le site dans un nouvel onglet
         window.open('../index.html', '_blank');
-        
-        if (window.adminAuth) {
-            window.adminAuth.logActivity('Aperçu du site ouvert');
-        }
     }
     
     hasUnsavedChanges() {
